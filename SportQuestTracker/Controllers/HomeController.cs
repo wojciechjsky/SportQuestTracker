@@ -1,37 +1,55 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using SportQuestTracker.Models;
+
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace SportQuestTracker.Controllers
 {
-    public class HomeController : Controller
+    /// <summary>
+    /// This is API HomeController
+    /// </summary>
+    [Route("api/[controller]")]
+    [ApiController]
+    public class HomeController : ControllerBase
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        // GET: api/<IndexController>
+        [HttpGet]
+        public IEnumerable<string> Get()
         {
-            _logger = logger;
+            return new string[] { "value1", "value2" };
         }
 
-        public IActionResult Index()
+        /// <summary>
+        /// Get a value
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        // GET api/<IndexController>/5
+        [HttpGet("{id}")]
+        public string Get(int id)
         {
-            return View();
+            return "value";
         }
 
-        public IActionResult Privacy()
+        // POST api/<IndexController>
+        [HttpPost]
+        public void Post([FromBody] string value)
         {
-            return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        // PUT api/<IndexController>/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        // DELETE api/<IndexController>/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
         }
     }
 }
