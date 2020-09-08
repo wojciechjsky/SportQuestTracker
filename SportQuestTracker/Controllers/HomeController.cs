@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using SportQuestTracker.Contracts;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,10 +16,19 @@ namespace SportQuestTracker.Controllers
     [ApiController]
     public class HomeController : ControllerBase
     {
+
+        private readonly ILoggerService _logger;
+
+        public HomeController(ILoggerService logger)
+        {
+            _logger = logger;
+        }
+
         // GET: api/<IndexController>
         [HttpGet]
         public IEnumerable<string> Get()
         {
+            _logger.LogInfo("Accessed Home Controller");
             return new string[] { "value1", "value2" };
         }
 
@@ -31,6 +41,7 @@ namespace SportQuestTracker.Controllers
         [HttpGet("{id}")]
         public string Get(int id)
         {
+            _logger.LogDebug("Got a Value");
             return "value";
         }
 
@@ -38,6 +49,7 @@ namespace SportQuestTracker.Controllers
         [HttpPost]
         public void Post([FromBody] string value)
         {
+            _logger.LogError("This is an error");
         }
 
         // PUT api/<IndexController>/5
@@ -50,6 +62,7 @@ namespace SportQuestTracker.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            _logger.LogWarn("This is a warning");
         }
     }
 }
