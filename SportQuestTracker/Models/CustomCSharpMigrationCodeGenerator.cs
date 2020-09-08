@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.Migrations.Design;
-using System.Text;
+﻿using System.Data.Entity.Migrations.Design;
 
 namespace SportQuestTracker.Models
 {
