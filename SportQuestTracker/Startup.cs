@@ -29,6 +29,15 @@ namespace SportQuestTracker
         public void ConfigureServices(IServiceCollection services)
         {
 
+
+            services.AddCors(o =>
+            {
+                o.AddPolicy("CorsPolicy", 
+                    builder => builder.AllowAnyOrigin()
+                                                    .AllowAnyMethod()
+                                                    .AllowAnyHeader());
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("version1", new OpenApiInfo
@@ -72,6 +81,10 @@ namespace SportQuestTracker
                 e.RoutePrefix = "";
             });
             app.UseHttpsRedirection();
+
+            app.UseCors("CorsPolicy");
+
+            // app.UseRouting();
             app.UseStaticFiles();
 
             app.UseRouting();
