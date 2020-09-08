@@ -1,15 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SportQuestTracker.Models
 {
     public class User
     {
-        [Key] 
-        private int UserId { get; set; }
-        private string Password { get; set; }
+        [Key]
+        public int UserId { get; set; }
+        public string Password { get; set; }
+        public string FirstName { get; set; }
+        public string SecondName { get; set; }
+        public string Street { get; set; }
+        public int ParcelNumber { get; set; }
+        public int HouseNumber { get; set; }
+        public string City { get; set; }
+        public int Points { get; set; }
+        public int Coins { get; set; }
+
+        public virtual Gadget Gadget { get; set; }
+
+        public ICollection<Transaction> UserTransactions { get; set; }
+
+        // [ForeignKey("Transactions")] TODO zapytać Piotra czy tam może być lista, czy wtedy musi byc też i nowa tabela?
+        // public int HistoryId { get; set; }
+
     }
 }
