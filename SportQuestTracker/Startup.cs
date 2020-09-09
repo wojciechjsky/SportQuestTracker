@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -15,6 +16,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using SportQuestTracker.Contracts;
 using SportQuestTracker.Data;
+using SportQuestTracker.Mappings;
 using SportQuestTracker.Services;
 
 namespace SportQuestTracker
@@ -47,7 +49,7 @@ namespace SportQuestTracker
                                                     .AllowAnyHeader());
             });
 
-            
+            services.AddAutoMapper(typeof(Maps));
 
             services.AddSwaggerGen(c =>
             {

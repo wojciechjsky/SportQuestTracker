@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace SportQuestTracker.Models
 {
+    [Table("Transactions")]
     public class Transaction
     {
         [Key]
