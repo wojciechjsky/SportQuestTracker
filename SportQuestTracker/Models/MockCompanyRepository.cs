@@ -7,7 +7,7 @@ namespace SportQuestTracker.Models
 {
     public class MockCompanyRepository: ICompanyRepository
     {
-        public IEnumerable<Company> AllCategories => new List<Company>()
+        public IEnumerable<Company> Companies => new List<Company>()
         {
             new Company {
                 CompanyId = 1, CompanyName = "Nike", CollectedCoins = 1000, Logo = "url(Nike.png)"

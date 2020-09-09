@@ -9,7 +9,7 @@ namespace SportQuestTracker.Models
 {
     public class MockGadgetRepository : IGadgetRepository
     {
-        public IEnumerable<Gadget> AllCategories => new List<Gadget>()
+        public IEnumerable<Gadget> Gadgets => new List<Gadget>()
         {
             new Gadget
             {
@@ -51,5 +51,12 @@ namespace SportQuestTracker.Models
                 TypeOfProduct = 1,
             },
         };
+
+        public IEnumerable<Gadget> AllGadgets { get; }
+
+        public Gadget GetGadgetById(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -7,7 +7,7 @@ namespace SportQuestTracker.Models
 {
     public class MockUserRepository : IUserRepository
     {
-        public IEnumerable<User> AllCategories => new List<User>()
+        public IEnumerable<User> Users => new List<User>()
         {
             new User { 
                 UserId = 1, Email = "pati@wp.pl", Password = "Large" , FirstName = "Patrycja",
