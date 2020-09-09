@@ -28,5 +28,12 @@ namespace SportQuestTracker.Models
                 City = "Warszawa", Points = 110, Coins = 110, Admin = false, CompanyId = 3
             },
         };
+
+        public IEnumerable<User> AllUsers { get; }
+
+        public User GetUserById(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
