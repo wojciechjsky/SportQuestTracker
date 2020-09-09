@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace SportQuestTracker.Models
 {
-    interface IGadgetRepository
+    public interface IGadgetRepository
     {
+        IEnumerable<Gadget> AllGadgets { get; }
+        Gadget GetGadgetById(int id);
     }
 }

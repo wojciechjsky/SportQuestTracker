@@ -5,7 +5,11 @@ using System.Threading.Tasks;
 
 namespace SportQuestTracker.Models
 {
-    public class ICompanyRepository
+    public interface ICompanyRepository
     {
+        IEnumerable<Company> AllCompanies
+        {
+            get;
+        }
     }
 }

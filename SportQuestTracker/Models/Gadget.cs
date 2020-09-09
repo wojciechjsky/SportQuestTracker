@@ -18,7 +18,13 @@ namespace SportQuestTracker.Models
         [ForeignKey("Company")]
         public virtual Company Company { get; set; }
 
-        public byte Image { get; set; }
-        
+        public string Image { get; set; }
+
+        public string Name { get; set; }
+
+        public string Quantity { get; set; }
+
+        public int TypeOfProduct { get; set; }
+
     }
 }

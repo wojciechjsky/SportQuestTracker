@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace SportQuestTracker.Models
 {
-    public class ITransactionRepository
+    public interface ITransactionRepository
     {
+        IEnumerable<Transaction> AllTransactions { get; }
+        Transaction GetTransactionById(int id);
     }
 }

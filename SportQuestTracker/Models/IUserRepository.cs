@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace SportQuestTracker.Models
 {
-    interface IUserRepository
+    public interface IUserRepository
     {
+        IEnumerable<User> AllUsers { get; }
+        User GetUserById(int id);
     }
 }

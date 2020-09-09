@@ -18,6 +18,6 @@ namespace SportQuestTracker.Models
 
         public int CollectedCoins { get; set; }
 
-        public byte Logo { get; set; }
+        public string Logo { get; set; }
     }
 }

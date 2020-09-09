@@ -11,7 +11,7 @@ namespace SportQuestTracker.DTOs
         public int UserId { get; set; }
         public string Password { get; set; }
         public string FirstName { get; set; }
-        public string SecondName { get; set; }
+        public string Surname { get; set; }
         public string Street { get; set; }
         public int ParcelNumber { get; set; }
         public int HouseNumber { get; set; }
