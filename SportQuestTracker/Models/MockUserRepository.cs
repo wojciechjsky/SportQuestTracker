@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SportQuestTracker.Models
 {
-    public class MockUserRepository
+    public class MockUserRepository : IUserRepository
     {
         public IEnumerable<User> AllCategories => new List<User>()
         {

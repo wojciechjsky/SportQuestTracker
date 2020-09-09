@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SportQuestTracker.Models
 {
-    public class MockGadgetRepository
+    public class MockGadgetRepository : IGadgetRepository
     {
         public IEnumerable<Gadget> AllCategories => new List<Gadget>()
         {

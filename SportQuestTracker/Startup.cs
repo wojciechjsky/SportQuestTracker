@@ -17,6 +17,7 @@ using Microsoft.OpenApi.Models;
 using SportQuestTracker.Contracts;
 using SportQuestTracker.Data;
 using SportQuestTracker.Mappings;
+using SportQuestTracker.Models;
 using SportQuestTracker.Services;
 
 namespace SportQuestTracker
@@ -33,14 +34,17 @@ namespace SportQuestTracker
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
+            services.AddScoped<IGadgetRepository, MockGadgetRepository>(); 
+            services.AddScoped<ICompanyRepository, MockCompanyRepository>();
+            services.AddScoped<IUserRepository, MockUserRepository>();
+            
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             
             services.AddRazorPages();
-
-
-
+            
             services.AddCors(o =>
             {
                 o.AddPolicy("CorsPolicy", 

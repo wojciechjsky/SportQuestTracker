@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SportQuestTracker.Models
 {
-    public class MockCompanyRepository
+    public class MockCompanyRepository: ICompanyRepository
     {
         public IEnumerable<Company> AllCategories => new List<Company>()
         {
@@ -21,5 +21,7 @@ namespace SportQuestTracker.Models
                 CompanyId = 3, CompanyName = "Reebook", CollectedCoins = 550, Logo = "url(Reebook.png)"
             },
         };
+
+        public IEnumerable<Company> AllCompanies { get; }
     }
 }
