@@ -12,7 +12,7 @@ namespace SportQuestTracker.DTOs
 
         public int Price { get; set; }
 
-        public virtual CompanyDTO Company { get; set; }
+        public int CompanyId { get; set; }
 
         public byte Image { get; set; }
     }

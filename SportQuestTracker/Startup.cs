@@ -15,7 +15,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using SportQuestTracker.Contracts;
-using SportQuestTracker.Data;
 using SportQuestTracker.Mappings;
 using SportQuestTracker.Models;
 using SportQuestTracker.Services;

@@ -15,10 +15,7 @@ namespace SportQuestTracker.Models
             {
                 GadgetId = 1,
                 Price = 20,
-                Company= new Company {
-                    CompanyId = 1, CompanyName = "Nike",
-                    CollectedCoins = 1200, Logo = "url(NikeLogo.png)"
-                },
+                CompanyId = 3,
                 Image = "url(Reebook.png)",
                 Name="Nike shoes",
                 Quantity ="100",
@@ -28,10 +25,7 @@ namespace SportQuestTracker.Models
             {
                 GadgetId = 2,
                 Price = 30,
-                Company= new Company {
-                    CompanyId = 2, CompanyName = "Adiddas",
-                    CollectedCoins = 1000, Logo = "url(AddidasLogo.png)"
-                },
+                CompanyId = 1,
                 Image = "url(Addidas.png)",
                 Name="Addidas shoes",
                 Quantity ="100",
@@ -41,10 +35,7 @@ namespace SportQuestTracker.Models
             {
                 GadgetId = 3, 
                 Price = 50,
-                Company= new Company {
-                    CompanyId = 1, CompanyName = "Reebook",
-                    CollectedCoins = 1000, Logo = "url(ReebookLogo.png)"
-                },
+                CompanyId = 2,
                 Image = "url(Reebook.png)",
                 Name="Reebook Shoes",
                 Quantity ="100",
