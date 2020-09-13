@@ -10,8 +10,8 @@ using SportQuestTracker.Models;
 namespace SportQuestTracker.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200911161402_Initial")]
-    partial class Initial
+    [Migration("20200913104641_Init1")]
+    partial class Init1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,7 +37,12 @@ namespace SportQuestTracker.Migrations
                     b.Property<string>("Logo")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("TransactionId")
+                        .HasColumnType("int");
+
                     b.HasKey("CompanyId");
+
+                    b.HasIndex("TransactionId");
 
                     b.ToTable("Companies");
                 });
@@ -141,6 +146,13 @@ namespace SportQuestTracker.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("SportQuestTracker.Models.Company", b =>
+                {
+                    b.HasOne("SportQuestTracker.Models.Transaction", null)
+                        .WithMany("UserCompany")
+                        .HasForeignKey("TransactionId");
                 });
 
             modelBuilder.Entity("SportQuestTracker.Models.Transaction", b =>

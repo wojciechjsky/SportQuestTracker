@@ -20,5 +20,6 @@ namespace SportQuestTracker.Models
         public int GadgetId { get; set; }
 
         public DateTime Date { get; set; }
+        public ICollection<Company> UserCompany{ get; set; }
     }
 }

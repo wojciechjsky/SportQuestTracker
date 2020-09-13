@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SportQuestTracker.Models;
 
 namespace SportQuestTracker.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200913103122_Init")]
+    partial class Init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,12 +37,7 @@ namespace SportQuestTracker.Migrations
                     b.Property<string>("Logo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("TransactionId")
-                        .HasColumnType("int");
-
                     b.HasKey("CompanyId");
-
-                    b.HasIndex("TransactionId");
 
                     b.ToTable("Companies");
                 });
@@ -144,13 +141,6 @@ namespace SportQuestTracker.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("SportQuestTracker.Models.Company", b =>
-                {
-                    b.HasOne("SportQuestTracker.Models.Transaction", null)
-                        .WithMany("UserCompany")
-                        .HasForeignKey("TransactionId");
                 });
 
             modelBuilder.Entity("SportQuestTracker.Models.Transaction", b =>
