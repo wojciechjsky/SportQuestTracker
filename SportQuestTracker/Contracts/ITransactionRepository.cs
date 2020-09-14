@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using SportQuestTracker.Models;
 
-namespace SportQuestTracker.Models
+namespace SportQuestTracker.Contracts
 {
     public interface ITransactionRepository
     {

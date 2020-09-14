@@ -16,5 +16,10 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:SportQuestTracker.Data.SeedData">
+            <summary>
+            THIS IS FOR STUDYING PURPOSES DO NOT TOUCH
+            </summary>
+        </member>
     </members>
 </doc>

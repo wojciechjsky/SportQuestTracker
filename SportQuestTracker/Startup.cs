@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using SportQuestTracker.Contracts;
+using SportQuestTracker.Data;
 using SportQuestTracker.Mappings;
 using SportQuestTracker.Models;
 using SportQuestTracker.Services;
@@ -41,7 +42,9 @@ namespace SportQuestTracker
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
             
+
             services.AddRazorPages();
             
             services.AddCors(o =>
@@ -77,7 +80,9 @@ namespace SportQuestTracker
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app,
+            IWebHostEnvironment env, UserManager<IdentityUser> userManager,
+            RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -100,7 +105,9 @@ namespace SportQuestTracker
 
             app.UseCors("CorsPolicy");
 
-            // app.UseRouting();
+            SeedData.Seed(userManager, roleManager).Wait();
+
+            app.UseRouting();
             app.UseStaticFiles();
 
             app.UseRouting();

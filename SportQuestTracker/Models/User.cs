@@ -41,7 +41,7 @@ namespace SportQuestTracker.Models
         [ForeignKey("Company")]
         public int CompanyId { get; set; }
         public virtual Company Company { get; set; }
-        //public ICollection<Transaction> UserTransactions { get; set; }
+
 
     }
 }

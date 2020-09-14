@@ -9,6 +9,7 @@ namespace SportQuestTracker.DTOs
     public class UserDTO
     {
         public int UserId { get; set; }
+        public string Email { get; set; }
         public string Password { get; set; }
         public string FirstName { get; set; }
         public string Surname { get; set; }
@@ -16,11 +17,13 @@ namespace SportQuestTracker.DTOs
         public int ParcelNumber { get; set; }
         public int HouseNumber { get; set; }
         public string City { get; set; }
-        public int Points { get; set; }
-        public int Coins { get; set; }
+        public int Points { get; set; } = 0;
+        public int Coins { get; set; } = 0;
+        public bool Admin { get; set; } = false;
 
-        public virtual GadgetDTO Gadget { get; set; }
+        public int CompanyId { get; set; }
+        public virtual CompanyDTO Company { get; set; }
 
-        public ICollection<Transaction> UserTransactions { get; set; }
+
     }
 }

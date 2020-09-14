@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using SportQuestTracker.Contracts;
 
 namespace SportQuestTracker.Models
 {

@@ -14,6 +14,7 @@ namespace SportQuestTracker.Models
         [Key]
         public int CompanyId { get; set; }
 
+        [Required]
         public string CompanyName { get; set; }
 
         public int CollectedCoins { get; set; }
