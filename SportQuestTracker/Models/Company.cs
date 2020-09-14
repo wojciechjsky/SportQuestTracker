@@ -19,5 +19,8 @@ namespace SportQuestTracker.Models
         public int CollectedCoins { get; set; }
 
         public string Logo { get; set; }
+
+        public IEnumerable<Gadget> Gadgets { get; set; }
+        public virtual User User { get; set; }
     }
 }

@@ -13,13 +13,18 @@ namespace SportQuestTracker.Models
         [Key]
         public int TransactionId { get; set; }
 
+        [Required]
         [ForeignKey("User")]
         public int UserId { get; set; }
 
+        [Required]
         [ForeignKey("Gadget")]
         public int GadgetId { get; set; }
 
+        [Required]
         public DateTime Date { get; set; }
-        public ICollection<Company> UserCompany{ get; set; }
+
+        public virtual User User { get; set; }
+        public virtual Gadget Gadget { get; set; }
     }
 }

@@ -8,6 +8,7 @@ namespace SportQuestTracker.Models
 {
     public class ApplicationDbContext : DbContext
     {
+
         private DbSet<User> Users { get; set; }
         private DbSet<Gadget> Gadgets { get; set; }
         private DbSet<Transaction> Transactions { get; set; }
@@ -16,6 +17,17 @@ namespace SportQuestTracker.Models
     
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
+
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Company>()
+                .HasMany(e => e.Gadgets)
+                .WithOne(c => c.Company);
+
+            modelBuilder.Entity<User>()
+                .HasOne(e => e.Company)
+                .WithOne(c => c.User);
 
         }
 

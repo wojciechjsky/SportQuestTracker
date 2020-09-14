@@ -25,6 +25,7 @@ namespace SportQuestTracker.Models
         public string Quantity { get; set; }
 
         public int TypeOfProduct { get; set; }
+        public Company Company { get; set; }
 
     }
 }
