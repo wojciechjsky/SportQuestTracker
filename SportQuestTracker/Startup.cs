@@ -43,8 +43,6 @@ namespace SportQuestTracker
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            
-
             services.AddRazorPages();
             
             services.AddCors(o =>
