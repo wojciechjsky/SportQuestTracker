@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using SportQuestTracker.Models;
+using SportQuestTracker.Models.ClassModels;
 
 namespace SportQuestTracker.Contracts
 {
-    public interface IUserRepository
+    public interface IUserRepository : IRepositoryBase<User>
     {
-        IEnumerable<User> AllUsers { get; }
-        User GetUserById(int id);
     }
 }

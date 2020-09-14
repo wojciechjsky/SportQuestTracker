@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SportQuestTracker.DTOs;
 using SportQuestTracker.Models;
+using SportQuestTracker.Models.ClassModels;
 
 namespace SportQuestTracker.Mappings
 {

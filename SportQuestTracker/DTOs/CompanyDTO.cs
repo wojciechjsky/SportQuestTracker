@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SportQuestTracker.Models;
+using SportQuestTracker.Models.ClassModels;
 
 namespace SportQuestTracker.DTOs
 {

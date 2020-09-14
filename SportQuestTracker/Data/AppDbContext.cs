@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using SportQuestTracker.Models;
+using SportQuestTracker.Models.ClassModels;
 
 namespace SportQuestTracker.Data
 {

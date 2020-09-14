@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using SportQuestTracker.Models;
+using SportQuestTracker.Models.ClassModels;
 
 namespace SportQuestTracker.Contracts
 {
-    public interface ITransactionRepository
+    public interface ITransactionRepository : IRepositoryBase<Transaction>
     {
-        IEnumerable<Transaction> AllTransactions { get; }
-        Transaction GetTransactionById(int id);
     }
 }

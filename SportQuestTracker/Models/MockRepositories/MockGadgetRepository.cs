@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
 using System.Threading.Tasks;
 using SportQuestTracker.Contracts;
+using SportQuestTracker.Models.ClassModels;
 
-namespace SportQuestTracker.Models
+namespace SportQuestTracker.Models.MockRepositories
 {
     public class MockGadgetRepository : IGadgetRepository
     {
@@ -47,6 +45,36 @@ namespace SportQuestTracker.Models
         public IEnumerable<Gadget> AllGadgets { get; }
 
         public Gadget GetGadgetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IList<Gadget>> FindAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Gadget> FindById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> Create<T>(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> Update<T>(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> Delete<T>(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> Save()
         {
             throw new NotImplementedException();
         }

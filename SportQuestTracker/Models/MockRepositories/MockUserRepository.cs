@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using SportQuestTracker.Contracts;
+using SportQuestTracker.Models.ClassModels;
 
-namespace SportQuestTracker.Models
+namespace SportQuestTracker.Models.MockRepositories
 {
     public class MockUserRepository : IUserRepository
     {
@@ -30,9 +30,33 @@ namespace SportQuestTracker.Models
             },
         };
 
-        public IEnumerable<User> AllUsers { get; }
 
-        public User GetUserById(int id)
+        public Task<IList<User>> FindAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<User> FindById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> Create<T>(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> Update<T>(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> Delete<T>(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> Save()
         {
             throw new NotImplementedException();
         }

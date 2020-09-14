@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Runtime.CompilerServices;
 
-namespace SportQuestTracker.Models
+namespace SportQuestTracker.Models.ClassModels
 {
     [Table("Users")]
     public class User

@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using SportQuestTracker.Models;
+using SportQuestTracker.Models.ClassModels;
 
 namespace SportQuestTracker.Contracts
 {
-    public interface IGadgetRepository
+    public interface IGadgetRepository : IRepositoryBase<Gadget>
     {
-        IEnumerable<Gadget> AllGadgets { get; }
-        Gadget GetGadgetById(int id);
+
     }
 }
