@@ -30,4 +30,5 @@ namespace SportQuestTracker.Services
             _logger.Error(message);
         }
     }
+   
 }
