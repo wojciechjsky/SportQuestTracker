@@ -96,6 +96,7 @@ namespace SportQuestTracker
                 app.UseHsts();
             }
 
+            app.UseDeveloperExceptionPage();
             app.UseSwagger();
             app.UseSwaggerUI(e =>
             {
