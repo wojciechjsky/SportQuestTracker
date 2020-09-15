@@ -1,40 +1,54 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using SportQuestTracker.Contracts;
+using SportQuestTracker.Data;
 using SportQuestTracker.Models.ClassModels;
 
 namespace SportQuestTracker.Models.Repositories
 {
     public class GadgetRepository: IGadgetRepository
     {
-        public Task<IList<Gadget>> FindAll()
+        private readonly ApplicationDbContext _db;
+
+        public GadgetRepository(ApplicationDbContext db)
         {
-            throw new System.NotImplementedException();
+            _db = db;
+        }
+        public async Task<IList<Gadget>> FindAll()
+        {
+            var gadgets = await _db.Gadgets.ToListAsync();
+            return gadgets;
         }
 
-        public Task<Gadget> FindById(int id)
+        public async Task<Gadget> FindById(int id)
         {
-            throw new System.NotImplementedException();
+            var gadget = await _db.Gadgets.FindAsync(id);
+            return gadget;
         }
 
-        public Task<bool> Create<T>(T entity)
+        public async Task<bool> Create(Gadget entity)
         {
-            throw new System.NotImplementedException();
+            await _db.Gadgets.AddAsync(entity);
+            return await Save();
         }
 
-        public Task<bool> Update<T>(T entity)
+        public async Task<bool> Update(Gadget entity)
         {
-            throw new System.NotImplementedException();
+            _db.Gadgets.Update(entity);
+            return await Save();
         }
 
-        public Task<bool> Delete<T>(T entity)
+        public async Task<bool> Delete(Gadget entity)
         {
-            throw new System.NotImplementedException();
+            _db.Gadgets.Remove(entity);
+            return await Save();
         }
 
-        public Task<bool> Save()
+        public async Task<bool> Save()
         {
-            throw new System.NotImplementedException();
+            var changes = await _db.SaveChangesAsync();
+            return changes > 0;
         }
     }
 }

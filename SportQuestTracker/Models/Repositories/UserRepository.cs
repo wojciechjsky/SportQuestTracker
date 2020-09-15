@@ -1,40 +1,54 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using SportQuestTracker.Contracts;
+using SportQuestTracker.Data;
 using SportQuestTracker.Models.ClassModels;
 
 namespace SportQuestTracker.Models.Repositories
 {
     public class UserRepository: IUserRepository
     {
-        public Task<IList<User>> FindAll()
+        private readonly ApplicationDbContext _db;
+
+        public UserRepository(ApplicationDbContext db)
         {
-            throw new System.NotImplementedException();
+            _db = db;
+        }
+        public async Task<IList<User>> FindAll()
+        {
+            var users = await _db.Users.ToListAsync();
+            return users;
         }
 
-        public Task<User> FindById(int id)
+        public async Task<User> FindById(int id)
         {
-            throw new System.NotImplementedException();
+            var user = await _db.Users.FindAsync(id);
+            return user;
         }
 
-        public Task<bool> Create<T>(T entity)
+        public async Task<bool> Create(User entity)
         {
-            throw new System.NotImplementedException();
+            await _db.Users.AddAsync(entity);
+            return await Save();
         }
 
-        public Task<bool> Update<T>(T entity)
+        public async Task<bool> Update(User entity)
         {
-            throw new System.NotImplementedException();
+            _db.Users.Update(entity);
+            return await Save();
         }
 
-        public Task<bool> Delete<T>(T entity)
+        public async Task<bool> Delete(User entity)
         {
-            throw new System.NotImplementedException();
+            _db.Users.Remove(entity);
+            return await Save();
         }
 
-        public Task<bool> Save()
+        public async Task<bool> Save()
         {
-            throw new System.NotImplementedException();
+            var changes = await _db.SaveChangesAsync();
+            return changes > 0;
         }
     }
 }

@@ -8,10 +8,10 @@ namespace SportQuestTracker.Data
     public class ApplicationDbContext : DbContext
     {
 
-        private DbSet<User> Users { get; set; }
-        private DbSet<Gadget> Gadgets { get; set; }
-        private DbSet<Transaction> Transactions { get; set; }
-        private DbSet<Company> Companies { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Gadget> Gadgets { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<Company> Companies { get; set; }
 
     
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)

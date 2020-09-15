@@ -44,11 +44,6 @@ namespace SportQuestTracker.Models.MockRepositories
 
         public IEnumerable<Gadget> AllGadgets { get; }
 
-        public Gadget GetGadgetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public Task<IList<Gadget>> FindAll()
         {
             throw new NotImplementedException();
@@ -59,17 +54,17 @@ namespace SportQuestTracker.Models.MockRepositories
             throw new NotImplementedException();
         }
 
-        public Task<bool> Create<T>(T entity)
+        public Task<bool> Create(Gadget entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> Update<T>(T entity)
+        public Task<bool> Update(Gadget entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> Delete<T>(T entity)
+        public Task<bool> Delete(Gadget entity)
         {
             throw new NotImplementedException();
         }

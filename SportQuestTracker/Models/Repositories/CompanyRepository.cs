@@ -1,40 +1,53 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using SportQuestTracker.Contracts;
+using SportQuestTracker.Data;
 using SportQuestTracker.Models.ClassModels;
 
 namespace SportQuestTracker.Models.Repositories
 {
-    public class CompanyRepository: ICompanyRepository
+    public class CompanyRepository : ICompanyRepository
     {
-        public Task<IList<Company>> FindAll()
+        private readonly ApplicationDbContext _db;
+        public CompanyRepository(ApplicationDbContext db)
         {
-            throw new System.NotImplementedException();
+            _db = db;
+        }
+        public async Task<IList<Company>> FindAll()
+        {
+            var companies = await _db.Companies.ToListAsync();
+            return companies;
         }
 
-        public Task<Company> FindById(int id)
+        public async Task<Company> FindById(int id)
         {
-            throw new System.NotImplementedException();
+            var company = await _db.Companies.FindAsync(id);
+            return company;
         }
 
-        public Task<bool> Create<T>(T entity)
+        public async Task<bool> Create(Company entity)
         {
-            throw new System.NotImplementedException();
+            await _db.Companies.AddAsync(entity);
+            return await Save();
         }
 
-        public Task<bool> Update<T>(T entity)
+        public async Task<bool> Update(Company entity)
         {
-            throw new System.NotImplementedException();
+            _db.Companies.Update(entity);
+            return await Save();
         }
 
-        public Task<bool> Delete<T>(T entity)
+        public async Task<bool> Delete(Company entity)
         {
-            throw new System.NotImplementedException();
+            _db.Companies.Remove(entity);
+            return await Save();
         }
 
-        public Task<bool> Save()
+        public async Task<bool> Save()
         {
-            throw new System.NotImplementedException();
+            var changes = await _db.SaveChangesAsync();
+            return changes > 0;
         }
     }
 }

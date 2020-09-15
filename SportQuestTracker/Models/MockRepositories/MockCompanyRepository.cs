@@ -23,6 +23,7 @@ namespace SportQuestTracker.Models.MockRepositories
         };
 
         public IEnumerable<Company> AllCompanies { get; }
+
         public Task<IList<Company>> FindAll()
         {
             throw new System.NotImplementedException();
@@ -33,17 +34,17 @@ namespace SportQuestTracker.Models.MockRepositories
             throw new System.NotImplementedException();
         }
 
-        public Task<bool> Create<T>(T entity)
+        public Task<bool> Create(Company entity)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<bool> Update<T>(T entity)
+        public Task<bool> Update(Company entity)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<bool> Delete<T>(T entity)
+        public Task<bool> Delete(Company entity)
         {
             throw new System.NotImplementedException();
         }

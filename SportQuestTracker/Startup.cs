@@ -19,6 +19,7 @@ using SportQuestTracker.Data;
 using SportQuestTracker.Mappings;
 using SportQuestTracker.Models;
 using SportQuestTracker.Models.MockRepositories;
+using SportQuestTracker.Models.Repositories;
 using SportQuestTracker.Services;
 
 namespace SportQuestTracker
@@ -35,10 +36,10 @@ namespace SportQuestTracker
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
-            services.AddScoped<IGadgetRepository, MockGadgetRepository>(); 
-            services.AddScoped<ICompanyRepository, MockCompanyRepository>();
-            services.AddScoped<IUserRepository, MockUserRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IGadgetRepository, GadgetRepository>(); 
+            services.AddScoped<ICompanyRepository, CompanyRepository>();
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
             
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(

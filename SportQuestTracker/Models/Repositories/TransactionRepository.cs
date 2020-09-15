@@ -1,40 +1,54 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using SportQuestTracker.Contracts;
+using SportQuestTracker.Data;
 using SportQuestTracker.Models.ClassModels;
 
 namespace SportQuestTracker.Models.Repositories
 {
     public class TransactionRepository: ITransactionRepository
     {
-        public Task<IList<Transaction>> FindAll()
+        private readonly ApplicationDbContext _db;
+
+        public TransactionRepository(ApplicationDbContext db)
         {
-            throw new System.NotImplementedException();
+            _db = db;
+        }
+        public async Task<IList<Transaction>> FindAll()
+        {
+            var transactions = await _db.Transactions.ToListAsync();
+            return transactions;
         }
 
-        public Task<Transaction> FindById(int id)
+        public async Task<Transaction> FindById(int id)
         {
-            throw new System.NotImplementedException();
+            var transaction = await _db.Transactions.FindAsync(id);
+            return transaction;
         }
 
-        public Task<bool> Create<T>(T entity)
+        public async Task<bool> Create(Transaction entity)
         {
-            throw new System.NotImplementedException();
+            await _db.Transactions.AddAsync(entity);
+            return await Save();
         }
 
-        public Task<bool> Update<T>(T entity)
+        public async Task<bool> Update(Transaction entity)
         {
-            throw new System.NotImplementedException();
+            _db.Transactions.Update(entity);
+            return await Save();
         }
 
-        public Task<bool> Delete<T>(T entity)
+        public async Task<bool> Delete(Transaction entity)
         {
-            throw new System.NotImplementedException();
+            _db.Transactions.Remove(entity);
+            return await Save();
         }
 
-        public Task<bool> Save()
+        public async Task<bool> Save()
         {
-            throw new System.NotImplementedException();
+            var changes = await _db.SaveChangesAsync();
+            return changes > 0;
         }
     }
 }

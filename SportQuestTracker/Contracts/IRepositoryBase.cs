@@ -9,9 +9,9 @@ namespace SportQuestTracker.Contracts
     {
         Task<IList<T>> FindAll();
         Task<T> FindById(int id);
-        Task<bool> Create<TEntity>(TEntity entity);
-        Task<bool> Update<TEntity>(TEntity entity);
-        Task<bool> Delete<TEntity>(TEntity entity);
+        Task<bool> Create(T entity);
+        Task<bool> Update(T entity);
+        Task<bool> Delete(T entity);
         Task<bool> Save();
 
     }

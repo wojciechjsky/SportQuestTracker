@@ -41,17 +41,17 @@ namespace SportQuestTracker.Models.MockRepositories
             throw new NotImplementedException();
         }
 
-        public Task<bool> Create<T>(T entity)
+        public Task<bool> Create(User entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> Update<T>(T entity)
+        public Task<bool> Update(User entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> Delete<T>(T entity)
+        public Task<bool> Delete(User entity)
         {
             throw new NotImplementedException();
         }
