@@ -28,8 +28,10 @@ namespace SportQuestTracker.DTOs
 
     }
 
-    public class UserCreationDTO
+    public class UserCrudDTO
     {
+        [Required]
+        public int UserId { get; set; }
         [Required]
         public string Email { get; set; }
         [Required]
@@ -51,6 +53,36 @@ namespace SportQuestTracker.DTOs
         [Required]
         public int Coins { get; set; } = 0;
         [Required]
+        public bool Admin { get; set; } = false;
+
+        public int? CompanyId { get; set; }
+    }
+
+    public class UserUpdateDTO
+    {
+        
+        public int UserId { get; set; }
+        [Required]
+        public string Email { get; set; }
+        [Required]
+        public string Password { get; set; }
+        
+        public string FirstName { get; set; }
+        
+        public string Surname { get; set; }
+        
+        public string Street { get; set; }
+        
+        public int ParcelNumber { get; set; }
+        
+        public int HouseNumber { get; set; }
+        
+        public string City { get; set; }
+        
+        public int Points { get; set; } = 0;
+        
+        public int Coins { get; set; } = 0;
+        
         public bool Admin { get; set; } = false;
 
         public int? CompanyId { get; set; }

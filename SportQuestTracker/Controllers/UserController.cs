@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using SportQuestTracker.Contracts;
 using SportQuestTracker.DTOs;
 using SportQuestTracker.Models.ClassModels;
+using SQLitePCL;
 
 namespace SportQuestTracker.Controllers
 {
@@ -93,7 +94,7 @@ namespace SportQuestTracker.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Create([FromBody] UserCreationDTO userDTO)
+        public async Task<IActionResult> Create([FromBody] UserCrudDTO userDTO)
         {
             try
             {
@@ -119,6 +120,47 @@ namespace SportQuestTracker.Controllers
                 _loggerService.LogInfo("User Created");
 
                 return Created("Create", new {user});
+            }
+            catch (Exception e)
+            {
+                return InternalError($"{e.Message} - {e.InnerException}");
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="userDTO"></param>
+        /// <returns></returns>
+        [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Update(int id, [FromBody] UserUpdateDTO userDTO)
+        {
+            try
+            {
+                _loggerService.LogInfo($"User with id: {id} data update attempt!");
+                if (id < 1 || userDTO == null || id != userDTO.UserId )
+                {
+                    _loggerService.LogWarn("User update failed with bad data!");
+                    return BadRequest();
+                }
+
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                var user = _mapper.Map<User>(userDTO);
+                var isSuccess = await _userRepository.Update(user);
+                if (!isSuccess)
+                {
+                    return InternalError($"User update has failed!");
+                }
+
+                return NoContent();
             }
             catch (Exception e)
             {
