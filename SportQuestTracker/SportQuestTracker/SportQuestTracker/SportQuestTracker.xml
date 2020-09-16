@@ -24,6 +24,18 @@
             Endpoint used to authenticate login for users
             </summary>
         </member>
+        <member name="M:SportQuestTracker.Controllers.UserController.GetUsers">
+            <summary>
+            Get All Users for Admin
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SportQuestTracker.Controllers.UserController.GetUser(System.Int32)">
+            <summary>
+            Get user by ID
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:SportQuestTracker.Data.SeedData">
             <summary>
             THIS IS FOR STUDYING PURPOSES DO NOT TOUCH

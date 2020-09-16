@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using SportQuestTracker.Models;
@@ -24,6 +25,34 @@ namespace SportQuestTracker.DTOs
         public int CompanyId { get; set; }
         public virtual CompanyDTO Company { get; set; }
 
+
+    }
+
+    public class UserCreationDTO
+    {
+        [Required]
+        public string Email { get; set; }
+        [Required]
+        public string Password { get; set; }
+        [Required]
+        public string FirstName { get; set; }
+        [Required]
+        public string Surname { get; set; }
+        [Required]
+        public string Street { get; set; }
+        [Required]
+        public int ParcelNumber { get; set; }
+        [Required]
+        public int HouseNumber { get; set; }
+        [Required]
+        public string City { get; set; }
+        [Required]
+        public int Points { get; set; } = 0;
+        [Required]
+        public int Coins { get; set; } = 0;
+        [Required]
+        public bool Admin { get; set; } = false;
+        
 
     }
 }
