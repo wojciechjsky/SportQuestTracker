@@ -22,7 +22,7 @@ namespace SportQuestTracker.DTOs
         public int Coins { get; set; } = 0;
         public bool Admin { get; set; } = false;
 
-        public int CompanyId { get; set; }
+        public int? CompanyId { get; set; }
         public virtual CompanyDTO Company { get; set; }
 
 
@@ -52,7 +52,7 @@ namespace SportQuestTracker.DTOs
         public int Coins { get; set; } = 0;
         [Required]
         public bool Admin { get; set; } = false;
-        
 
+        public int? CompanyId { get; set; }
     }
 }

@@ -35,9 +35,7 @@ namespace SportQuestTracker.Models.ClassModels
         public int Points { get; set; } = 0;
         public int Coins { get; set; } = 0;
         public bool Admin { get; set; } = false;
-
-        [ForeignKey("Company")]
-        public int CompanyId { get; set; }
+        public int? CompanyId { get; set; }
         public virtual Company Company { get; set; }
 
 

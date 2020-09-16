@@ -84,9 +84,13 @@ namespace SportQuestTracker.Controllers
                 return InternalError($"{e.Message} - {e.InnerException}");
             }
         }
-
+        /// <summary>
+        /// Create a user
+        /// </summary>
+        /// <param name="userDTO"></param>
+        /// <returns></returns>
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Create([FromBody] UserCreationDTO userDTO)
@@ -112,7 +116,7 @@ namespace SportQuestTracker.Controllers
                 {
                     return InternalError("User Creation failed");
                 }
-                _loggerService.LogInfo("Author Created");
+                _loggerService.LogInfo("User Created");
 
                 return Created("Create", new {user});
             }
@@ -120,9 +124,7 @@ namespace SportQuestTracker.Controllers
             {
                 return InternalError($"{e.Message} - {e.InnerException}");
             }
-
         }
-
 
         private ObjectResult InternalError(string message)
         {
