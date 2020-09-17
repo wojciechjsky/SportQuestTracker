@@ -36,25 +36,25 @@ namespace SportQuestTracker.Controllers
         /// Get all gadgets (for admin and companies usage)
         /// </summary>
         /// <returns></returns>
-        //[HttpGet("GetGadgets")]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        //public async Task<IActionResult> GetGadgets()
-        //{
-        //    var location = GetControllerActionNames();
-        //    try
-        //    {
-        //        _loggerService.LogInfo($"{location}: Attempted Call");
-        //        var gadgets = await _gadgetRepository.FindAll();
-        //        var response = _mapper.Map<IList<GadgetDTO>>(gadgets);
-        //        _loggerService.LogInfo("Successfully got all gadgets");
-        //        return Ok(response);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return InternalError($"{location}: {e.Message} - {e.InnerException}");
-        //    }
-        //}
+        [HttpGet("GetGadgets")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetGadgets()
+        {
+            var location = GetControllerActionNames();
+            try
+            {
+                _loggerService.LogInfo($"{location}: Attempted Call");
+                var gadgets = await _gadgetRepository.FindAll();
+                var response = _mapper.Map<IList<GadgetDTO>>(gadgets);
+                _loggerService.LogInfo("Successfully got all gadgets");
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                return InternalError($"{location}: {e.Message} - {e.InnerException}");
+            }
+        }
 
         [HttpGet("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -80,6 +80,52 @@ namespace SportQuestTracker.Controllers
                 return InternalError($"{location}: {e.Message} - {e.InnerException}");
             }
         }
+        /// <summary>
+        /// Create new gadget
+        /// </summary>
+        /// <param name="gadgetDTO"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Create([FromBody] GadgetDTO gadgetDTO)
+        {
+            try
+            {
+                _loggerService.LogInfo($"User submission Attempted!");
+                if (gadgetDTO == null)
+                {
+                    _loggerService.LogWarn($"Empty Request was submitted");
+                    return BadRequest(ModelState);
+                }
+
+                if (!ModelState.IsValid)
+                {
+                    _loggerService.LogWarn("User Data was Incomplete");
+                    return BadRequest(ModelState);
+                }
+
+                var gadget = _mapper.Map<Gadget>(gadgetDTO);
+                var isSuccess = await _gadgetRepository.Create(gadget);
+                if (!isSuccess)
+                {
+                    return InternalError("User Creation failed");
+                }
+                _loggerService.LogInfo("User Created");
+
+                return Created("Create", new { gadget });
+            }
+            catch (Exception e)
+            {
+                return InternalError($"{e.Message} - {e.InnerException}");
+            }
+        }
+
+
+
+
+
         private string GetControllerActionNames()
         {
             var controller = ControllerContext.ActionDescriptor.ControllerName;

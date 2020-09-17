@@ -9,11 +9,33 @@
             Interacts with Gadgets table
             </summary>
         </member>
-        <member name="M:SportQuestTracker.Controllers.GadgetController.GetGadget(System.Int32)">
+        <member name="M:SportQuestTracker.Controllers.GadgetController.GetGadgets">
             <summary>
             Get all gadgets (for admin and companies usage)
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:SportQuestTracker.Controllers.GadgetController.Create(SportQuestTracker.DTOs.GadgetDTO)">
+            <summary>
+            Create new gadget
+            </summary>
+            <param name="gadgetDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SportQuestTracker.Controllers.HomeController">
+            <summary>
+            This is API HomeController
+            </summary>
+        </member>
+        <member name="M:SportQuestTracker.Controllers.HomeController.Get(System.Int32)">
+            <summary>
+            Get a value
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SportQuestTracker.Controllers.HomeController.Post(System.String)">
+            <param name="value"></param>
         </member>
         <member name="T:SportQuestTracker.Controllers.UserController">
             <summary>
