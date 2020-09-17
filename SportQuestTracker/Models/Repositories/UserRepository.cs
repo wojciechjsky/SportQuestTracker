@@ -45,6 +45,11 @@ namespace SportQuestTracker.Models.Repositories
             return await Save();
         }
 
+        public async Task<bool> IsExists(int id)
+        {
+            return await _db.Users.AnyAsync(u => u.UserId == id);
+        }
+
         public async Task<bool> Save()
         {
             var changes = await _db.SaveChangesAsync();
