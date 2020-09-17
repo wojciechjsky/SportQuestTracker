@@ -13,7 +13,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 using SportQuestTracker.Contracts;
 using SportQuestTracker.Data;
 using SportQuestTracker.Mappings;
@@ -83,13 +82,7 @@ namespace SportQuestTracker
             }
 
             app.UseDeveloperExceptionPage();
-            app.UseSwagger();
-            app.UseSwaggerUI(e =>
-            {
-                e.SwaggerEndpoint("/swagger/version1/swagger.json", "SportQuestTracker API");
-                e.RoutePrefix = "";
-            });
-            app.UseHttpsRedirection();
+           app.UseHttpsRedirection();
 
             app.UseCors("CorsPolicy");
 
