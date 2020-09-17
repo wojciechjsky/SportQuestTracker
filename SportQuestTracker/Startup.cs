@@ -59,21 +59,7 @@ namespace SportQuestTracker
 
             services.AddAutoMapper(typeof(Maps));
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("version1", new OpenApiInfo
-                {
-                    Title = "SportQuestTracker API", 
-                    Version = "version1",
-                    Description = "Track your sport activities and change it for gadgets!"
-                });
-                var xfile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xpath = Path.Combine(AppContext.BaseDirectory, xfile);
-                c.IncludeXmlComments(xpath);
-
-            });
-
-
+            
             services.AddSingleton<ILoggerService, LoggerService>();
 
 
