@@ -24,9 +24,6 @@ namespace SportQuestTracker.Controllers
         private readonly IUserRepository _userRepository;
         private readonly ILoggerService _loggerService;
         private readonly IMapper _mapper;
-        
-
-        // GET
 
         public UserController(IUserRepository userRepository, ILoggerService loggerService, IMapper mapper)
         {
@@ -147,6 +144,12 @@ namespace SportQuestTracker.Controllers
                     _loggerService.LogWarn("User update failed with bad data!");
                     return BadRequest();
                 }
+                var isExists = await _userRepository.IsExists(id);
+                if (!isExists)
+                {
+                    _loggerService.LogWarn($"Such user doesn't exist");
+                    return NotFound();
+                }
 
                 if (!ModelState.IsValid)
                 {
@@ -187,13 +190,14 @@ namespace SportQuestTracker.Controllers
                     _loggerService.LogWarn($"Deletion failed because of wrong data!");
                     return BadRequest();
                 }
-
-                var user = await _userRepository.FindById(id);
-                if (user == null)
+                var isExists = await _userRepository.IsExists(id);
+                if (!isExists)
                 {
                     _loggerService.LogWarn($"Such user doesn't exist");
                     return NotFound();
                 }
+
+                var user = await _userRepository.FindById(id);
 
                 var isSuccess = await _userRepository.Delete(user);
                 if (!isSuccess)
