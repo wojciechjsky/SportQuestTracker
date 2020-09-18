@@ -1,69 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using SportQuestTracker.Contracts;
+using SportQuestTracker.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace SportQuestTracker.Controllers
 {
-    /// <summary>
-    /// This is API HomeController
-    /// </summary>
-    [Route("api/[controller]")]
-    [ApiController]
-    public class HomeController : ControllerBase
+
+    public class HomeController : Controller
     {
+        private readonly ILogger<HomeController> _logger;
 
-        private readonly ILoggerService _logger;
-
-        public HomeController(ILoggerService logger)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
 
-        // GET: api/<IndexController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Index()
         {
-            _logger.LogInfo("Accessed Home Controller");
-            return new string[] { "value1", "value2" };
+            return View();
         }
 
-        /// <summary>
-        /// Get a value
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        // GET api/<IndexController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Privacy()
         {
-            _logger.LogDebug("Got a Value");
-            return "value";
+            return View();
         }
 
-        /// <param name="value"></param>
-        // POST api/<IndexController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
         {
-            _logger.LogError("This is an error");
-        }
-
-        // PUT api/<IndexController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<IndexController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-            _logger.LogWarn("This is a warning");
+            return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
         }
     }
 }

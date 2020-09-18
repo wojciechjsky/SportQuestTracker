@@ -4,21 +4,6 @@
         <name>SportQuestTracker</name>
     </assembly>
     <members>
-        <member name="T:SportQuestTracker.Controllers.HomeController">
-            <summary>
-            This is API HomeController
-            </summary>
-        </member>
-        <member name="M:SportQuestTracker.Controllers.HomeController.Get(System.Int32)">
-            <summary>
-            Get a value
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SportQuestTracker.Controllers.HomeController.Post(System.String)">
-            <param name="value"></param>
-        </member>
         <member name="T:SportQuestTracker.Controllers.UserController">
             <summary>
             Endpoint used to authenticate login for users
