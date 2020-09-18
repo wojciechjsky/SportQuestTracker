@@ -24,6 +24,9 @@ namespace SportQuestTracker.Controllers
         private readonly IUserRepository _userRepository;
         private readonly ILoggerService _loggerService;
         private readonly IMapper _mapper;
+        
+
+        // GET
 
         public UserController(IUserRepository userRepository, ILoggerService loggerService, IMapper mapper)
         {
@@ -55,7 +58,7 @@ namespace SportQuestTracker.Controllers
         }
 
         /// <summary>
-        /// Get user by ID (admin and maybe some display in statistics)
+        /// Get user by ID
         /// </summary>
         /// <returns></returns>
         [HttpGet("{id}")]
@@ -83,7 +86,7 @@ namespace SportQuestTracker.Controllers
             }
         }
         /// <summary>
-        /// Create a user registration
+        /// Create a user
         /// </summary>
         /// <param name="userDTO"></param>
         /// <returns></returns>
@@ -125,7 +128,7 @@ namespace SportQuestTracker.Controllers
         }
 
         /// <summary>
-        /// Update user (user options)
+        /// 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="userDTO"></param>
@@ -144,12 +147,6 @@ namespace SportQuestTracker.Controllers
                     _loggerService.LogWarn("User update failed with bad data!");
                     return BadRequest();
                 }
-                var isExists = await _userRepository.IsExists(id);
-                if (!isExists)
-                {
-                    _loggerService.LogWarn($"Such user doesn't exist");
-                    return NotFound();
-                }
 
                 if (!ModelState.IsValid)
                 {
@@ -163,49 +160,6 @@ namespace SportQuestTracker.Controllers
                     return InternalError($"User update has failed!");
                 }
 
-                return NoContent();
-            }
-            catch (Exception e)
-            {
-                return InternalError($"{e.Message} - {e.InnerException}");
-            }
-        }
-
-        /// <summary>
-        /// Delete user (only for admin)
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpDelete("{id}")]
-        [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Delete(int id)
-        {
-            try
-            {
-                _loggerService.LogInfo($"User with id: {id} delete attempt!");
-                if (id < 1)
-                {
-                    _loggerService.LogWarn($"Deletion failed because of wrong data!");
-                    return BadRequest();
-                }
-                var isExists = await _userRepository.IsExists(id);
-                if (!isExists)
-                {
-                    _loggerService.LogWarn($"Such user doesn't exist");
-                    return NotFound();
-                }
-
-                var user = await _userRepository.FindById(id);
-
-                var isSuccess = await _userRepository.Delete(user);
-                if (!isSuccess)
-                {
-                    _loggerService.LogWarn($"Deletion failed because of wrong data!");
-                    return InternalError($"User delete failed!");
-                }
-                _loggerService.LogInfo($"User with id: {id} delete successful!");
                 return NoContent();
             }
             catch (Exception e)

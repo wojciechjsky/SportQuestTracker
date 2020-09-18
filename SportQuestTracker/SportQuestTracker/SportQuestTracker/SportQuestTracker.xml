@@ -15,10 +15,25 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:SportQuestTracker.Controllers.GadgetController.GetGadget(System.Int32)">
+            <summary>
+            Retrive gadget by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="M:SportQuestTracker.Controllers.GadgetController.Create(SportQuestTracker.DTOs.GadgetDTO)">
             <summary>
             Create new gadget
             </summary>
+            <param name="gadgetDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SportQuestTracker.Controllers.GadgetController.Update(System.Int32,SportQuestTracker.DTOs.GadgetDTO)">
+            <summary>
+            Update gadget data
+            </summary>
+            <param name="id"></param>
             <param name="gadgetDTO"></param>
             <returns></returns>
         </member>
@@ -50,30 +65,23 @@
         </member>
         <member name="M:SportQuestTracker.Controllers.UserController.GetUser(System.Int32)">
             <summary>
-            Get user by ID (admin and maybe some display in statistics)
+            Get user by ID
             </summary>
             <returns></returns>
         </member>
         <member name="M:SportQuestTracker.Controllers.UserController.Create(SportQuestTracker.DTOs.UserCrudDTO)">
             <summary>
-            Create a user registration
+            Create a user
             </summary>
             <param name="userDTO"></param>
             <returns></returns>
         </member>
         <member name="M:SportQuestTracker.Controllers.UserController.Update(System.Int32,SportQuestTracker.DTOs.UserUpdateDTO)">
             <summary>
-            Update user (user options)
+            
             </summary>
             <param name="id"></param>
             <param name="userDTO"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SportQuestTracker.Controllers.UserController.Delete(System.Int32)">
-            <summary>
-            Delete user (only for admin)
-            </summary>
-            <param name="id"></param>
             <returns></returns>
         </member>
         <member name="T:SportQuestTracker.Data.SeedData">
