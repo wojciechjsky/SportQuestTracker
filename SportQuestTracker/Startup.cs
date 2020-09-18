@@ -57,6 +57,7 @@ namespace SportQuestTracker
             services.AddAutoMapper(typeof(Maps));
             services.AddSingleton<ILoggerService, LoggerService>();
             services.AddControllersWithViews();
+            services.AddControllersWithViews();
 
         }
 
