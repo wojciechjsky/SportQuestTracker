@@ -95,11 +95,12 @@ namespace SportQuestTracker.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Create([FromBody] GadgetDTO gadgetDTO)
+        public async Task<IActionResult> Create([FromBody] GadgetCrudDTO gadgetDTO)
         {
+            var location = GetControllerActionNames();
             try
             {
-                _loggerService.LogInfo($"User submission Attempted!");
+                _loggerService.LogInfo($"{location}: submission Attempted!");
                 if (gadgetDTO == null)
                 {
                     _loggerService.LogWarn($"Empty Request was submitted");
@@ -108,7 +109,7 @@ namespace SportQuestTracker.Controllers
 
                 if (!ModelState.IsValid)
                 {
-                    _loggerService.LogWarn("User Data was Incomplete");
+                    _loggerService.LogWarn("Gadget Data was Incomplete");
                     return BadRequest(ModelState);
                 }
 

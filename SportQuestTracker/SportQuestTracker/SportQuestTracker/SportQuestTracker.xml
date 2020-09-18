@@ -22,7 +22,7 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:SportQuestTracker.Controllers.GadgetController.Create(SportQuestTracker.DTOs.GadgetDTO)">
+        <member name="M:SportQuestTracker.Controllers.GadgetController.Create(SportQuestTracker.DTOs.GadgetCrudDTO)">
             <summary>
             Create new gadget
             </summary>
