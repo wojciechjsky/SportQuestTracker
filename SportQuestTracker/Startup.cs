@@ -44,8 +44,6 @@ namespace SportQuestTracker
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            
-
             services.AddRazorPages();
             
             services.AddCors(o =>
@@ -57,11 +55,8 @@ namespace SportQuestTracker
             });
 
             services.AddAutoMapper(typeof(Maps));
-
-            
             services.AddSingleton<ILoggerService, LoggerService>();
-
-
+            services.AddControllersWithViews();
             services.AddControllersWithViews();
 
         }
@@ -82,24 +77,19 @@ namespace SportQuestTracker
             }
 
             app.UseDeveloperExceptionPage();
-           app.UseHttpsRedirection();
-
+            app.UseHttpsRedirection();
             app.UseCors("CorsPolicy");
-
-
-            app.UseRouting();
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
-            {
+            {        
+                endpoints.MapRazorPages();
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
-}
+}                                 
