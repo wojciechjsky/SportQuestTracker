@@ -56,7 +56,6 @@ namespace SportQuestTracker.Controllers
             }
         }
 
-
         /// <summary>
         /// Retrive gadget by id
         /// </summary>
@@ -117,9 +116,9 @@ namespace SportQuestTracker.Controllers
                 var isSuccess = await _gadgetRepository.Create(gadget);
                 if (!isSuccess)
                 {
-                    return InternalError("User Creation failed");
+                    return InternalError("Gadget Creation failed");
                 }
-                _loggerService.LogInfo("User Created");
+                _loggerService.LogInfo("Gadget Created");
 
                 return Created("Create", new { gadget });
             }
@@ -177,7 +176,39 @@ namespace SportQuestTracker.Controllers
             }
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var location = GetControllerActionNames();
+            try
+            {
+                _loggerService.LogInfo($"{location} Delete gadget attempt!");
+                if (id < 1)
+                {
+                    _loggerService.LogWarn($"gadget Delete failed with bad data");
+                    return BadRequest();
+                }
+                var isExist = await _gadgetRepository.IsExists(id);
+                if (!isExist)
+                {
+                    _loggerService.LogWarn($"gadget with id:{id} not found!");
+                    return NotFound();
+                }
 
+                var gadget = await _gadgetRepository.FindById(id);
+                var isSuccess = await _gadgetRepository.Delete(gadget);
+                if (!isSuccess)
+                {
+                    return InternalError($"Gadget Delete Failed!");
+                }
+                _loggerService.LogWarn($"Gadget with id: {id} successfully deleted");
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                return InternalError($"{e.Message} - {e.InnerException}");
+            }
+        }
 
 
 

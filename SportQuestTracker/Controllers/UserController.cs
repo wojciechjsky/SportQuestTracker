@@ -96,6 +96,7 @@ namespace SportQuestTracker.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Create([FromBody] UserCrudDTO userDTO)
         {
+            var location = GetControllerActionNames();
             try
             {
                 _loggerService.LogInfo($"User submission Attempted!");
@@ -142,10 +143,17 @@ namespace SportQuestTracker.Controllers
             try
             {
                 _loggerService.LogInfo($"User with id: {id} data update attempt!");
-                if (id < 1 || userDTO == null || id != userDTO.UserId )
+                if (id < 1 || userDTO == null || id != userDTO.UserId)
                 {
                     _loggerService.LogWarn("User update failed with bad data!");
                     return BadRequest();
+                }
+
+                var isExist = await _userRepository.IsExists(id);
+                if (!isExist)
+                {
+                    _loggerService.LogWarn($"User with id:{id} not found!");
+                    return NotFound();
                 }
 
                 if (!ModelState.IsValid)
@@ -167,6 +175,49 @@ namespace SportQuestTracker.Controllers
                 return InternalError($"{e.Message} - {e.InnerException}");
             }
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var location = GetControllerActionNames();
+            try
+            {
+                _loggerService.LogInfo($"{location} Delete user attempt!");
+                if (id < 1)
+                {
+                    _loggerService.LogWarn($"User Delete failed with bad data");
+                    return BadRequest();
+                }
+                var isExist = await _userRepository.IsExists(id);
+                if (!isExist)
+                {
+                    _loggerService.LogWarn($"User with id:{id} not found!");
+                    return NotFound();
+                }
+
+                var user = await _userRepository.FindById(id);
+                var isSuccess = await _userRepository.Delete(user);
+                if (!isSuccess)
+                {
+                    return InternalError($"User Delete Failed!");
+                }
+                _loggerService.LogWarn($"User with id: {id} successfully deleted");
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                return InternalError($"{e.Message} - {e.InnerException}");
+            }
+        }
+
+        private string GetControllerActionNames()
+        {
+            var controller = ControllerContext.ActionDescriptor.ControllerName;
+            var action = ControllerContext.ActionDescriptor.ActionName;
+
+            return $"{controller} - {action}";
+        }
+
 
         private ObjectResult InternalError(string message)
         {

@@ -26,8 +26,8 @@ namespace SportQuestTracker.DTOs
         public string Name { get; set; }
         [Required]
         public int Price { get; set; }
-        [Required]
-        public int CompanyId { get; set; }
+        //[Required]
+        public int? CompanyId { get; set; }
         [Required]
         public string Image { get; set; }
         [Required]
