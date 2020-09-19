@@ -32,6 +32,16 @@ namespace SportQuestTracker.Controllers
             return View();
         }
 
+        public IActionResult User()
+        {
+            return View();
+        }
+
+        public IActionResult Company()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
