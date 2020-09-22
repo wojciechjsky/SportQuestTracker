@@ -2,7 +2,7 @@
 @model SportQuestTracker.Pages.Companies.CompanyLoggingPageModel
 
 @{
-    ViewData["Title"] = "clp";
+    ViewData["Title"] = "Logging Page";
 }
 
 
@@ -11,9 +11,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SportQuestTracker</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
 </head>
 
-<nav class="navbar fixed-top bg-warning border border-bottom border-dark">
+<nav class="navbar fixed-top bg-info border border-bottom border-dark">
     <a class="navbar-brand h1" style="font-family: 'Ranchers', cursive; margin-left: 20vw; font-size: 2rem;">Sport Quest Tracker</a>
     
     <form class="form-inline justify-content-end" style="margin-right: 10vw">
@@ -23,33 +24,37 @@
     </form>
 </nav>
 
-<div MainContainer>
-    <div class="container-left align-items-lg-start" style="background-image: url('../wwwroot/ball.png.png')" align="center">
+<div class="container-fluid align-content-center" >
+    
+    <div class="row" style="margin: 170px ">
+        <div class="col-sm-6">
+            <img src="Images/ball.png" class="m-auto pt-0 d-flex" alt="MultiSport image here"/>
+        </div>
 
-    </div>
-    <div class="container border-right">
-        <div class="row">
-            <div class="col-md-4">
-                <form method="post">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group">
-                        <label asp-for="Company.CompanyName" class="control-label"></label>
-                        <input asp-for="Company.CompanyName" class="form-control" placeholder="Company name" />
-                        <span asp-validation-for="Company.CompanyName" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Company.Password" class="control-label"></label>
-                        <input asp-for="Company.Password" class="form-control" placeholder="Password" />
-                        <span asp-validation-for="Company.Password" class="text-danger"></span>
-                    </div>
-                    <button class="form-group">
-                        <input type="submit" value="Register" class="btn btn-primary" />
-                    </button>
-                </form>
-            </div>
+        <div class="col-sm-6">
+
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Company.CompanyName" class="control-label"></label>
+                    <input asp-for="Company.CompanyName" class="form-control" placeholder="Company name"/>
+                    <span asp-validation-for="Company.CompanyName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Company.Password" class="control-label"></label>
+                    <input asp-for="Company.Password" class="form-control" placeholder="Password"/>
+                    <span asp-validation-for="Company.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Register" class="btn btn-primary"/>
+                </div>
+            </form>
+
         </div>
     </div>
+
 </div>
+
 <div>
     <a asp-page="Index">Back to List</a>
 </div>
