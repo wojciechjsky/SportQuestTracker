@@ -13,12 +13,8 @@ using SQLitePCL;
 namespace SportQuestTracker.Controllers
 {
 
-    /// <summary>
-    /// Interacts with Gadgets table
-    /// </summary>
-    //[Route("api/[controller]")]
-    //[ApiController]
-    //[ProducesResponseType(StatusCodes.Status200OK)]
+
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public class GadgetController : Controller
     {
         private readonly IGadgetRepository _gadgetRepository;
@@ -32,10 +28,7 @@ namespace SportQuestTracker.Controllers
             _mapper = mapper;
         }
 
-        /// <summary>
-        /// Get all gadgets (for admin and companies usage)
-        /// </summary>
-        /// <returns></returns>
+
         [HttpGet("GetGadgets")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -56,11 +49,6 @@ namespace SportQuestTracker.Controllers
             }
         }
 
-        /// <summary>
-        /// Retrive gadget by id
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
         [HttpGet("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -78,6 +66,7 @@ namespace SportQuestTracker.Controllers
                     _loggerService.LogWarn($"{location}: Failed to get record with id: {id}");
                     return NotFound();
                 }
+
                 return Ok(response);
             }
             catch (Exception e)
@@ -85,11 +74,7 @@ namespace SportQuestTracker.Controllers
                 return InternalError($"{location}: {e.Message} - {e.InnerException}");
             }
         }
-        /// <summary>
-        /// Create new gadget
-        /// </summary>
-        /// <param name="gadgetDTO"></param>
-        /// <returns></returns>
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -129,12 +114,6 @@ namespace SportQuestTracker.Controllers
         }
 
 
-        /// <summary>
-        /// Update gadget data
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="gadgetDTO"></param>
-        /// <returns></returns>
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -209,11 +188,6 @@ namespace SportQuestTracker.Controllers
                 return InternalError($"{e.Message} - {e.InnerException}");
             }
         }
-
-
-
-
-
 
         private string GetControllerActionNames()
         {

@@ -13,20 +13,12 @@ using SQLitePCL;
 namespace SportQuestTracker.Controllers
 {
 
-    /// <summary>
-    /// Endpoint used to authenticate login for users
-    /// </summary>
-    [Route("api/[controller]")]
-    [ApiController]
-    [ProducesResponseType(StatusCodes.Status200OK)]
     public class UserController : Controller
     {
         private readonly IUserRepository _userRepository;
         private readonly ILoggerService _loggerService;
         private readonly IMapper _mapper;
-        
 
-        // GET
 
         public UserController(IUserRepository userRepository, ILoggerService loggerService, IMapper mapper)
         {
@@ -35,10 +27,7 @@ namespace SportQuestTracker.Controllers
             _mapper = mapper;
         }
 
-        /// <summary>
-        /// Get All Users for Admin
-        /// </summary>
-        /// <returns></returns>
+
         [HttpGet]
         public async Task<IActionResult> GetUsers()
         {
@@ -57,14 +46,8 @@ namespace SportQuestTracker.Controllers
 
         }
 
-        /// <summary>
-        /// Get user by ID
-        /// </summary>
-        /// <returns></returns>
+
         [HttpGet("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetUser(int id)
         {
             try
@@ -85,11 +68,7 @@ namespace SportQuestTracker.Controllers
                 return InternalError($"{e.Message} - {e.InnerException}");
             }
         }
-        /// <summary>
-        /// Create a user
-        /// </summary>
-        /// <param name="userDTO"></param>
-        /// <returns></returns>
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -128,12 +107,7 @@ namespace SportQuestTracker.Controllers
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="userDTO"></param>
-        /// <returns></returns>
+
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
