@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportQuestTracker", "SportQuestTracker.csproj", "{89FE9F9C-88C9-4190-9F6B-01965C285ABD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportQuestTracker-UI", "..\SportQuestTracker-UI\SportQuestTracker-UI.csproj", "{9A935F67-C3A2-47AD-AED3-2432417F8FEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportQuestTracker-UI", "..\SportQuestTracker-UI\SportQuestTracker-UI.csproj", "{9A935F67-C3A2-47AD-AED3-2432417F8FEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

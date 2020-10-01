@@ -5,4 +5,8 @@
     <RootNamespace>SportQuestTracker_UI</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Utils\" />
+  </ItemGroup>
+
 </Project>
