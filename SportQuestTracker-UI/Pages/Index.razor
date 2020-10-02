@@ -1,5 +1,5 @@
 ﻿@page "/"
-@using SportQuestTracker.Models.ClassModels
+@using SportQuestTracker_UI.Data.Models.ClassModels
 
 
 <head>
@@ -9,89 +9,92 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
 </head>
-    
+
 
 <body>
     <LoginNavigation IsUser></LoginNavigation>
-<div class="container-fluid align-content-center">
-    <div class="row" style="margin: 10px">
-        <div class="col-sm-6" style="margin-top: 25vh">
-            <img src="Images/pngwing.com.png" class="m-auto pt-0 d-flex" alt="MultiSport image here"/>
-        </div>
-        <div class="col-sm-6">
-            <EditForm Model="User">
-                <div class="container">
+    <div class="container-fluid align-content-center">
+        <div class="row" style="margin: 10px">
+            <div class="col-sm-6" style="margin-top: 25vh">
+                <img src="Images/pngwing.com.png" class="m-auto pt-0 d-flex" alt="MultiSport image here" />
+            </div>
+            <div class="col-sm-6">
+                <EditForm Model="@user" OnInvalidSubmit="@HandleValidSubmit">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+                    <div class="container">
 
-                    <div class="container-fluid">
-                        <div class="row" @*style="margin-top: 10vh"*@>
-                            <div class="col-lg-8">
-                                <h3 style="margin: 5vh 0 2vh 0; text-align: center; margin-top: 10vh; font-weight: bold">Registration</h3>
-                                <div class="container">
-                                    <div class="row" style="margin-bottom: 2vh">
-                                        <div class="col text-center active btn btn-outline-success">
-                                            User
-                                        </div>
-                                        <a href="/CompanyLogin" role="button" class="col-6 text-center btn btn-outline-danger">
-                                            <div>
-                                                Company
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <h3 style="margin: 5vh 0 2vh 0; text-align: center; margin-top: 10vh; font-weight: bold">Registration</h3>
+                                    <div class="container">
+                                        <div class="row" style="margin-bottom: 2vh">
+                                            <div class="col text-center active btn btn-outline-success">
+                                                User
                                             </div>
-                                        </a>
+                                            <a href="/CompanyLogin" role="button" class="col-6 text-center btn btn-outline-danger">
+                                                <div>
+                                                    Company
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
 
-
-                                <form>
                                     <div class="form-group">
-                                        <label for="Name">Name</label>
-                                        <input type="text" class="form-control" id="Name" placeholder="Name">
+                                        <label for="FirstName">First Name</label>
+                                        <input type="text" class="form-control" id="FirstName" placeholder="FirstName" @bind="user.FirstName" />
                                     </div>
                                     <div class="form-group">
                                         <label for="Name">Surname</label>
-                                        <input type="text" class="form-control" id="Surname" placeholder="Surname">
+                                        <input type="text" class="form-control" id="Name" placeholder="Surname" @bind="user.Surname" />
                                     </div>
                                     <div class="form-group">
                                         <label for="InputPassword">Password</label>
-                                        <input type="password" class="form-control" id="InputPassword" placeholder="Password">
+                                        <input autocomplete="on" type="password" class="form-control" id="InputPassword" placeholder="Password" @bind="user.Password" />
                                     </div>
                                     <div class="form-group">
-                                        <label for="InputPassword2">Password</label>
-                                        <input type="password" class="form-control" id="InputPassword2" placeholder="Repeat password">
+                                        <label for="ConfirmPassword">Password</label>
+                                        <input autocomplete="on" type="password" class="form-control" id="ConfirmPassword" placeholder="Repeat password" @bind="user.Password1" />
                                     </div>
                                     <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="e-mail"/>
+                                        <label for="Email">Email</label>
+                                        <input type="text" class="form-control" id="Email" placeholder="Email" @bind="user.Email" />
                                     </div>
                                     <div class="form-group">
                                         <label for="phone">Phone number</label>
-                                        <input type="number" class="form-control" id="phone" aria-describedby="phone" placeholder="Phone number"/>
+                                        <input type="number" class="form-control" id="phone" aria-describedby="phone" placeholder="Phone number" @bind="user.PhoneNumber" />
                                     </div>
-
-
                                     <div class="form-group form-check">
                                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                         <label class="form-check-label" for="exampleCheck1">Accept rules</label>
                                     </div>
-                                    <button type="button" class="btn btn-primary btn-lg btn-block">Register</button>
-                                </form>
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
 
+
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                </div>
-            </EditForm>
+                    </div>
+                </EditForm>
+            </div>
         </div>
     </div>
-</div>
 </body>
 
 @code
 {
-    public User User { get; set; }
+
+    private User user = new User();
+    private void HandleValidSubmit()
+    {
+        // Save the data
+    }
 
     protected override void OnInitialized()
     {
-        User = new User();
+        user = new User();
     }
     public bool IsUser = true;
 }
