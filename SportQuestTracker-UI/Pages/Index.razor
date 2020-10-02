@@ -1,6 +1,7 @@
 ﻿@page "/"
 @using SportQuestTracker.Models.ClassModels
 
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,9 +12,10 @@
     
 
 <body>
+    <LoginNavigation IsUser></LoginNavigation>
 <div class="container-fluid align-content-center">
     <div class="row" style="margin: 10px">
-        <div class="col-sm-6" style="margin-top:10vh">
+        <div class="col-sm-6" style="margin-top: 25vh">
             <img src="Images/pngwing.com.png" class="m-auto pt-0 d-flex" alt="MultiSport image here"/>
         </div>
         <div class="col-sm-6">
@@ -23,13 +25,9 @@
                     <div class="container-fluid">
                         <div class="row" @*style="margin-top: 10vh"*@>
                             <div class="col-lg-8">
-                                <h3 style="text-align: center">Registration</h3>
-                                @*<div class="container">
-                                <a class="btn btn-light btn-block text-center" href="#" role="button">Users</a>
-                                <a class="btn btn-primary btn-block text-center" href="/CompanyLogin" role="button">Company</a>
-                            </div>*@
+                                <h3 style="margin: 5vh 0 2vh 0; text-align: center; margin-top: 10vh; font-weight: bold">Registration</h3>
                                 <div class="container">
-                                    <div class="row">
+                                    <div class="row" style="margin-bottom: 2vh">
                                         <div class="col text-center active btn btn-outline-success">
                                             User
                                         </div>
@@ -82,8 +80,8 @@
 
                 </div>
             </EditForm>
-            </div>
         </div>
+    </div>
 </div>
 </body>
 
@@ -95,5 +93,6 @@
     {
         User = new User();
     }
+    public bool IsUser = true;
 }
 
