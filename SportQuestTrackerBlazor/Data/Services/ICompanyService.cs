@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using SportQuestTracker.Contracts;
+using SportQuestTracker.Models.ClassModels;
 using SportQuestTrackerBlazor.Data.Models;
 
 namespace SportQuestTrackerBlazor.Data
