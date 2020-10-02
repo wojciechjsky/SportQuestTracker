@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SportQuestTracker_UI.Data;
+using SportQuestTracker_UI.Data.Services;
 using SportQuestTracker_UI.DataBase;
 
 namespace SportQuestTracker_UI
@@ -34,6 +35,8 @@ namespace SportQuestTracker_UI
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<UserService>();
 
         }
 
