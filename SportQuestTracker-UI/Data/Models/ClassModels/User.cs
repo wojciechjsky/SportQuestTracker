@@ -9,18 +9,15 @@ namespace SportQuestTracker_UI.Data.Models.ClassModels
         [Key]
         public int UserId { get; set; }
 
-        [Required]
+        [Required (ErrorMessage = "Wrong format of email, please try again!")]
         [DataType(DataType.EmailAddress)]
         [MaxLength(100)]
         public string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Given password are not the same, please try again!")]
+        [StringLength(100,ErrorMessage = "Given password should have at least 8 characters", MinimumLength = 8)]
         [DataType(DataType.Password)]
         [MaxLength(100)]
         public string Password { get; set; }
-        [Required]
-        [DataType(DataType.Password)]
-        [MaxLength(100)]
-        public string Password1 { get; set; }
         [Required]
         [MaxLength(50)]
         public string FirstName { get; set; }

@@ -32,8 +32,9 @@ namespace SportQuestTracker_UI.DataBase
                             Points = 30,
                             Coins = 30,
                             Admin = true,
+                            PhoneNumber = "123456678"
 
-                        },
+                    },
                         new User
                         {
                             UserId = 2,
@@ -44,6 +45,7 @@ namespace SportQuestTracker_UI.DataBase
                             Points = 20,
                             Coins = 20,
                             Admin = false,
+                            PhoneNumber = "123456678"
 
                         },
                         new User
@@ -56,6 +58,7 @@ namespace SportQuestTracker_UI.DataBase
                             Points = 110,
                             Coins = 110,
                             Admin = false,
+                            PhoneNumber = "123456678"
                         });
 
             modelBuilder.Entity<Gadget>()
@@ -120,6 +123,8 @@ namespace SportQuestTracker_UI.DataBase
                     {
                         CompanyId = 1,
                         CompanyName = "Nike",
+                        Password = "111111",
+                        Email = "1111@wp.pl",
                         CollectedCoins = 1000,
                         Logo = "url(Nike.png)"
                     },
@@ -127,6 +132,8 @@ namespace SportQuestTracker_UI.DataBase
                     {
                         CompanyId = 2,
                         CompanyName = "Adidas",
+                        Password = "111111",
+                        Email = "1111@wp.pl",
                         CollectedCoins = 2000,
                         Logo = "url(Adidas.png)"
                     },
@@ -134,6 +141,8 @@ namespace SportQuestTracker_UI.DataBase
                     {
                         CompanyId = 3,
                         CompanyName = "Reebook",
+                        Password = "111111",
+                        Email = "1111@wp.pl",
                         CollectedCoins = 550,
                         Logo = "url(Reebook.png)"
                     });
