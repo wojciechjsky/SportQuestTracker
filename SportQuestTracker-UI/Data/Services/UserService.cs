@@ -7,9 +7,10 @@ using SportQuestTracker.Models.ClassModels;
 using SportQuestTracker_UI.Data.Models.ClassModels;
 using SportQuestTracker_UI.DataBase;
 
+
 namespace SportQuestTracker_UI.Data.Services
 {
-    public class UserService
+    public class UserService: IUserService
     {
         private readonly ApplicationDbContext _db;
 
@@ -26,16 +27,15 @@ namespace SportQuestTracker_UI.Data.Services
             return "Save Successfully";
         }
 
-
         public List<Gadget> GetAllGadgets()
         {
             var gadgets = _db.Gadgets.ToList();
             return gadgets;
         }
-        //public List<Gadget> GetAllGadgets()
-        //{
-        //    var gadgets = _db.Gadgets.ToList();
-        //    return gadgets;
-        //}
+        public List<Quest> GetQuests()
+        {
+            var quests = _db.Quests.ToList();
+            return quests;
+        }
     }
 }

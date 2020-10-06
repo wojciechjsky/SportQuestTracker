@@ -13,8 +13,8 @@ namespace SportQuestTracker_UI.DataBase
         public DbSet<Gadget> Gadgets { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Company> Companies { get; set; }
+        public DbSet<Quest> Quests { get; set; }
 
-    
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 
@@ -147,7 +147,7 @@ namespace SportQuestTracker_UI.DataBase
                         Id = 1,
                         Name = "Nike",
                         Password = "111111",
-                        Email = "1111@wp.pl",
+                        Email = "marketing@nike.com.pl",
                         Points = 1000,
 
                     },
@@ -156,7 +156,7 @@ namespace SportQuestTracker_UI.DataBase
                         Id = 2,
                         Name = "Adidas",
                         Password = "111111",
-                        Email = "1111@wp.pl",
+                        Email = "marketing@adidas.com",
                         Points = 1000,
 
                     },
@@ -165,15 +165,50 @@ namespace SportQuestTracker_UI.DataBase
                         Id = 3,
                         Name = "Reebook",
                         Password = "111111",
-                        Email = "1111@wp.pl",
+                        Email = "marketing@reebook.com",
                         Points = 1000,
 
                     });
 
+            modelBuilder.Entity<Quest>()
+                .HasData(
+                new Quest
+                {
+                    Id=1,
+                    Name="Walk 5km",
+                    CoinReward = 4,
+                    IsDone = false,
+                },
+                new Quest
+                {
+                    Id = 2,
+                    Name = "Jogging 2km",
+                    CoinReward = 2,
+                    IsDone = false,
+                },
+                new Quest
+                {
+                    Id = 3,
+                    Name = "Walk 10km",
+                    CoinReward = 8,
+                    IsDone = false,
+                },
+                new Quest
+                {
+                    Id = 4,
+                    Name = "Swimming 1 km",
+                    CoinReward = 6,
+                    IsDone = false,
+                },
+                new Quest
+                {
+                    Id = 5,
+                    Name = "Jogging 3km",
+                    CoinReward = 3,
+                    IsDone = false,
+                }
 
-            //modelBuilder.Entity<Company>()
-            //    .HasMany(e => e.Gadgets)
-            //    .WithOne(c => c.Company);
+                );
 
 
         }
