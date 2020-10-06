@@ -92,7 +92,30 @@ namespace SportQuestTracker_UI.DataBase
                             Name = "Reebook Shoes",
                             Quantity = "100",
                             TypeOfProduct = 1,
-                        });
+                        },
+
+                        new Gadget
+                        {
+                            GadgetId = 4,
+                            Price = 50,
+                            CompanyId = 2,
+                            Image = "https://cdn.pixabay.com/photo/2018/03/09/10/41/reebok-3211174__340.png",
+                            Name = "Reebook Shoes",
+                            Quantity = "100",
+                            TypeOfProduct = 1,
+                        },
+                        new Gadget
+                            {
+                                GadgetId = 5,
+                                Price = 50,
+                                CompanyId = 2,
+                                Image = "https://cdn.pixabay.com/photo/2018/03/09/10/41/reebok-3211174__340.png",
+                                Name = "Reebook Shoes",
+                                Quantity = "100",
+                                TypeOfProduct = 1,
+                            }
+
+                        );
             modelBuilder.Entity<Transaction>()
                 .HasData(
                     new Transaction
