@@ -1,29 +1,22 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using SportQuestTracker_UI.Data.Models.ClassModels;
+using SportQuestTracker.Models.ClassModels;
 
-namespace SportQuestTracker.Models.ClassModels
+namespace SportQuestTracker_UI.Data.Models.ClassModels
 {
     [Table("Companies")]
     public class Company
     {
+
+#nullable disable
         [Key]
-        public int CompanyId { get; set; }
-
-        [Required]
-        public string CompanyName { get; set; }
-
-        [Required]
-        public string Password { get; set; }
-        [Required]
+        public int Id { get; set; }
         public string Email { get; set; }
-
-        public int CollectedCoins { get; set; }
-
-        public string Logo { get; set; }
-
-        public IEnumerable<Gadget> Gadgets { get; set; }
-        public virtual User User { get; set; }
+        public string Password { get; set; }
+        public string Name { get; set; }
+        public int Points { get; set; }
+        public List<Gadget> CompanyGadgets { get; set; }
+        public static string Gadget { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SportQuestTracker.Models.ClassModels
+namespace SportQuestTracker_UI.Data.Models.ClassModels
 {
     [Table("Gadgets")]
     public class Gadget

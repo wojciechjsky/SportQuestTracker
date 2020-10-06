@@ -144,36 +144,36 @@ namespace SportQuestTracker_UI.DataBase
                 .HasData(
                     new Company
                     {
-                        CompanyId = 1,
-                        CompanyName = "Nike",
+                        Id = 1,
+                        Name = "Nike",
                         Password = "111111",
                         Email = "1111@wp.pl",
-                        CollectedCoins = 1000,
-                        Logo = "url(Nike.png)"
+                        Points = 1000,
+
                     },
                     new Company
                     {
-                        CompanyId = 2,
-                        CompanyName = "Adidas",
+                        Id = 2,
+                        Name = "Adidas",
                         Password = "111111",
                         Email = "1111@wp.pl",
-                        CollectedCoins = 2000,
-                        Logo = "url(Adidas.png)"
+                        Points = 1000,
+
                     },
                     new Company
                     {
-                        CompanyId = 3,
-                        CompanyName = "Reebook",
+                        Id = 3,
+                        Name = "Reebook",
                         Password = "111111",
                         Email = "1111@wp.pl",
-                        CollectedCoins = 550,
-                        Logo = "url(Reebook.png)"
+                        Points = 1000,
+
                     });
 
 
-            modelBuilder.Entity<Company>()
-                .HasMany(e => e.Gadgets)
-                .WithOne(c => c.Company);
+            //modelBuilder.Entity<Company>()
+            //    .HasMany(e => e.Gadgets)
+            //    .WithOne(c => c.Company);
 
 
         }

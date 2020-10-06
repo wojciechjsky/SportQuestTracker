@@ -1,11 +1,12 @@
 ﻿@page "/CompanyLogin"
-@using SportQuestTracker.Models.ClassModels;
+@using SportQuestTracker_UI.Data.Models.ClassModels
+@using SportQuestTracker_UI.Data.Services
 
-<LoginNavigation/>
+<LoginNavigation />
 
-<EditForm Model="Company">
-    <DataAnnotationsValidator/>
-    <ValidationSummary/>
+<EditForm Model="CompanyClass">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
     <div class="container-fluid align-content-center">
 
 
@@ -15,17 +16,17 @@
                 <div class="text-danger"></div>
                 <div class="form-group">
                     <label class="control-label"></label>
-                    <InputText class="form-control" @bind-Value="Company.CompanyName" placeholder="Company name"/>
+                    <InputText class="form-control" @bind-Value="CompanyClass.Name" placeholder="Company name" />
                     <span class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label class="control-label"></label>
-                    <InputText class="form-control" @bind-Value="Company.Email" placeholder="Company email"/>
+                    <InputText class="form-control" @bind-Value="CompanyClass.Email" placeholder="Company email" />
                     <span class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label class="control-label"></label>
-                    <InputText class="form-control" @bind-Value="Company.Password" placeholder="Password"/>
+                    <InputText class="form-control" @bind-Value="CompanyClass.Password" placeholder="Password" />
                     <span class="text-danger"></span>
                 </div>
                 @*<div class="form-group">
@@ -34,7 +35,7 @@
                         <span class="text-danger"></span>
                     </div>*@
                 <div class="form-group">
-                    <input type="submit" value="Register" class="btn btn-primary"/>
+                    <input type="submit" value="Register" class="btn btn-primary" />
                 </div>
             </form>
 
@@ -42,7 +43,7 @@
 
         <div class="row" style="margin: 170px">
             <div class="col-sm-6">
-                <img src="Images/pngwing.com.png" class="m-auto pt-0 d-flex" alt="MultiSport image here"/>
+                <img src="Images/pngwing.com.png" class="m-auto pt-0 d-flex" alt="MultiSport image here" />
             </div>
 
         </div>
@@ -52,10 +53,10 @@
 
 @code
     {
-    public Company Company { get; set; }
+    public Company CompanyClass { get; set; }
 
     protected override void OnInitialized()
     {
-        Company = new Company();
+        CompanyClass = new Company();
     }
 }
