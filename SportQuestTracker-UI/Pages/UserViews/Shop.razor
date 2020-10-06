@@ -1,10 +1,36 @@
 ﻿@page "/shop"
+@using SportQuestTracker_UI.Data.Models.ClassModels
+@using SportQuestTracker_UI.Data.Services
+@using SportQuestTracker.Models.ClassModels
 @using SportQuestTracker_UI.Pages.Utils.UserUtils
-
-
-@code
-{
-    public bool IsUser = true;
-}
+@inject UserService UserService
+@inject NavigationManager NavigationManager
 
 <NavBar isUser></NavBar>
+
+<div class="card-columns justify-content-center" style="margin: 3vh auto 0; padding-top: 10vh; max-width: 80vw;">
+
+    @foreach (Gadget gadget in AllUsers())
+    {
+        <div class="card-block" style="padding-top: 20%; width: 200px; height: 200px;">
+            <img class="card-img-top" src="@gadget.Image" alt="Card image">
+            <a>
+                <h4 class="card-title">@gadget.Name</h4>
+            </a>
+
+            <p class="card-text p-4">Price: @gadget.Price</p>
+        </div>
+    }
+</div>
+
+    @code
+{
+        public bool IsUser = true;
+        List<Gadget> gadgetItems;
+
+        public List<Gadget> AllUsers()
+        {
+            return UserService.GetAllGadgets();
+        }
+    }
+

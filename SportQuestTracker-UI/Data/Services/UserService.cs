@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using SportQuestTracker.Models.ClassModels;
 using SportQuestTracker_UI.Data.Models.ClassModels;
 using SportQuestTracker_UI.DataBase;
 
@@ -16,6 +18,7 @@ namespace SportQuestTracker_UI.Data.Services
             _db = db;
         }
 
+        [HttpPost]
         public string CreateUser(User user)
         {
             _db.Users.Add(user);
@@ -23,5 +26,16 @@ namespace SportQuestTracker_UI.Data.Services
             return "Save Successfully";
         }
 
+
+        public List<Gadget> GetAllGadgets()
+        {
+            var gadgets = _db.Gadgets.ToList();
+            return gadgets;
+        }
+        //public List<Gadget> GetAllGadgets()
+        //{
+        //    var gadgets = _db.Gadgets.ToList();
+        //    return gadgets;
+        //}
     }
 }
