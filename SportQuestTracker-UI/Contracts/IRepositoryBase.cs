@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SportQuestTracker_UI.Data.Models.ClassModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +15,6 @@ namespace SportQuestTracker.Contracts
         Task<bool> Delete(T entity);
         Task<bool> IsExists(int id);
         Task<bool> Save();
-
+        
     }
 }

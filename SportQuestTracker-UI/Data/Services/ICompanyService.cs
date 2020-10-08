@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using SportQuestTracker.Contracts;
 using SportQuestTracker.Models.ClassModels;
 using SportQuestTracker_UI.Data.Models.ClassModels;
 
 namespace SportQuestTracker_UI.Data.Services
 {
-    public interface ICompanyService: IRepositoryBase<Gadget>
+    public interface ICompanyService: IRepositoryBase<Gadget> 
     {
-        public int ShowSaldo();
+        int ShowSaldo(int points);
 
-        public List<Transaction> ShowTransactions();
+         IList<Transaction> ShowTransactions(Transaction entity);
 
     }
 }
