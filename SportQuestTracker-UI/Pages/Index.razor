@@ -1,0 +1,115 @@
+﻿@page "/"
+@using SportQuestTracker_UI.Data.Models.ClassModels
+@using SportQuestTracker_UI.Data.Services
+@inject UserService UserService
+@inject NavigationManager NavigationManager
+
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> SportQuestTracker</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+<LoginNavigation IsUser/>
+    <div class="container-fluid align-content-center">
+        <div class="row" style="margin: 10px">
+            <div class="col-sm-6" style="margin-top: 25vh">
+                <img src="Images/pngwing.com.png" class="m-auto pt-0 d-flex" alt="MultiSport image here" />
+            </div>
+            <div class="col-sm-6">
+
+                    <div class="container">
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <h3 style="margin: 5vh 0 2vh 0; text-align: center; margin-top: 10vh; font-weight: bold">Registration</h3>
+                                    <div class="container">
+                                        <div class="row" style="margin-bottom: 2vh">
+                                            <div class="col text-center active btn btn-outline-success">
+                                                User
+                                            </div>
+                                            <a href="/CompanyLogin" role="button" class="col-6 text-center btn btn-outline-danger">
+                                                <div>
+                                                    Company
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <EditForm Model="@user" OnInvalidSubmit="@HandleValidSubmit">
+                                    <DataAnnotationsValidator />
+                                    <div class="form-group">
+                                        <label for="FirstName">First Name</label>
+                                        <input type="text" class="form-control" id="FirstName" placeholder="FirstName" @bind="user.FirstName" />
+                                        <ValidationMessage For="@(()=> user.FirstName)" class="text-danger"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Name">Surname</label>
+                                        <input type="text" class="form-control" id="Name" placeholder="Surname" @bind="user.Surname" />
+                                        <ValidationMessage For="@(()=> user.Surname)" class="text-danger" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputPassword">Password</label>
+                                        <input autocomplete="on" type="password" class="form-control" id="InputPassword" placeholder="Password" @bind="user.Password" />
+                                        <ValidationMessage For="@(()=> user.Password)" class="text-danger" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ConfirmPassword">Password</label>
+                                        <input autocomplete="on" type="password" class="form-control" id="ConfirmPassword" placeholder="Repeat password" @bind="user.Password" />
+                                        <ValidationMessage For="@(()=> user.Password)" class="text-danger" />
+                                        </div>
+                                    <div class="form-group">
+                                        <label for="Email">Email</label>
+                                        <input type="text" class="form-control" id="Email" placeholder="Email" @bind="user.Email" />
+                                        <ValidationMessage For="@(()=> user.Email)" class="text-danger" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Phone number</label>
+                                        <input type="number" class="form-control" id="phone" aria-describedby="phone" placeholder="Phone number" @bind="user.PhoneNumber" />
+                                        <ValidationMessage For="@(()=> user.PhoneNumber)" class="text-danger" />
+                                    </div>
+                                    <div class="form-group form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">Accept rules</label>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block" @onclick="HandleValidSubmit">Register</button>
+                                    
+                                    </EditForm>
+                                
+                            
+                        </div>
+                        </div>
+                        </div>
+
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+
+@code
+{
+
+    private User user = new User();
+    //public UserService CreateUser = new UserService();
+
+    private void HandleValidSubmit()
+    {
+        UserService.CreateUser(user);
+        NavigationManager.NavigateTo("Error");
+
+    }
+
+    protected override void OnInitialized()
+    {
+        user = new User();
+    }
+    public bool IsUser = true;
+}
+

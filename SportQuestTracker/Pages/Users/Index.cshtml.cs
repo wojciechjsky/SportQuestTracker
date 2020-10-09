@@ -14,12 +14,13 @@ namespace SportQuestTracker.Pages.Users
     {
         private readonly SportQuestTracker.Data.ApplicationDbContext _context;
 
-        public IndexModel(SportQuestTracker.Data.ApplicationDbContext context)
+        public IndexModel(SportQuestTracker.Data.ApplicationDbContext context, IList<User> user)
         {
             _context = context;
+            User = user;
         }
 
-        public IList<User> User { get;set; }
+        public new IList<User> User { get;set; }
 
         public async Task OnGetAsync()
         {

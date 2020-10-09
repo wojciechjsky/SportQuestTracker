@@ -45,6 +45,11 @@ namespace SportQuestTracker.Models.Repositories
             return await Save();
         }
 
+        public Task<bool> IsExists(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public async Task<bool> Save()
         {
             var changes = await _db.SaveChangesAsync();

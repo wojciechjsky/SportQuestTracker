@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Routing.Matching;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -46,17 +47,23 @@ namespace SportQuestTracker
 
             services.AddRazorPages();
             
-            services.AddCors(o =>
-            {
-                o.AddPolicy("CorsPolicy", 
-                    builder => builder.AllowAnyOrigin()
-                                                    .AllowAnyMethod()
-                                                    .AllowAnyHeader());
-            });
+            //services.AddCors(o =>
+            //{
+            //    o.AddPolicy("CorsPolicy", 
+            //        builder => builder.AllowAnyOrigin()
+            //                                        .AllowAnyMethod()
+            //                                        .AllowAnyHeader());
+            //});
 
             services.AddAutoMapper(typeof(Maps));
+<<<<<<< HEAD
             services.AddSingleton<ILoggerService, LoggerService>();
             services.AddControllersWithViews();
+=======
+
+            services.AddSingleton<ILoggerService, LoggerService>();
+
+>>>>>>> be9864d3ed9da9c5ef9a00c5f1947490cef1cca8
             services.AddControllersWithViews();
 
         }
@@ -72,11 +79,14 @@ namespace SportQuestTracker
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
             app.UseDeveloperExceptionPage();
+<<<<<<< HEAD
+=======
+
+>>>>>>> be9864d3ed9da9c5ef9a00c5f1947490cef1cca8
             app.UseHttpsRedirection();
             app.UseCors("CorsPolicy");
             app.UseStaticFiles();

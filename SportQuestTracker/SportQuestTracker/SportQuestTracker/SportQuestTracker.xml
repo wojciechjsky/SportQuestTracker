@@ -4,6 +4,7 @@
         <name>SportQuestTracker</name>
     </assembly>
     <members>
+<<<<<<< HEAD
         <member name="T:SportQuestTracker.Controllers.UserController">
             <summary>
             Endpoint used to authenticate login for users
@@ -41,5 +42,7 @@
             THIS IS FOR STUDYING PURPOSES DO NOT TOUCH
             </summary>
         </member>
+=======
+>>>>>>> be9864d3ed9da9c5ef9a00c5f1947490cef1cca8
     </members>
 </doc>

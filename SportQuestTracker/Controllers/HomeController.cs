@@ -32,6 +32,7 @@ namespace SportQuestTracker.Controllers
             return View();
         }
 
+<<<<<<< HEAD
         public IActionResult User()
         {
             return View();
@@ -47,5 +48,13 @@ namespace SportQuestTracker.Controllers
         {
             return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
         }
+=======
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+>>>>>>> be9864d3ed9da9c5ef9a00c5f1947490cef1cca8
     }
 }

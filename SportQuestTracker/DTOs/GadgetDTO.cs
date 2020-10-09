@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using SportQuestTracker.Models;
@@ -16,5 +17,23 @@ namespace SportQuestTracker.DTOs
         public string Quantity { get; set; }
         public int TypeOfProduct { get; set; }
         public CompanyDTO Company { get; set; }
+    }
+    public class GadgetCrudDTO
+    {
+        [Required]
+        public int GadgetId { get; set; }
+        [Required]
+        public string Name { get; set; }
+        [Required]
+        public int Price { get; set; }
+        //[Required]
+        public int? CompanyId { get; set; }
+        [Required]
+        public string Image { get; set; }
+        [Required]
+        public string Quantity { get; set; }
+        [Required]
+        public int TypeOfProduct { get; set; }
+        //public CompanyDTO Company { get; set; }
     }
 }

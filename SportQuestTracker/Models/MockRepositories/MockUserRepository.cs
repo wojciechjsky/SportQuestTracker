@@ -56,6 +56,11 @@ namespace SportQuestTracker.Models.MockRepositories
             throw new NotImplementedException();
         }
 
+        public Task<bool> IsExists(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<bool> Save()
         {
             throw new NotImplementedException();

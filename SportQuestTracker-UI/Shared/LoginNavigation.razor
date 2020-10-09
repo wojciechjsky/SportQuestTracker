@@ -1,0 +1,17 @@
+﻿@{
+    NavColor = IsUser ? "bg-warning" : "bg-danger";
+}
+<nav id="LoginNavigation" class="navbar fixed-top @NavColor  border border-bottom border-dark">
+    <a class="navbar-brand h1" style="font-family: 'Ranchers', cursive; margin-left: 20vw; font-size: 2rem;">Sport Quest Tracker</a>
+
+    <form class="form-inline justify-content-end" style="margin-right: 10vw">
+        <input class="form-control mr-sm-2" type="email" placeholder="e-mail" aria-label="Email">
+        <input class="form-control mr-sm-2" type="password" placeholder="password" aria-label="Password">
+        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Sign in</button>
+    </form>
+</nav>
+@code {
+    [Parameter]
+    public bool IsUser { get; set; }
+    public string NavColor { get; set; }
+}
