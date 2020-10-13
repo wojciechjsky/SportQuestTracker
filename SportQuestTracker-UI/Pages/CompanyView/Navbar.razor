@@ -1,5 +1,10 @@
-﻿@page "/Company/CompanyIndex"
+﻿
 @inject NavigationManager NavigationManager
+
+
+<h3>Navbar</h3>
+
+
 
 <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -7,23 +12,17 @@
             <a class="navbar-brand" href="#">Sport Quest Tracker</a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Your gadgets</a></li>
-            <li><a href="#">Your points</a></li>
-            <li><a href="#">Transactions</a></li>
+            <li class="active"><a href="/companygadgets">Your gadgets</a></li>
+            <li><a href="/companypoints">Your points</a></li>
+            <li><a href="/Transactions">Transactions</a></li>
             <li @onclick="LogOut">Log out</li>
         </ul>
     </div>
 </nav>
 
-
-
-
-
 @code {
-
-    public void LogOut()
+    private void LogOut()
     {
-        NavigationManager.NavigateTo("/CompanyLogin");
+        NavigationManager.NavigateTo("/Company/CompanyLogin");
     }
-
 }

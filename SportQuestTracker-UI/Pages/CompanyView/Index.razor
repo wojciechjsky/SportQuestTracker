@@ -1,0 +1,24 @@
+﻿@page "/Company/Index"
+
+@using SportQuestTracker_UI.Data.Models.ClassModels
+@using SportQuestTracker_UI.Data.Services
+@using static SportQuestTracker_UI.Pages.CompanyView.Navbar
+
+@inject NavigationManager NavigationManager
+@inject ICompanyService ICompanyService
+
+
+<Navbar></Navbar>
+
+
+
+
+
+@code {
+
+    private void LogOut()
+    {
+        NavigationManager.NavigateTo("/Company/CompanyLogin");
+    }
+
+}
