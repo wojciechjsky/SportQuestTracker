@@ -38,7 +38,7 @@ namespace SportQuestTrackerAPI.Data
                 var result = await userManager.CreateAsync(user, "Komputer%20");
                 if (result.Succeeded)
                 {
-                    await userManager.AddToRoleAsync(user, "User");
+                    await userManager.AddToRoleAsync(user, "Client");
                 }
             }
             if (await userManager.FindByEmailAsync("wojtek@gmail.com") == null)
@@ -65,11 +65,11 @@ namespace SportQuestTrackerAPI.Data
                 };
                 await roleManager.CreateAsync(role);
             }
-            if (!await roleManager.RoleExistsAsync("User"))
+            if (!await roleManager.RoleExistsAsync("Client"))
             {
                 var role = new IdentityRole
                 {
-                    Name = "User"
+                    Name = "Client"
                 };
                 await roleManager.CreateAsync(role);
             }

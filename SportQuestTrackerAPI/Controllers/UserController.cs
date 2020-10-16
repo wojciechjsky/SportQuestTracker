@@ -12,7 +12,7 @@ using SportQuestTrackerAPI.DTOs;
 
 namespace SportQuestTrackerAPI.Controllers
 {
-    [Route("api/[controllers")]
+    [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -35,16 +35,17 @@ namespace SportQuestTrackerAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Login([FromBody] UserDTO userDto)
         {
-            var userEmail = userDto.Email;
-            var userPassword = userDto.Password;
-            var result = await _signInManager.PasswordSignInAsync(userEmail, userPassword, false, false);
+            var username = userDto.Username;
+            var password = userDto.Password;
+            
+            var result = await _signInManager.PasswordSignInAsync(username, password, false, false);
             if (result != null)
             {
-                var user = await _userManager.FindByEmailAsync(userEmail);
+                var user = await _userManager.FindByNameAsync(username);
                 return Ok(user);
             }
 
-            return Unauthorized();
+            return Unauthorized(userDto);
         }
     }
 }
