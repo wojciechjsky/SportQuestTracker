@@ -7,7 +7,7 @@ using SportQuestTrackerAPI.Data.Models;
 
 namespace SportQuestTrackerAPI.Repositories
 {
-    public class GadgetRepository: IGadgetRepository
+    public class GadgetRepository//: IGadgetRepository
     {
         private readonly ApplicationDbContext _db;
 
@@ -45,10 +45,10 @@ namespace SportQuestTrackerAPI.Repositories
             return await Save();
         }
 
-        public Task<bool> IsExists(int id)
-        {
-            throw new System.NotImplementedException();
-        }
+        //public Task<bool> IsExists(int id)
+        //{
+        //    throw new System.NotImplementedException();
+        //}
 
         public async Task<bool> Save()
         {
