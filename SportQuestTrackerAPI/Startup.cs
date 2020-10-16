@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -15,6 +16,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using SportQuestTrackerAPI.Mappings;
 
 namespace SportQuestTrackerAPI
 {
@@ -33,8 +35,18 @@ namespace SportQuestTrackerAPI
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<IdentityUser>()
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+
+            services.AddCors(o =>
+            {
+                o.AddPolicy("CorsPolicy", 
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+            });
 
             services.AddSwaggerGen(c =>
             {
@@ -51,11 +63,14 @@ namespace SportQuestTrackerAPI
 
             });
 
+            services.AddAutoMapper(typeof(Maps));
+
             services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,
+            UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -78,6 +93,10 @@ namespace SportQuestTrackerAPI
             
 
             app.UseHttpsRedirection();
+
+            app.UseCors("CorsPolicy");
+
+            SeedData.Seed(userManager, roleManager).Wait();
  
 
             app.UseRouting();
