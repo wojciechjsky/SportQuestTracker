@@ -1,4 +1,4 @@
-﻿@page "/Company/Login"
+﻿@page "/CompanyView/Login"
 @page "/companylogin"
  
 @using SportQuestTracker_UI.Data.Models.ClassModels
@@ -67,7 +67,7 @@
 
     public void LogIn()
     {
-    //routing after Log In
+    NavigationManager.NavigateTo("/Company/Index");
     }
 
     private async Task SaveData(EditContext arg)

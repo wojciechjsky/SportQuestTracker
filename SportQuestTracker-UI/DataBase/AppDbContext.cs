@@ -113,8 +113,29 @@ namespace SportQuestTracker_UI.DataBase
                                 Name = "Reebook Shoes",
                                 Quantity = "100",
                                 TypeOfProduct = 1,
-                            }
+                            },
 
+                         new Gadget
+                         {
+                             GadgetId = 6,
+                             Price = 120,
+                             CompanyId = 1,
+                             Image = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.2io6iXzhP0WZByWmz3Ld8QHaHa%26pid%3DApi&f=1",
+                             Name = "Nike Shoes",
+                             Quantity = "100",
+                             TypeOfProduct = 1,
+                         },
+                        new Gadget
+                        {
+                            GadgetId = 6,
+                            Price = 120,
+                            CompanyId = 1,
+                            Image = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmarionex.pl%2Fpol_pl_Biustonosz-Reebok-Cardio-Strappy-Bra-stanik-sportowy-termoaktywny-fitness-12864_2.jpg&f=1&nofb=1",
+                            Name = "Nike Shoes",
+                            Quantity = "100",
+                            TypeOfProduct = 3,
+                        }
+            
                         );
             modelBuilder.Entity<Transaction>()
                 .HasData(
@@ -144,6 +165,16 @@ namespace SportQuestTracker_UI.DataBase
                 .HasData(
                     new Company
                     {
+                        CompanyGadgets = {new Gadget
+                        {
+                            GadgetId = 5,
+                            Price = 50,
+                            CompanyId = 2,
+                            Image = "https://cdn.pixabay.com/photo/2018/03/09/10/41/reebok-3211174__340.png",
+                            Name = "Reebook Shoes",
+                            Quantity = "100",
+                            TypeOfProduct = 1,
+                        }},
                         Id = 1,
                         Name = "Nike",
                         Password = "111111",
@@ -153,6 +184,16 @@ namespace SportQuestTracker_UI.DataBase
                     },
                     new Company
                     {
+                        CompanyGadgets = {new Gadget
+                        {
+                            GadgetId = 5,
+                            Price = 50,
+                            CompanyId = 2,
+                            Image = "https://cdn.pixabay.com/photo/2018/03/09/10/41/reebok-3211174__340.png",
+                            Name = "Reebook Shoes",
+                            Quantity = "100",
+                            TypeOfProduct = 1,
+                        }},
                         Id = 2,
                         Name = "Adidas",
                         Password = "111111",
@@ -162,11 +203,22 @@ namespace SportQuestTracker_UI.DataBase
                     },
                     new Company
                     {
+                        CompanyGadgets = {new Gadget
+                        {
+                            GadgetId = 5,
+                            Price = 50,
+                            CompanyId = 2,
+                            Image = "https://cdn.pixabay.com/photo/2018/03/09/10/41/reebok-3211174__340.png",
+                            Name = "Reebook Shoes",
+                            Quantity = "100",
+                            TypeOfProduct = 1,
+                        }},
                         Id = 3,
                         Name = "Reebook",
                         Password = "111111",
                         Email = "marketing@reebook.com",
                         Points = 1000,
+                        
 
                     });
 

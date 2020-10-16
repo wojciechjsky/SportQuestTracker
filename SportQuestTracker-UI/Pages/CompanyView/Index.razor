@@ -1,4 +1,4 @@
-﻿@page "/Company/Index"
+﻿@page "/CompanyView/Index"
 
 @using SportQuestTracker_UI.Data.Models.ClassModels
 @using SportQuestTracker_UI.Data.Services
@@ -8,9 +8,9 @@
 @inject ICompanyService ICompanyService
 
 
-<Navbar></Navbar>
+<Navbar> NAVBAR</Navbar>
 
-
+<h1> Lalala</h1>
 
 
 
@@ -18,7 +18,7 @@
 
     private void LogOut()
     {
-        NavigationManager.NavigateTo("/Company/CompanyLogin");
+        NavigationManager.NavigateTo("/CompanyView/Login");
     }
 
 }

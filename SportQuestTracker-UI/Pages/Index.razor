@@ -1,6 +1,8 @@
 ﻿@page "/"
-@using SportQuestTracker_UI.Data.Models.ClassModels
+
 @using SportQuestTracker_UI.Data.Services
+@using SportQuestTracker_UI.Data.Models.ClassModels
+@inject LoginNavigation LoginNavigation
 @inject UserService UserService
 @inject NavigationManager NavigationManager
 
@@ -15,7 +17,7 @@
 
 
 <body>
-<LoginNavigation IsUser/>
+<LoginNavigation IsUser></LoginNavigation>
     <div class="container-fluid align-content-center">
         <div class="row" style="margin: 10px">
             <div class="col-sm-6" style="margin-top: 25vh">
