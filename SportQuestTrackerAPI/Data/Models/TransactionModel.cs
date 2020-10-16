@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace SportQuestTrackerAPI.Data.Models
 {
     [Table("Transactions")]
-    public class Transaction
+    public class TransactionModel
     {
         [Key]
         public int TransactionId { get; set; }
