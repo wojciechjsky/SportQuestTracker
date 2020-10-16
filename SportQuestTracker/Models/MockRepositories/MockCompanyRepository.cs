@@ -10,15 +10,15 @@ namespace SportQuestTracker.Models.MockRepositories
         public IEnumerable<Company> Companies => new List<Company>()
         {
             new Company {
-                CompanyId = 1, CompanyName = "Nike", CollectedCoins = 1000, Logo = "url(Nike.png)"
+                CompanyId = 1, CompanyName = "Nike", CollectedCoins = 1000, Password = "Nike"
             },
             new Company
             {
-                CompanyId = 2, CompanyName = "Adidas", CollectedCoins = 2000, Logo = "url(Adidas.png)"
+                CompanyId = 2, CompanyName = "Adidas", CollectedCoins = 2000, Password = "Adidas"
             },
             new Company
             {
-                CompanyId = 3, CompanyName = "Reebook", CollectedCoins = 550, Logo = "url(Reebook.png)"
+                CompanyId = 3, CompanyName = "Reebook", CollectedCoins = 550, Password = "Reebook"
             },
         };
 

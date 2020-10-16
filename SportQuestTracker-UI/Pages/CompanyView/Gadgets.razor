@@ -1,0 +1,30 @@
+﻿@page "/Company/Gadgets"
+@page "/companygadgets"
+@using Microsoft.EntityFrameworkCore.Metadata.Conventions
+@using SportQuestTracker_UI.Contracts
+@using SportQuestTracker_UI.Data.Models.ClassModels
+@using static SportQuestTracker_UI.Data.Models.ClassModels.Gadget
+
+
+<h3>Gadgets</h3>
+
+<Navbar></Navbar>
+
+<EditForm Model="@typeof(Gadget)" OnvalidSubmit="AddGadget">
+
+</EditForm>
+
+
+@code {  
+
+    public List<Gadget> gadgets = new List<Gadget>();
+
+    public Gadget newGadget { get; set; }
+
+    private void AddGadget()
+    {
+        gadgets.Add(newGadget);
+        newGadget = new Gadget();
+    }
+
+}
