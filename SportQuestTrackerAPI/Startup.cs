@@ -59,6 +59,7 @@ namespace SportQuestTrackerAPI
                     Version ="v1",
                     Description = "Track your activity"
                     });
+                c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
 
                 var xfile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xpath = Path.Combine(AppContext.BaseDirectory, xfile);
@@ -93,6 +94,11 @@ namespace SportQuestTrackerAPI
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
+                    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "MyAPI V1");
+    });
             }
             else
             {
@@ -123,7 +129,10 @@ namespace SportQuestTrackerAPI
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                //endpoints.MapControllers();
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute("gadget", "{controller=Gadget}/{action=Index}/{id?}");
             });
         }
     }

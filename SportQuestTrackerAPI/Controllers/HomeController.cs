@@ -34,7 +34,7 @@ namespace SportQuestTrackerAPI.Controllers
         }
 
         // POST api/<HomeController>
-        [HttpPost]
+        [HttpPost("Home")]
         public void Post([FromBody] string value)
         {
         }
