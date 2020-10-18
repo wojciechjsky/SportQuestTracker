@@ -61,7 +61,8 @@ namespace SportQuestTrackerAPI.Controllers
             {
                 var user = await _userManager.FindByNameAsync(username);
                 var tokenString = await GenerateJSONWebToken(user);
-                return Ok(new { token = tokenString });
+                //return Ok(new { token = tokenString });
+                return Ok(user);
             }
 
             return Unauthorized(userDto);

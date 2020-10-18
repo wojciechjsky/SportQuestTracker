@@ -1,0 +1,37 @@
+﻿@page "/quest"
+@using SportQuestTracker_UI.Data.Models.ClassModels
+@using SportQuestTracker_UI.Data.Services
+@using SportQuestTracker_UI.Pages.ViewUtils.UserUtils
+@inject UserService UserService
+@inject NavigationManager NavigationManager
+
+
+<NavBar IsUser></NavBar>
+<div class="grid-container1">
+
+@foreach (Quest quest in AllQuests())
+{
+    <div class="box" style="padding-top: 20%; width: 200px; height: 200px;">
+        <a>
+            <h4 class="card-title">@quest.Name</h4>
+
+
+        <p class="card-text p-4"> Reward for finish quest: @quest.CoinReward</p>
+        </a>
+    </div>
+
+}
+</div>
+
+
+@code
+{
+    public bool IsUser = true;
+    List<Quest> quests;
+
+    public List<Quest> AllQuests()
+    {
+        return UserService.GetQuests();
+    }
+
+}

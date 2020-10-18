@@ -1,0 +1,40 @@
+﻿@using SportQuestTracker_UI.Data.Models.ClassModels
+@using SportQuestTracker_UI.Data
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavManager
+@inject Blazored.SessionStorage.ISessionStorageService SessionStorage
+
+@{
+    NavColor = IsUser ? "bg-warning" : "bg-danger";
+}
+<nav id="LoginNavigation" class="navbar fixed-top @NavColor  border border-bottom border-dark">
+    <a class="navbar-brand h1" style="font-family: 'Ranchers', cursive; margin-left: 20vw; font-size: 2rem;">Sport Quest Tracker</a>
+    <EditForm Model="@user" OnInvalidSubmit="@ValidateUser">
+        <form class="form-inline justify-content-end" style="margin-right: 10vw">
+            <input class="form-control mr-sm-2" @bind="user.Email" type="email" placeholder="e-mail" aria-label="Email">
+            <input class="form-control mr-sm-2" @bind="user.Password" type="password" placeholder="password" aria-label="Password">
+            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Sign in</button>
+        </form>
+    </EditForm>
+</nav>
+@code {
+    private User user;
+    [Parameter]
+    public bool IsUser { get; set; }
+    public string NavColor { get; set; }
+
+    protected override Task OnInitializedAsync()
+    {
+        user = new User();
+        return base.OnInitializedAsync();
+    }
+
+    public async Task<bool> ValidateUser()
+    {
+        ((CustomAuthenticationStateProvider)AuthenticationStateProvider).MarkUserAsAuthenticated(user.Email);
+
+        await SessionStorage.SetItemAsync("emailAddress", user.Email);
+        NavManager.NavigateTo("/main");
+        return await Task.FromResult(true);
+    }
+}
