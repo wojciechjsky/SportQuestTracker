@@ -8,7 +8,7 @@ using SportQuestTrackerAPI.Data.Models;
 
 namespace SportQuestTrackerAPI.Repositories
 {
-    public class UserRepository: IUserRepository
+    public class UserRepository//: IUserRepository
     {
         private readonly ApplicationDbContext _db;
         //private readonly RoleManager<IdentityUser> _signInManager;
@@ -51,11 +51,11 @@ namespace SportQuestTrackerAPI.Repositories
             return await Save();
         }
 
-        public async Task<bool> IsExists(int id)
-        {
-            //return await _db.Users.AnyAsync(u => u.Id == id);
-            throw new System.NotImplementedException();
-        }
+        //public async Task<bool> IsExists(int id)
+        //{
+        //    //return await _db.Users.AnyAsync(u => u.Id == id);
+        //    //throw new System.NotImplementedException();
+        //}
 
         public async Task<bool> Save()
         {
