@@ -1,0 +1,103 @@
+﻿@page "/shop"
+
+@inject NavigationManager NavigationManager
+
+<body>
+​
+<nav>
+    <div class="nav__company">
+        <p>Sport Quest Tracker</p>
+    </div>
+    <div class="nav__signin"><input ttype="text" placeholder="Login">
+        <input type="password" placeholder="Password">
+        <button>Sign In</button>
+    </div>
+</nav>
+​
+<section class="offers">
+<div>
+    <div class="productImg"><img src="/img/productimg.jpg" alt="product img"></div>
+    <div class="productName">Adidas</div>
+    <div class="productDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste porro dolor, quas architecto molestias, aut soluta nihil quia culpa molestiae explicabo tenetur dicta eius repudiandae excepturi necessitatibus id vel voluptas.</div>
+    <div class="showMore">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste porro dolor, quas architecto molestias, aut soluta nihil quia culpa molestiae explicabo tenetur dicta eius repudiandae excepturi necessitatibus id vel voluptas.</div>
+</div>
+<div>
+    <div class="productImg"><img src="/img/productimg.jpg" alt="product img"></div>
+    <div class="productName">Adidas</div>
+    <div class="productDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste porro dolor, quas architecto molestias, aut soluta nihil quia culpa molestiae explicabo tenetur dicta eius repudiandae excepturi necessitatibus id vel voluptas.</div>
+</div>
+<div>
+    <div class="productImg"><img src="/img/productimg.jpg" alt="product img"></div>
+    <div class="productName">Adidas</div>
+    <div class="productDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste porro dolor, quas architecto molestias, aut soluta nihil quia culpa molestiae explicabo tenetur dicta eius repudiandae excepturi necessitatibus id vel voluptas.</div>
+</div>
+    <div>
+        <div class="productImg"><img src="/img/productimg.jpg" alt="product img"></div>
+        <div class="productName">Adidas</div>
+        <div class="productDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste porro dolor, quas architecto molestias, aut soluta nihil quia culpa molestiae explicabo tenetur dicta eius repudiandae excepturi necessitatibus id vel voluptas.</div>
+        <div class="showme">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste porro dolor, quas architecto molestias, aut soluta nihil quia culpa molestiae explicabo tenetur dicta eius repudiandae excepturi necessitatibus id vel voluptas.</div>
+    </div>
+    <div>
+        <div class="productImg"><img src="/img/productimg.jpg" alt="product img"></div>
+        <div class="productName">Adidas</div>
+        <div class="productDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste porro dolor, quas architecto molestias, aut soluta nihil quia culpa molestiae explicabo tenetur dicta eius repudiandae excepturi necessitatibus id vel voluptas.</div>
+    </div>
+    <div>
+        <div class="productImg"><img src="/img/productimg.jpg" alt="product img"></div>
+        <div class="productName">Adidas</div>
+        <div class="productDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste porro dolor, quas architecto molestias, aut soluta nihil quia culpa molestiae explicabo tenetur dicta eius repudiandae excepturi necessitatibus id vel voluptas.</div>
+    </div>
+        
+</section>
+</body>
+
+
+
+<style>
+    
+    section.offers {
+        position: absolute;
+        top: 150px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 1100px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+
+    section > div {
+        width: calc(90%/3);
+        margin: calc(10%/6);
+        text-align: center;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 20px;
+        box-shadow: 0 0 40px 0 rgb(0, 0, 0);
+    }
+
+    ​
+    div.productName {
+        font-size: 2rem;
+        line-height: 6rem;
+    }
+
+    ​
+    div.productDescription {
+        font-size: 1.3rem;
+        text-align: justify;
+    }
+
+    ​
+    .showMore {
+        display: none;
+    }
+
+    ​
+    section > div:hover .showMore {
+        display: block;
+    }
+
+
+
+</style>

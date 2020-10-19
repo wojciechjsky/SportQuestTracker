@@ -25,17 +25,17 @@ namespace SportQuestTrackerAPI.Controllers
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
-        //private ILoggerService _logger;
+        private ILoggerService _logger;
         private readonly IConfiguration _config;
 
         public UserController(SignInManager<IdentityUser> signInManager,
                                 UserManager<IdentityUser> userManager,
-                                //ILoggerService logger,
+                                ILoggerService logger,
                                 IConfiguration config)
         {
             _signInManager = signInManager;
             _userManager = userManager;
-            //_logger = logger;
+            _logger = logger;
             _config = config;
         }
 
