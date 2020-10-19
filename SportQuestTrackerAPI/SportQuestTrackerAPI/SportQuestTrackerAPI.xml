@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SportQuestTrackerAPI</name>
+    </assembly>
+    <members>
+        <member name="M:SportQuestTrackerAPI.Controllers.GadgetController.GetGadget(System.Int32)">
+            <summary>
+            GetOneGadget
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SportQuestTrackerAPI.Controllers.GadgetController.Create(SportQuestTrackerAPI.DTOs.GadgetCrudDTO)">
+            <summary>
+            Post Gadget to Database
+            </summary>
+            <param name="gadgetDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SportQuestTrackerAPI.Controllers.GadgetController.Update(System.Int32,SportQuestTrackerAPI.DTOs.GadgetDTO)">
+            <summary>
+            Put gadget to Database
+            </summary>
+            <param name="id"></param>
+            <param name="gadgetDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SportQuestTrackerAPI.Controllers.GadgetController.Delete(System.Int32)">
+            <summary>
+            Delete gadget from Database
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SportQuestTrackerAPI.Controllers.HomeController">
+            <summary>
+            This is a test controller
+            </summary>
+        </member>
+        <member name="M:SportQuestTrackerAPI.Controllers.HomeController.Get">
+            <summary>
+            Get Values
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SportQuestTrackerAPI.Controllers.UserController.Login(SportQuestTrackerAPI.DTOs.UserDTO)">
+            <summary>
+            User Login Endpoint
+            </summary>
+            <param name="userDto"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

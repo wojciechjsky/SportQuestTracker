@@ -6,8 +6,9 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\jablo\OneDrive\Desktop\SportQuestTracker\SportQuestTrackerAPI\SportQuestTrackerAPI.xml</DocumentationFile>
+    <DocumentationFile>.\SportQuestTrackerAPI\SportQuestTrackerAPI.xml</DocumentationFile>
     <NoWarn>1701;1702;1591</NoWarn>
+    <WarningLevel>0</WarningLevel>
   </PropertyGroup>
 
   <ItemGroup>
