@@ -46,7 +46,7 @@ namespace SportQuestTrackerAPI
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddDefaultIdentity<AppUser>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
@@ -96,7 +96,7 @@ namespace SportQuestTrackerAPI
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env,
-            UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+            UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -127,8 +127,8 @@ namespace SportQuestTrackerAPI
 
             app.UseCors("CorsPolicy");
 
-            //SeedData.Seed(userManager, roleManager).Wait();
- 
+            SeedData.Seed(userManager, roleManager).Wait();
+
 
             app.UseRouting();
 

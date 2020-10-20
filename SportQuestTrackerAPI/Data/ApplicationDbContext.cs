@@ -13,6 +13,7 @@ namespace SportQuestTrackerAPI.Data
         public DbSet<TransactionModel> Transactions { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Quest> Quests { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

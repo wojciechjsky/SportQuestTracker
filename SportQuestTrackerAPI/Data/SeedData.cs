@@ -3,24 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using SportQuestTrackerAPI.Data.Models;
 
 namespace SportQuestTrackerAPI.Data
 {
     public static class SeedData
     {
-        public static async Task Seed(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        public static async Task Seed(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             await SeedRoles(roleManager);
             await SeedUsers(userManager);
         }
-        private static async Task SeedUsers(UserManager<IdentityUser> userManager)
+        private static async Task SeedUsers(UserManager<AppUser> userManager)
         {
             if (await userManager.FindByEmailAsync("admin@gmail.com") == null)
             {
-                var user = new IdentityUser
+                var user = new AppUser
                 {
                     UserName = "admin",
-                    Email = "admin@gmail.com"
+                    Email = "admin@gmail.com",
+                    FirstName = "Wojtek",
+                    Surname = "Jablonski",
+                    Points = 1000,
+                    Coins = 1000
                 };
                 var result = await userManager.CreateAsync(user, "Komputer%20");
                 if (result.Succeeded)
@@ -30,10 +35,14 @@ namespace SportQuestTrackerAPI.Data
             }
             if (await userManager.FindByEmailAsync("pati@gmail.com") == null)
             {
-                var user = new IdentityUser
+                var user = new AppUser
                 {
                     UserName = "Patrycja",
-                    Email = "pati@gmail.com"
+                    Email = "pati@gmail.com",
+                    FirstName = "Patrycja",
+                    Surname = "Peczyńska",
+                    Points = 1000,
+                    Coins = 1000
                 };
                 var result = await userManager.CreateAsync(user, "Komputer%20");
                 if (result.Succeeded)
@@ -43,15 +52,19 @@ namespace SportQuestTrackerAPI.Data
             }
             if (await userManager.FindByEmailAsync("wojtek@gmail.com") == null)
             {
-                var user = new IdentityUser
+                var user = new AppUser
                 {
-                    UserName = "Wojtek",
-                    Email = "wojtek@gmail.com"
+                    UserName = "Baksiu",
+                    Email = "baksiu@gmail.com",
+                    FirstName = "Baksiu",
+                    Surname = "Baksiowski",
+                    Points = 1000,
+                    Coins = 1000
                 };
                 var result = await userManager.CreateAsync(user, "Komputer%20");
                 if (result.Succeeded)
                 {
-                    await userManager.AddToRoleAsync(user, "User");
+                    await userManager.AddToRoleAsync(user, "Client");
                 }
             }
         }
