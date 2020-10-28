@@ -43,6 +43,7 @@ namespace SportQuestTrackerUI.Service
                 HttpResponseMessage response = await client.SendAsync(request);
 
                 if (!response.IsSuccessStatusCode)
+                
                 {
                     return false;
                 }
@@ -62,7 +63,6 @@ namespace SportQuestTrackerUI.Service
 
                 return true;
             }
-
             public async Task Logout()
             {
                 await _localStorage.RemoveItemAsync("authToken");

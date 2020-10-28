@@ -10,10 +10,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters.Xml;
 using SportQuestTrackerAPI.Contracts;
 using SportQuestTrackerAPI.Data.Models;
 using SportQuestTrackerAPI.DTOs;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
 using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
 
@@ -23,13 +25,13 @@ namespace SportQuestTrackerAPI.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
-        private ILoggerService _logger;
+        private readonly SignInManager<AppUser> _signInManager;
+        private readonly UserManager<AppUser> _userManager;
+        private readonly ILoggerService _logger;
         private readonly IConfiguration _config;
 
-        public UserController(SignInManager<IdentityUser> signInManager,
-                                UserManager<IdentityUser> userManager,
+        public UserController(SignInManager<AppUser> signInManager,
+                                UserManager<AppUser> userManager,
                                 ILoggerService logger,
                                 IConfiguration config)
         {
@@ -38,37 +40,67 @@ namespace SportQuestTrackerAPI.Controllers
             _logger = logger;
             _config = config;
         }
+        [Route("register")]
+        [HttpPost]
+        public async Task<IActionResult> Register([FromBody] UserDTO userDto)
+        {
+            try
+            {
+                var email = userDto.EmailAddress;
+                var password = userDto.Password;
+                var firstname = userDto.FirstName;
+                var lastname = userDto.Surname;
+                var phone = userDto.PhoneNumber;
+                var user = new AppUser{Email=email, UserName = email, FirstName = firstname, Surname = lastname, PhoneNumber = phone};
+                var result = await _userManager.CreateAsync(user, password);
 
+                if (!result.Succeeded)
+                {
 
+                    foreach (var error in result.Errors)
+                    {
+                        _logger.LogError($"{email} : {error.Code} - {error.Description}");
+                    }
+                    return InternalError($"{email} User Registration Attempt Failed");
+                }
+                await _userManager.AddToRoleAsync(user, "Client");
+                return Created("login", new { result.Succeeded });
+            }
+            catch (Exception e)
+            {
+                return InternalError($"{e.Message} - {e.InnerException}");
+            }
+        }
 
         /// <summary>
         /// User Login Endpoint
         /// </summary>
         /// <param name="userDto"></param>
         /// <returns></returns>
+        [Route("users/login")]
         [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Login([FromBody] UserDTO userDto)
         {
-            var username = userDto.Username;
+            var username = userDto.EmailAddress;
             var password = userDto.Password;
-            
+
             var result = await _signInManager.PasswordSignInAsync(username, password, false, false);
-            
-            //TODO: enable logging by email
+
 
             if (result.Succeeded)
             {
                 var user = await _userManager.FindByNameAsync(username);
                 var tokenString = await GenerateJSONWebToken(user);
-                //return Ok(new { token = tokenString });
-                return Ok(user);
+                return Ok(new { token = tokenString });
+                //return Ok(user);
             }
 
             return Unauthorized(userDto);
+
         }
 
-        private async Task<string> GenerateJSONWebToken(IdentityUser user)
+        private async Task<string> GenerateJSONWebToken(AppUser user)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
@@ -93,6 +125,11 @@ namespace SportQuestTrackerAPI.Controllers
             
             
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+        private ObjectResult InternalError(string message)
+        {
+            _logger.LogError(message);
+            return StatusCode(500, "Something went wrong. Please contact the Administrator");
         }
     }
 }

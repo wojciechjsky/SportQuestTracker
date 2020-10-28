@@ -10,7 +10,7 @@ using SportQuestTrackerUI.Contracts;
 
 namespace SportQuestTrackerUI.Service
 {
-    public class BaseRepository<T>// : IBaseRepository<T> where T : class
+    public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
         private readonly IHttpClientFactory _client;
         private readonly ILocalStorageService _localStorage;
@@ -25,7 +25,7 @@ namespace SportQuestTrackerUI.Service
         {
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             if (obj == null)
-                return true;
+                return false;
 
             request.Content = new StringContent(JsonConvert.SerializeObject(obj)
                 , Encoding.UTF8, "application/json");
@@ -38,6 +38,11 @@ namespace SportQuestTrackerUI.Service
                 return true;
 
             return false;
+        }
+
+        public Task<bool> Update(string url, T obj)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<bool> Delete(string url, int id)
@@ -58,23 +63,23 @@ namespace SportQuestTrackerUI.Service
             return false;
         }
 
-        //public async Task<T> Get(string url, int id)
-        //{
-        //    var request = new HttpRequestMessage(HttpMethod.Get, url + id);
+        public async Task<T> Get(string url, int id)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, url + id);
 
-        //    var client = _client.CreateClient();
-        //    client.DefaultRequestHeaders.Authorization =
-        //        new AuthenticationHeaderValue("bearer", await GetBearerToken());
-        //    HttpResponseMessage response = await client.SendAsync(request);
+            var client = _client.CreateClient();
+            client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("bearer", await GetBearerToken());
+            HttpResponseMessage response = await client.SendAsync(request);
 
-        //    if (response.StatusCode == System.Net.HttpStatusCode.OK)
-        //    {
-        //        var content = await response.Content.ReadAsStringAsync();
-        //        return JsonConvert.DeserializeObject<T>(content);
-        //    }
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<T>(content);
+            }
 
-        //    return null;
-        //}
+            return null;
+        }
 
         public async Task<IList<T>> Get(string url)
         {

@@ -19,8 +19,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using SportQuestTrackerAPI.Contracts;
 using SportQuestTrackerAPI.Data.Models;
 using SportQuestTrackerAPI.Mappings;
+using SportQuestTrackerAPI.Services;
 
 namespace SportQuestTrackerAPI
 {
@@ -75,6 +77,7 @@ namespace SportQuestTrackerAPI
 
             });
 
+            services.AddSingleton<ILoggerService, LoggerService>();
             services.AddAutoMapper(typeof(Maps));
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -138,9 +141,7 @@ namespace SportQuestTrackerAPI
             app.UseEndpoints(endpoints =>
             {
                 //endpoints.MapControllers();
-                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
-
-                endpoints.MapControllerRoute("gadget", "{controller=Gadget}/{action=Index}/{id?}");
+                endpoints.MapControllers();
             });
         }
     }

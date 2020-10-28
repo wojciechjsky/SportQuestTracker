@@ -4,68 +4,23 @@ namespace SportQuestTrackerAPI.DTOs
 {
     public class UserDTO
     {
-        public string Username { get; set; }
+        [Required]
+        [EmailAddress]
+        public string EmailAddress { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
+        [StringLength(50,ErrorMessage = "Your password is limited from 8 to 50 characters", MinimumLength = 8)]
         public string Password { get; set; }
 
-    }
-
-    public class UserCrudDTO
-    {
         [Required]
-        public int UserId { get; set; }
-        [Required]
-        public string Email { get; set; }
-        [Required]
-        public string Password { get; set; }
-        [Required]
+        [StringLength(30,ErrorMessage = "Your first name is limited to 30 characters" )]
         public string FirstName { get; set; }
         [Required]
+        [StringLength(30, ErrorMessage = "Your surname is limited to 30 characters")]
         public string Surname { get; set; }
-        [Required]
-        public string Street { get; set; }
-        [Required]
-        public int ParcelNumber { get; set; }
-        [Required]
-        public int HouseNumber { get; set; }
-        [Required]
-        public string City { get; set; }
-        [Required]
-        public int Points { get; set; } = 0;
-        [Required]
-        public int Coins { get; set; } = 0;
-        [Required]
-        public bool Admin { get; set; } = false;
 
-        public int? CompanyId { get; set; }
-    }
-
-    public class UserUpdateDTO
-    {
-        
-        public int UserId { get; set; }
         [Required]
-        public string Email { get; set; }
-        [Required]
-        public string Password { get; set; }
-        
-        public string FirstName { get; set; }
-        
-        public string Surname { get; set; }
-        
-        public string Street { get; set; }
-        
-        public int ParcelNumber { get; set; }
-        
-        public int HouseNumber { get; set; }
-        
-        public string City { get; set; }
-        
-        public int Points { get; set; } = 0;
-        
-        public int Coins { get; set; } = 0;
-        
-        public bool Admin { get; set; } = false;
+        public string PhoneNumber { get; set; }
 
-        public int? CompanyId { get; set; }
     }
 }

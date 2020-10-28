@@ -24,10 +24,10 @@ namespace SportQuestTrackerAPI.Data.Models
     {
         [Required]
         [MaxLength(50)]
-        public string? FirstName { get; set; }
+        public string FirstName { get; set; }
         [Required]
         [MaxLength(50)]
-        public string? Surname { get; set; }
+        public string Surname { get; set; }
         public int? Points { get; set; } = 0;
         public int? Coins { get; set; } = 0;
     }
