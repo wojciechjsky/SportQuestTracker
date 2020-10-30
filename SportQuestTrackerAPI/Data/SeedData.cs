@@ -9,23 +9,23 @@ namespace SportQuestTrackerAPI.Data
 {
     public static class SeedData
     {
-        public static async Task Seed(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
+        public static async Task Seed(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             await SeedRoles(roleManager);
             await SeedUsers(userManager);
         }
-        private static async Task SeedUsers(UserManager<AppUser> userManager)
+        private static async Task SeedUsers(UserManager<IdentityUser> userManager)
         {
             if (await userManager.FindByEmailAsync("admin@gmail.com") == null)
             {
-                var user = new AppUser
+                var user = new IdentityUser
                 {
-                    UserName = "admin",
+                    UserName = "admin@gmail.com",
                     Email = "admin@gmail.com",
-                    FirstName = "Wojtek",
-                    Surname = "Jablonski",
-                    Points = 1000,
-                    Coins = 1000
+                    //FirstName = "Wojtek",
+                    //Surname = "Jablonski",
+                    //Points = 1000,
+                    //Coins = 1000
                 };
                 var result = await userManager.CreateAsync(user, "Komputer%20");
                 if (result.Succeeded)
@@ -35,36 +35,36 @@ namespace SportQuestTrackerAPI.Data
             }
             if (await userManager.FindByEmailAsync("pati@gmail.com") == null)
             {
-                var user = new AppUser
+                var user = new IdentityUser
                 {
-                    UserName = "Patrycja",
+                    UserName = "pati@gmail.com",
                     Email = "pati@gmail.com",
-                    FirstName = "Patrycja",
-                    Surname = "Peczyńska",
-                    Points = 1000,
-                    Coins = 1000
+                    //FirstName = "Patrycja",
+                    //Surname = "Peczyńska",
+                    //Points = 1000,
+                    //Coins = 1000
                 };
                 var result = await userManager.CreateAsync(user, "Komputer%20");
                 if (result.Succeeded)
                 {
-                    await userManager.AddToRoleAsync(user, "Client");
+                    await userManager.AddToRoleAsync(user, "Customer");
                 }
             }
-            if (await userManager.FindByEmailAsync("wojtek@gmail.com") == null)
+            if (await userManager.FindByEmailAsync("baksiu@gmail.com") == null)
             {
-                var user = new AppUser
+                var user = new IdentityUser
                 {
-                    UserName = "Baksiu",
+                    UserName = "baksiu@gmail.com",
                     Email = "baksiu@gmail.com",
-                    FirstName = "Baksiu",
-                    Surname = "Baksiowski",
-                    Points = 1000,
-                    Coins = 1000
+                    //FirstName = "Baksiu",
+                    //Surname = "Baksiowski",
+                    //Points = 1000,
+                    //Coins = 1000
                 };
                 var result = await userManager.CreateAsync(user, "Komputer%20");
                 if (result.Succeeded)
                 {
-                    await userManager.AddToRoleAsync(user, "Client");
+                    await userManager.AddToRoleAsync(user, "Customer");
                 }
             }
         }
@@ -78,11 +78,11 @@ namespace SportQuestTrackerAPI.Data
                 };
                 await roleManager.CreateAsync(role);
             }
-            if (!await roleManager.RoleExistsAsync("Client"))
+            if (!await roleManager.RoleExistsAsync("Customer"))
             {
                 var role = new IdentityRole
                 {
-                    Name = "Client"
+                    Name = "Customer"
                 };
                 await roleManager.CreateAsync(role);
             }

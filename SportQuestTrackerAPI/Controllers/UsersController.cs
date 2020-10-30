@@ -25,13 +25,13 @@ namespace SportQuestTrackerAPI.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly SignInManager<AppUser> _signInManager;
-        private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly ILoggerService _logger;
         private readonly IConfiguration _config;
 
-        public UsersController(SignInManager<AppUser> signInManager,
-                                UserManager<AppUser> userManager,
+        public UsersController(SignInManager<IdentityUser> signInManager,
+                                UserManager<IdentityUser> userManager,
                                 ILoggerService logger,
                                 IConfiguration config)
         {
@@ -46,12 +46,13 @@ namespace SportQuestTrackerAPI.Controllers
         {
             try
             {
-                var email = userDto.EmailAddress;
+                var username = userDto.EmailAddress;
                 var password = userDto.Password;
-                var firstname = userDto.FirstName;
-                var lastname = userDto.Surname;
-                var phone = userDto.PhoneNumber;
-                var user = new AppUser{Email=email, UserName = email, FirstName = firstname, Surname = lastname, PhoneNumber = phone};
+                //var firstname = userDto.FirstName;
+                //var lastname = userDto.Surname;
+                //var phone = userDto.PhoneNumber;
+                //var user = new IdentityUser{Email=email, UserName = email, FirstName = firstname, Surname = lastname, PhoneNumber = phone};
+                var user = new IdentityUser { Email = username, UserName = username };
                 var result = await _userManager.CreateAsync(user, password);
 
                 if (!result.Succeeded)
@@ -59,11 +60,11 @@ namespace SportQuestTrackerAPI.Controllers
 
                     foreach (var error in result.Errors)
                     {
-                        _logger.LogError($"{email} : {error.Code} - {error.Description}");
+                        _logger.LogError($"{username} : {error.Code} - {error.Description}");
                     }
-                    return InternalError($"{email} User Registration Attempt Failed");
+                    return InternalError($"{username} User Registration Attempt Failed");
                 }
-                await _userManager.AddToRoleAsync(user, "Client");
+                await _userManager.AddToRoleAsync(user, "Customer");
                 return Created("login", new { result.Succeeded });
             }
             catch (Exception e)
@@ -75,32 +76,40 @@ namespace SportQuestTrackerAPI.Controllers
         /// <summary>
         /// User Login Endpoint
         /// </summary>
-        /// <param name="userDto"></param>
+        /// <param name="userDTO"></param>
         /// <returns></returns>
         [Route("login")]
         [AllowAnonymous]
         [HttpPost]
-        public async Task<IActionResult> Login([FromBody] UserDTO userDto)
+        public async Task<IActionResult> Login([FromBody] UserDTO userDTO)
         {
-            var username = userDto.EmailAddress;
-            var password = userDto.Password;
-
-            var result = await _signInManager.PasswordSignInAsync(username, password, false, false);
-
-
-            if (result.Succeeded)
+            var location = GetControllerActionNames();
+            try
             {
-                var user = await _userManager.FindByNameAsync(username);
-                var tokenString = await GenerateJSONWebToken(user);
-                return Ok(new { token = tokenString });
-                //return Ok(user);
-            }
+                var username = userDTO.EmailAddress;
+                var password = userDTO.Password;
+                _logger.LogInfo($"{location}: Login Attempt from user {username} ");
+                var result = await _signInManager.PasswordSignInAsync(username, password, false, false);
 
-            return Unauthorized(userDto);
+                if (result.Succeeded)
+                {
+                    _logger.LogInfo($"{location}: {username} Successfully Authenticated");
+                    var user = await _userManager.FindByEmailAsync(username);
+                    _logger.LogInfo($"{location}: Generating Token");
+                    var tokenString = await GenerateJSONWebToken(user);
+                    return Ok(new { token = tokenString });
+                }
+                _logger.LogInfo($"{location}: {username} Not Authenticated");
+                return Unauthorized(userDTO);
+            }
+            catch (Exception e)
+            {
+                return InternalError($"{location}: {e.Message} - {e.InnerException}");
+            }
 
         }
 
-        private async Task<string> GenerateJSONWebToken(AppUser user)
+        private async Task<string> GenerateJSONWebToken(IdentityUser user)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
@@ -108,24 +117,29 @@ namespace SportQuestTrackerAPI.Controllers
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.NameIdentifier, user.Id ),
+                new Claim(ClaimTypes.NameIdentifier, user.Id)
             };
-
             var roles = await _userManager.GetRolesAsync(user);
-            claims.AddRange(roles.Select(r=> new Claim(ClaimsIdentity.DefaultRoleClaimType, r)));
+            claims.AddRange(roles.Select(r => new Claim(ClaimsIdentity.DefaultRoleClaimType, r)));
 
-            var token = new JwtSecurityToken(
-                _config["Jwt:Issuer"],
-                _config["Jwt:Issuer"],
+            var token = new JwtSecurityToken(_config["Jwt:Issuer"]
+                , _config["Jwt:Issuer"],
                 claims,
                 null,
-                expires:DateTime.Now.AddMinutes(5),
+                expires: DateTime.Now.AddHours(5),
                 signingCredentials: credentials
             );
-            
-            
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+        private string GetControllerActionNames()
+        {
+            var controller = ControllerContext.ActionDescriptor.ControllerName;
+            var action = ControllerContext.ActionDescriptor.ActionName;
+
+            return $"{controller} - {action}";
+        }
+
         private ObjectResult InternalError(string message)
         {
             _logger.LogError(message);

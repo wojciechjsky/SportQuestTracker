@@ -7,7 +7,7 @@ using SportQuestTrackerAPI.Data.Models;
 
 namespace SportQuestTrackerAPI.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<AppUser>
+    public class ApplicationDbContext : IdentityDbContext
     {
         public DbSet<Gadget> Gadgets { get; set; }
         public DbSet<TransactionModel> Transactions { get; set; }
