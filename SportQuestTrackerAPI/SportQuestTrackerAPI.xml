@@ -44,7 +44,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:SportQuestTrackerAPI.Controllers.UserController.Login(SportQuestTrackerAPI.DTOs.UserDTO)">
+        <member name="M:SportQuestTrackerAPI.Controllers.UsersController.Login(SportQuestTrackerAPI.DTOs.UserDTO)">
             <summary>
             User Login Endpoint
             </summary>

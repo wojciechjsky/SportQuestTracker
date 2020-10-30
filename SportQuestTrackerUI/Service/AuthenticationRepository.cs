@@ -15,7 +15,7 @@ using SportQuestTrackerUI.Static;
 
 namespace SportQuestTrackerUI.Service
 {
-    namespace BookStore_UI.Service
+    namespace SportQuestTrackerUI.Service
     {
         public class AuthenticationRepository : IAuthenticationRepository
         {
@@ -35,7 +35,7 @@ namespace SportQuestTrackerUI.Service
             public async Task<bool> Login(LoginModel user)
             {
                 var request = new HttpRequestMessage(HttpMethod.Post
-                    , Endpoints.LoginEndpoint);
+                   , Endpoints.LoginEndpoint);
                 request.Content = new StringContent(JsonConvert.SerializeObject(user)
                     , Encoding.UTF8, "application/json");
 
@@ -43,7 +43,6 @@ namespace SportQuestTrackerUI.Service
                 HttpResponseMessage response = await client.SendAsync(request);
 
                 if (!response.IsSuccessStatusCode)
-                
                 {
                     return false;
                 }
@@ -55,7 +54,7 @@ namespace SportQuestTrackerUI.Service
                 await _localStorage.SetItemAsync("authToken", token.Token);
 
                 //Change auth state of app
-                await ((ApiAuthenticationStateProvider) _authenticationStateProvider)
+                await ((ApiAuthenticationStateProvider)_authenticationStateProvider)
                     .LoggedIn();
 
                 client.DefaultRequestHeaders.Authorization =
@@ -63,10 +62,11 @@ namespace SportQuestTrackerUI.Service
 
                 return true;
             }
+
             public async Task Logout()
             {
                 await _localStorage.RemoveItemAsync("authToken");
-                ((ApiAuthenticationStateProvider) _authenticationStateProvider)
+                ((ApiAuthenticationStateProvider)_authenticationStateProvider)
                     .LoggedOut();
             }
 

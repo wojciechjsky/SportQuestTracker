@@ -15,8 +15,7 @@ namespace SportQuestTrackerUI.Service
         private readonly IHttpClientFactory _client;
         private readonly ILocalStorageService _localStorage;
         public BaseRepository(IHttpClientFactory client,
-            ILocalStorageService localStorage
-            )
+            ILocalStorageService localStorage)
         {
             _client = client;
             _localStorage = localStorage;
@@ -25,7 +24,7 @@ namespace SportQuestTrackerUI.Service
         {
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             if (obj == null)
-                return false;
+                return true;
 
             request.Content = new StringContent(JsonConvert.SerializeObject(obj)
                 , Encoding.UTF8, "application/json");
@@ -38,11 +37,6 @@ namespace SportQuestTrackerUI.Service
                 return true;
 
             return false;
-        }
-
-        public Task<bool> Update(string url, T obj)
-        {
-            throw new NotImplementedException();
         }
 
         public async Task<bool> Delete(string url, int id)
@@ -78,6 +72,7 @@ namespace SportQuestTrackerUI.Service
                 return JsonConvert.DeserializeObject<T>(content);
             }
 
+
             return null;
         }
 
@@ -107,6 +102,9 @@ namespace SportQuestTrackerUI.Service
                 return null;
 
             }
+
+
+
 
         }
 

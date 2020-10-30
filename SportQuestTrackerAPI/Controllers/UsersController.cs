@@ -21,16 +21,16 @@ using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegiste
 
 namespace SportQuestTrackerAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/users")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class UsersController : ControllerBase
     {
         private readonly SignInManager<AppUser> _signInManager;
         private readonly UserManager<AppUser> _userManager;
         private readonly ILoggerService _logger;
         private readonly IConfiguration _config;
 
-        public UserController(SignInManager<AppUser> signInManager,
+        public UsersController(SignInManager<AppUser> signInManager,
                                 UserManager<AppUser> userManager,
                                 ILoggerService logger,
                                 IConfiguration config)
@@ -77,7 +77,7 @@ namespace SportQuestTrackerAPI.Controllers
         /// </summary>
         /// <param name="userDto"></param>
         /// <returns></returns>
-        [Route("users/login")]
+        [Route("login")]
         [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Login([FromBody] UserDTO userDto)
