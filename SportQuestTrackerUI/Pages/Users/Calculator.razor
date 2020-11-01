@@ -5,6 +5,7 @@
 
 
 <NavBar></NavBar>
+
 <body>
     <div class="box">
         <div class="container">
@@ -12,95 +13,90 @@
 
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                    <div class="box-part text-center">
-
+                    <div class="box-part text-center rounded shadow-sm p-3 mb-5 bg-white rounded ">
 
                         <img src="images/calculator/running.svg" alt="running" />
 
                         <div class="text">
-                            <span>Lorem ipsum dolor sit amet, id quo eruditi eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui ad.</span>
+                            <button>
+                                <a href="/RunCalc" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Calculate calories from last run</a>
+                            </button>
                         </div>
 
-                        <a href="#">Learn More</a>
+
 
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                    <div class="box-part text-center">
+                    <div class="box-part text-center rounded shadow-sm p-3 mb-5 bg-white rounded">
 
                         <img src="images/calculator/bench-press.svg" alt="bench-press" />
 
-
                         <div class="text">
-                            <span>Lorem ipsum dolor sit amet, id quo eruditi eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui ad.</span>
+                            <a href="/RunCalc" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Calculate calories from weightlifting</a>
                         </div>
 
-                        <a href="#">Learn More</a>
+
 
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                    <div class="box-part text-center">
+                    <div class="box-part text-center rounded shadow-sm p-3 mb-5 bg-white rounded">
 
                         <img src="images/calculator/cycling.svg" alt="cycling" />
 
                         <div class="text">
-                            <span>Lorem ipsum dolor sit amet, id quo eruditi eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui ad.</span>
+                            <a href="/RunCalc" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Calculate calories from <br />cycling<br /></a>
                         </div>
 
-                        <a href="#">Learn More</a>
 
                     </div>
                 </div>
-
+                
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                    <div class="box-part text-center">
-
-                        <img src="images/calculator/gym.svg" alt="gym" />
-
-                        <div class="text">
-                            <span>Lorem ipsum dolor sit amet, id quo eruditi eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui ad.</span>
-                        </div>
-
-                        <a href="#">Learn More</a>
-
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                    <div class="box-part text-center">
-
-                        <img src="images/calculator/heart-rate.svg" alt="heart-rate" />
-
-                        <div class="text">
-                            <span>Lorem ipsum dolor sit amet, id quo eruditi eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui ad.</span>
-                        </div>
-
-                        <a href="#">Learn More</a>
-
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                    <div class="box-part text-center">
+                    <div class="box-part text-center rounded shadow-sm p-3 mb-5 bg-white rounded">
 
                         <img src="images/calculator/swimming.svg" alt="swimming" />
 
                         <div class="text">
-                            <span>Lorem ipsum dolor sit amet, id quo eruditi eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui ad.</span>
+                            <a href="/RunCalc" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Calculate calories from swimming</a>
                         </div>
-
-                        <a href="#">Learn More</a>
 
                     </div>
                 </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                    <div class="box-part text-center rounded shadow-sm p-3 mb-5 bg-white rounded">
+
+                        <img src="images/calculator/gym.svg" alt="gym" />
+
+                        <div class="text">
+                            <a href="/RunCalc" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Calculate calories from exercises</a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                    <div class="box-part text-center rounded shadow-sm p-3 mb-5 bg-white rounded">
+                         
+                        <img src="images/calculator/heart-rate.svg" alt="heart-rate" />
+
+                        <div class="text">
+                            <a href="/RunCalc" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Calculate calories <br /> by heart rate<br /></a>
+                        </div>
+
+
+                    </div>
+                </div>
+
 
             </div>
         </div>
@@ -125,7 +121,7 @@
     a{
         text-decoration:none; 
         color: #0062cc;
-        /*        border-bottom:2px solid #0062cc;*/
+        /* border:2px solid #0062cc; */
     }
     .box{
         padding:60px 0px;
@@ -133,9 +129,15 @@
 
     .box-part{
         background:#FFF;
-        border-radius:0;
+        border-radius:3px;
         padding:60px 10px;
         margin:30px 0px;
+    }
+
+    .box-part:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+        background-color: #e6f4ff;
     }
     .text{
         margin:20px 0px;

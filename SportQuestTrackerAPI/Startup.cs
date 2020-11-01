@@ -71,9 +71,9 @@ namespace SportQuestTrackerAPI
                     });
                 c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
 
-                var xfile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xpath = Path.Combine(AppContext.BaseDirectory, xfile);
-                c.IncludeXmlComments(xpath);
+                // var xfile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                // var xpath = Path.Combine(AppContext.BaseDirectory, xfile);
+                // c.IncludeXmlComments(xpath);
 
             });
 
