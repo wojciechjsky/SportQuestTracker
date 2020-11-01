@@ -1,4 +1,4 @@
-﻿    (function() {
+﻿    function ShowResult() {
             const form    = document.getElementById('calc-form');
             const results = document.getElementById('results');
             const errors  = document.getElementById('form-error');
@@ -97,5 +97,5 @@
             form.addEventListener('submit', submitHandler);
             results.addEventListener('click', resetForm, true);
 
-        })();
+        };
 
