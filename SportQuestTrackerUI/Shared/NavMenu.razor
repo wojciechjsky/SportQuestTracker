@@ -1,60 +1,48 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">SportQuestTrackerUI</a>
-    <button class="navbar-toggler" @onclick="ToggleNavMenu">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-</div>
-
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <ul class="nav flex-column">
-        <AuthorizeView>
-            <Authorized>
-                <li class="nav-item px-3">
-                    <NavLink class="nav-link">
-                        <span class="oi oi-person" aria-hidden="true"></span> @context.User.Identity.Name
-                    </NavLink>
-                </li>
-                <li class="nav-item px-3">
-                    <NavLink class="nav-link" href="logout">
-                        <span class="oi oi-arrow-circle-left" aria-hidden="true"></span> Log Out
-                    </NavLink>
-                </li>
-                <li class="nav-item px-3">
-                    <NavLink class="nav-link">
-                        <span class="oi oi-arrow-circle-left" aria-hidden="true"></span> Log out
-                    </NavLink>
-                </li>
-            </Authorized>
-            <NotAuthorized>
-                <li class="nav-item px-3">
-                    <NavLink class="nav-link" href="/login">
-                        <span class="oi oi-plus" aria-hidden="true"></span> Login
-                    </NavLink>
-                </li>
-                <li class="nav-item px-3">
-                    <NavLink class="nav-link" href="/register">
-                        <span class="oi oi-plus" aria-hidden="true"></span> Register
-                    </NavLink>
-                </li>
-            </NotAuthorized>
-        </AuthorizeView>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </li>
+﻿@using SportQuestTrackerUI.Models
+@using SportQuestTrackerUI.Contracts
 
 
-    </ul>
-</div>
+@inject IAuthenticationRepository _authRepo
+@inject NavigationManager _navManager
+
+
+    <nav id="LoginNavigation" class="navbar @NavColor fixed-top display-flex border border-bottom border-dark">
+        <a class="navbar-brand h1" style="font-family: 'Ranchers', cursive; margin-left: 20vw; font-size: 2rem;">Sport Quest Tracker</a>
+
+        <div class="form-inline justify-content-end" style="margin-right: 10vw">
+            <AuthorizeView>
+                <Authorized>
+                    <p>@context.User.Identity.Name</p>
+                </Authorized>
+
+            </AuthorizeView>
+        </div>
+    </nav>
+
 
 @code {
+    [Parameter]
+    public bool IsUser { get; set; }
+    public string NavColor { get; set; }
     private bool collapseNavMenu = true;
 
     private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
-    private void ToggleNavMenu()
+    //private void ToggleNavMenu()
+    //{
+    //    collapseNavMenu = !collapseNavMenu;
+    //}
+    private LoginModel Model1 = new LoginModel();
+    private bool response = true;
+    private async Task HandleLogin()
     {
-        collapseNavMenu = !collapseNavMenu;
+        response = await _authRepo.Login(Model1);
+
+        if (response)
+        {
+            _navManager.NavigateTo("/");
+        }
+
     }
+
 }

@@ -1,60 +1,51 @@
 ﻿@page "/shop"
-
+@using SportQuestTrackerUI.Pages.ViewUtils.UserUtils
 @inject NavigationManager NavigationManager
 
+<NavBar isUser></NavBar>
 <body>
-​
-<nav>
-    <div class="nav__company">
-        <p>Sport Quest Tracker</p>
-    </div>
-    <div class="nav__signin"><input ttype="text" placeholder="Login">
-        <input type="password" placeholder="Password">
-        <button>Sign In</button>
-    </div>
-</nav>
-​
-<section class="offers">
-<div>
-    <div class="productImg"><img src="/img/productimg.jpg" alt="product img"></div>
-    <div class="productName">Adidas</div>
-    <div class="productDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste porro dolor, quas architecto molestias, aut soluta nihil quia culpa molestiae explicabo tenetur dicta eius repudiandae excepturi necessitatibus id vel voluptas.</div>
-    <div class="showMore">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste porro dolor, quas architecto molestias, aut soluta nihil quia culpa molestiae explicabo tenetur dicta eius repudiandae excepturi necessitatibus id vel voluptas.</div>
-</div>
-<div>
-    <div class="productImg"><img src="/img/productimg.jpg" alt="product img"></div>
-    <div class="productName">Adidas</div>
-    <div class="productDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste porro dolor, quas architecto molestias, aut soluta nihil quia culpa molestiae explicabo tenetur dicta eius repudiandae excepturi necessitatibus id vel voluptas.</div>
-</div>
-<div>
-    <div class="productImg"><img src="/img/productimg.jpg" alt="product img"></div>
-    <div class="productName">Adidas</div>
-    <div class="productDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste porro dolor, quas architecto molestias, aut soluta nihil quia culpa molestiae explicabo tenetur dicta eius repudiandae excepturi necessitatibus id vel voluptas.</div>
-</div>
-    <div>
-        <div class="productImg"><img src="/img/productimg.jpg" alt="product img"></div>
-        <div class="productName">Adidas</div>
-        <div class="productDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste porro dolor, quas architecto molestias, aut soluta nihil quia culpa molestiae explicabo tenetur dicta eius repudiandae excepturi necessitatibus id vel voluptas.</div>
-        <div class="showme">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste porro dolor, quas architecto molestias, aut soluta nihil quia culpa molestiae explicabo tenetur dicta eius repudiandae excepturi necessitatibus id vel voluptas.</div>
-    </div>
-    <div>
-        <div class="productImg"><img src="/img/productimg.jpg" alt="product img"></div>
-        <div class="productName">Adidas</div>
-        <div class="productDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste porro dolor, quas architecto molestias, aut soluta nihil quia culpa molestiae explicabo tenetur dicta eius repudiandae excepturi necessitatibus id vel voluptas.</div>
-    </div>
-    <div>
-        <div class="productImg"><img src="/img/productimg.jpg" alt="product img"></div>
-        <div class="productName">Adidas</div>
-        <div class="productDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste porro dolor, quas architecto molestias, aut soluta nihil quia culpa molestiae explicabo tenetur dicta eius repudiandae excepturi necessitatibus id vel voluptas.</div>
-    </div>
-        
-</section>
+
+    <section class="offers">
+        <div>
+            <div class="productImg"><img src="/img/productimg.jpg" alt="product img"></div>
+            <div class="productName">Adidas</div>
+            <div class="productDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste porro dolor, quas architecto molestias, aut soluta nihil quia culpa molestiae explicabo tenetur dicta eius repudiandae excepturi necessitatibus id vel voluptas.</div>
+            <div class="showMore">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste porro dolor, quas architecto molestias, aut soluta nihil quia culpa molestiae explicabo tenetur dicta eius repudiandae excepturi necessitatibus id vel voluptas.</div>
+        </div>
+        <div>
+            <div class="productImg"><img src="/img/productimg.jpg" alt="product img"></div>
+            <div class="productName">Adidas</div>
+            <div class="productDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste porro dolor, quas architecto molestias, aut soluta nihil quia culpa molestiae explicabo tenetur dicta eius repudiandae excepturi necessitatibus id vel voluptas.</div>
+        </div>
+        <div>
+            <div class="productImg"><img src="/img/productimg.jpg" alt="product img"></div>
+            <div class="productName">Adidas</div>
+            <div class="productDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste porro dolor, quas architecto molestias, aut soluta nihil quia culpa molestiae explicabo tenetur dicta eius repudiandae excepturi necessitatibus id vel voluptas.</div>
+        </div>
+        <div>
+            <div class="productImg"><img src="/img/productimg.jpg" alt="product img"></div>
+            <div class="productName">Adidas</div>
+            <div class="productDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste porro dolor, quas architecto molestias, aut soluta nihil quia culpa molestiae explicabo tenetur dicta eius repudiandae excepturi necessitatibus id vel voluptas.</div>
+            <div class="showme">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste porro dolor, quas architecto molestias, aut soluta nihil quia culpa molestiae explicabo tenetur dicta eius repudiandae excepturi necessitatibus id vel voluptas.</div>
+        </div>
+        <div>
+            <div class="productImg"><img src="/img/productimg.jpg" alt="product img"></div>
+            <div class="productName">Adidas</div>
+            <div class="productDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste porro dolor, quas architecto molestias, aut soluta nihil quia culpa molestiae explicabo tenetur dicta eius repudiandae excepturi necessitatibus id vel voluptas.</div>
+        </div>
+        <div>
+            <div class="productImg"><img src="/img/productimg.jpg" alt="product img"></div>
+            <div class="productName">Adidas</div>
+            <div class="productDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste porro dolor, quas architecto molestias, aut soluta nihil quia culpa molestiae explicabo tenetur dicta eius repudiandae excepturi necessitatibus id vel voluptas.</div>
+        </div>
+
+    </section>
 </body>
 
 
 
 <style>
-    
+
     section.offers {
         position: absolute;
         top: 150px;
@@ -76,28 +67,25 @@
         box-shadow: 0 0 40px 0 rgb(0, 0, 0);
     }
 
-    ​
+
     div.productName {
         font-size: 2rem;
         line-height: 6rem;
     }
 
-    ​
+
     div.productDescription {
         font-size: 1.3rem;
         text-align: justify;
     }
 
-    ​
+
     .showMore {
         display: none;
     }
 
-    ​
+
     section > div:hover .showMore {
         display: block;
     }
-
-
-
 </style>

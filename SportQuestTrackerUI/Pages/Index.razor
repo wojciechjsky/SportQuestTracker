@@ -1,7 +1,180 @@
 ﻿@page "/"
+@page "/NavBar"
+@using SportQuestTrackerUI.Pages.ViewUtils.UserUtils
 
-<h1>Hello, world!</h1>
+@using SportQuestTrackerUI.Models
+@using SportQuestTrackerUI.Contracts
+@inherits NavBar
+@inject IAuthenticationRepository _authRepo
+@inject NavigationManager _navMan
 
-Welcome to your new app.
+@{
+    NavColor = IsUser ? "bg-warning" : "bg-danger";
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> SportQuestTracker</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
+</head>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+
+<nav id="LoginNavigation" class="navbar @NavColor fixed-top display-flex border border-bottom border-dark">
+    <a class="navbar-brand h1" style="font-family: 'Ranchers', cursive; margin-left: 20vw; font-size: 2rem;">Sport Quest Tracker</a>
+
+    <div class="form-inline justify-content-end" style="margin-right: 10vw">
+
+        <EditForm class="row" Model="_loginModel" OnValidSubmit="HandleLogin">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <div class="col">
+                @*<label for="email">Email Address</label>*@
+                <InputText Id="email" class="form-control" placeholder="Login" @bind-Value="_loginModel.EmailAddress" />
+                <ValidationMessage For="@(() => _loginModel.EmailAddress)" />
+            </div>
+            <div class="col">
+                @*<label for="password">Password</label>*@
+                <InputText Id="password" type="password" class="form-control" placeholder="Password" @bind-Value="_loginModel.Password" />
+                <ValidationMessage For="@(() => _loginModel.Password)" />
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-primary btn-block">Login </button>
+            </div>
+        </EditForm>
+
+
+    </div>
+</nav>
+
+
+    <div class="container-fluid align-content-center justify-content-center">
+        <div class="row" style="margin: 10px">
+
+            @*<div class="col-sm-6">*@
+
+            <div class="container justify-content-center" style="margin:0 0 0 50vw;">
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div style="width: 34vw; margin-top: 5vh;">
+                            <h3 style="margin: 5vh 0 2vh 0; text-align: center; margin-top: 10vh; font-weight: bold">Registration</h3>
+                            <div class="container">
+                                <div class="row" style="margin-bottom: 2vh">
+                                    <div class="col text-center active btn btn-outline-success">
+                                        User
+                                    </div>
+                                    <a href="/CompanyLogin" role="button" class="col-6 text-center btn btn-outline-danger">
+                                        <div>
+                                            Company
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card">
+
+                                @if (!response)
+                                {
+                                    <div class="alert alert-danger">
+                                        <p>Something went wrong with the registration attempt</p>
+                                    </div>
+                                }
+                                <div class="card-body">
+
+
+
+                                    <EditForm Model="_registrationModel" OnInvalidSubmit="HandleRegistration">
+                                        <DataAnnotationsValidator />
+                                        @*<div class="form-group">
+                                                <label for="FirstName">First Name</label>
+                                                <input type="text" class="form-control" id="FirstName" placeholder="FirstName" @bind="user.FirstName"/>
+                                                <ValidationMessage For="@(() => user.FirstName)" class="text-danger"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="Name">Surname</label>
+                                                <input type="text" class="form-control" id="Name" placeholder="Surname" @bind="user.Surname"/>
+                                                <ValidationMessage For="@(() => user.Surname)" class="text-danger"/>
+                                            </div>*@
+                                        <div class="form-group">
+                                            <label for="Email">Email</label>
+                                            <input type="text" class="form-control" id="Email" placeholder="Email" @bind="_registrationModel.EmailAddress" />
+                                            <ValidationMessage For="@(() => _registrationModel.EmailAddress)" class="text-danger" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="InputPassword">Password</label>
+                                            <input autocomplete="on" type="password" class="form-control" id="InputPassword" placeholder="Password" @bind="_registrationModel.Password" />
+                                            <ValidationMessage For="@(() => _registrationModel.Password)" class="text-danger" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ConfirmPassword">Password</label>
+                                            <input autocomplete="on" type="password" class="form-control" id="ConfirmPassword" placeholder="Repeat password" @bind="_registrationModel.Password" />
+                                            <ValidationMessage For="@(() => _registrationModel.Password)" class="text-danger" />
+                                        </div>
+
+                                        @*<div class="form-group">
+                                                <label for="phone">Phone number</label>
+                                                <input type="number" class="form-control" id="phone" aria-describedby="phone" placeholder="Phone number" @bind="user.PhoneNumber"/>
+                                                <ValidationMessage For="@(() => user.PhoneNumber)" class="text-danger"/>
+                                            </div>
+                                            <div class="form-group form-check">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                <label class="form-check-label" for="exampleCheck1">Accept rules</label>
+                                            </div>*@
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
+
+                                    </EditForm>
+                                    @*</AuthorizeView>*@
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+@code
+{
+
+    private readonly RegistrationModel _registrationModel = new RegistrationModel();
+    private bool response = true;
+    public bool IsUser { get; set; } = true;
+    public string NavColor { get; set; }
+
+    private async Task HandleRegistration()
+    {
+
+        response = await _authRepo.Register(_registrationModel);
+
+        if (response)
+        {
+            _navMan.NavigateTo("/login");
+        }
+    }
+    private readonly LoginModel _loginModel = new LoginModel();
+
+    private async Task HandleLogin()
+    {
+        response = await _authRepo.Login(_loginModel);
+
+        if (response)
+        {
+            _navMan.NavigateTo("/main");
+        }
+
+    }
+}
+
+<style>
+
+    .btn btn-primary btn-block {
+        margin: 10px;
+    }
+</style>
+
+
