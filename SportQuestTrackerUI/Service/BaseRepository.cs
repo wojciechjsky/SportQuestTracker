@@ -10,13 +10,12 @@ using SportQuestTrackerUI.Contracts;
 
 namespace SportQuestTrackerUI.Service
 {
-    public class BaseRepository<T>// : IBaseRepository<T> where T : class
+    public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
         private readonly IHttpClientFactory _client;
         private readonly ILocalStorageService _localStorage;
         public BaseRepository(IHttpClientFactory client,
-            ILocalStorageService localStorage
-            )
+            ILocalStorageService localStorage)
         {
             _client = client;
             _localStorage = localStorage;
@@ -58,23 +57,24 @@ namespace SportQuestTrackerUI.Service
             return false;
         }
 
-        //public async Task<T> Get(string url, int id)
-        //{
-        //    var request = new HttpRequestMessage(HttpMethod.Get, url + id);
+        public async Task<T> Get(string url, int id)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, url + id);
 
-        //    var client = _client.CreateClient();
-        //    client.DefaultRequestHeaders.Authorization =
-        //        new AuthenticationHeaderValue("bearer", await GetBearerToken());
-        //    HttpResponseMessage response = await client.SendAsync(request);
+            var client = _client.CreateClient();
+            client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("bearer", await GetBearerToken());
+            HttpResponseMessage response = await client.SendAsync(request);
 
-        //    if (response.StatusCode == System.Net.HttpStatusCode.OK)
-        //    {
-        //        var content = await response.Content.ReadAsStringAsync();
-        //        return JsonConvert.DeserializeObject<T>(content);
-        //    }
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<T>(content);
+            }
 
-        //    return null;
-        //}
+
+            return null;
+        }
 
         public async Task<IList<T>> Get(string url)
         {
@@ -102,6 +102,9 @@ namespace SportQuestTrackerUI.Service
                 return null;
 
             }
+
+
+
 
         }
 

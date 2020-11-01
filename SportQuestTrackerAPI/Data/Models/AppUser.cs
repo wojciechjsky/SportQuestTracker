@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace SportQuestTrackerAPI.Data.Models
 {
@@ -15,7 +17,7 @@ namespace SportQuestTrackerAPI.Data.Models
         [Required]
         [MaxLength(50)]
         public string Surname { get; set; }
-        public int Points { get; set; } = 0;
-        public int Coins { get; set; } = 0;
+        public int? Points { get; set; } = 0;
+        public int? Coins { get; set; } = 0;
     }
 }

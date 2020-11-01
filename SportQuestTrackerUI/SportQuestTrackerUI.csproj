@@ -5,9 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="Pages\Companies\" />
-    <Folder Include="Pages\Admins\" />
+    <Compile Remove="Data\**" />
+    <Compile Remove="Pages\Admins\**" />
+    <Compile Remove="Pages\Companies\**" />
+    <Content Remove="Data\**" />
+    <Content Remove="Pages\Admins\**" />
+    <Content Remove="Pages\Companies\**" />
+    <EmbeddedResource Remove="Data\**" />
+    <EmbeddedResource Remove="Pages\Admins\**" />
+    <EmbeddedResource Remove="Pages\Companies\**" />
+    <None Remove="Data\**" />
+    <None Remove="Pages\Admins\**" />
+    <None Remove="Pages\Companies\**" />
   </ItemGroup>
 
   <ItemGroup>

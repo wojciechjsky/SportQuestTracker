@@ -19,7 +19,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using SportQuestTrackerAPI.Contracts;
+using SportQuestTrackerAPI.Data.Models;
 using SportQuestTrackerAPI.Mappings;
+using SportQuestTrackerAPI.Services;
 
 namespace SportQuestTrackerAPI
 {
@@ -35,6 +38,13 @@ namespace SportQuestTrackerAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddIdentity<AppUser, IdentityRole>()
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseSqlServer(
+            //        Configuration.GetConnectionString("DefaultConnection")));
+
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
@@ -67,6 +77,7 @@ namespace SportQuestTrackerAPI
 
             });
 
+            services.AddSingleton<ILoggerService, LoggerService>();
             services.AddAutoMapper(typeof(Maps));
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -120,7 +131,7 @@ namespace SportQuestTrackerAPI
             app.UseCors("CorsPolicy");
 
             SeedData.Seed(userManager, roleManager).Wait();
- 
+
 
             app.UseRouting();
 
@@ -130,9 +141,7 @@ namespace SportQuestTrackerAPI
             app.UseEndpoints(endpoints =>
             {
                 //endpoints.MapControllers();
-                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
-
-                endpoints.MapControllerRoute("gadget", "{controller=Gadget}/{action=Index}/{id?}");
+                endpoints.MapControllers();
             });
         }
     }

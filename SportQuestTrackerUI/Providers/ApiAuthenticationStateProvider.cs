@@ -20,7 +20,7 @@ namespace SportQuestTrackerUI.Providers
             _tokenHandler = tokenHandler;
         }
 
-        public async override Task<AuthenticationState> GetAuthenticationStateAsync()
+        public override async Task<AuthenticationState> GetAuthenticationStateAsync()
         {
             try
             {

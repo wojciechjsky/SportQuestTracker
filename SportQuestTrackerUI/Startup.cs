@@ -14,7 +14,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SportQuestTrackerUI.Contracts;
 using SportQuestTrackerUI.Providers;
-using SportQuestTrackerUI.Service.BookStore_UI.Service;
+using SportQuestTrackerUI.Service;
+using SportQuestTrackerUI.Service.SportQuestTrackerUI.Service;
 
 
 namespace SportQuestTrackerUI

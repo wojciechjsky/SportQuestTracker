@@ -15,7 +15,7 @@ using SportQuestTrackerUI.Static;
 
 namespace SportQuestTrackerUI.Service
 {
-    namespace BookStore_UI.Service
+    namespace SportQuestTrackerUI.Service
     {
         public class AuthenticationRepository : IAuthenticationRepository
         {

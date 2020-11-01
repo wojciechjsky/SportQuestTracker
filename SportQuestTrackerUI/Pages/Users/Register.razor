@@ -1,4 +1,4 @@
-﻿@page "/Register"
+﻿@page "/register"
 
 @using SportQuestTrackerUI.Models
 @using SportQuestTrackerUI.Contracts
@@ -18,6 +18,16 @@
         <EditForm Model="Model" OnValidSubmit="HandleRegistration">
             <DataAnnotationsValidator />
             <ValidationSummary />
+            @*<div class="form-group">
+                <label for="firstname">First name</label>
+                <InputText Id="firstname" type="text" class="form-control" @bind-Value="Model.FirstName" />
+                <ValidationMessage For="@(() => Model.FirstName)" />
+            </div>
+            <div class="form-group">
+                <label for="surname">Surname</label>
+                <InputText Id="surname" type="text" class="form-control" @bind-Value="Model.Surname" />
+                <ValidationMessage For="@(() => Model.Surname)" />
+            </div>*@
             <div class="form-group">
                 <label for="email">Email Address</label>
                 <InputText Id="email" class="form-control" @bind-Value="Model.EmailAddress" />
@@ -33,14 +43,19 @@
                 <InputText Id="confirmpassword" type="password" class="form-control" @bind-Value="Model.ConfirmPassword" />
                 <ValidationMessage For="@(() => Model.ConfirmPassword)" />
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Register</button>
+            @*<div class="form-group">
+                <label for="phone">Phone number</label>
+                <InputText Id="phone" type="text" class="form-control" @bind-Value="Model.Phone" />
+                <ValidationMessage For="@(() => Model.Phone)" />
+            </div>*@
+            <button type="submit" class="btn btn-primary">Register</button>
 
         </EditForm>
     </div>
 </div>
 
 @code {
-    private RegistrationModel Model = new RegistrationModel();
+    private readonly RegistrationModel Model = new RegistrationModel();
     bool response = true;
 
     private async Task HandleRegistration()

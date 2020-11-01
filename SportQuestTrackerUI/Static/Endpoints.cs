@@ -7,7 +7,7 @@ namespace SportQuestTrackerUI.Static
 {
     public static class Endpoints
     {
-        public static string BaseUrl = "https://localhost:44340/";
+        public static string BaseUrl = "https://localhost:44382/";
         public static string UsersEndpoint = $"{BaseUrl}api/users/";
         public static string GadgetsEndpoint = $"{BaseUrl}api/companies/";
         public static string RegisterEndpoint = $"{BaseUrl}api/users/register/";

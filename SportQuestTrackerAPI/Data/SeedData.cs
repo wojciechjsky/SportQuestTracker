@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using SportQuestTrackerAPI.Data.Models;
 
 namespace SportQuestTrackerAPI.Data
 {
@@ -19,8 +20,12 @@ namespace SportQuestTrackerAPI.Data
             {
                 var user = new IdentityUser
                 {
-                    UserName = "admin",
-                    Email = "admin@gmail.com"
+                    UserName = "admin@gmail.com",
+                    Email = "admin@gmail.com",
+                    //FirstName = "Wojtek",
+                    //Surname = "Jablonski",
+                    //Points = 1000,
+                    //Coins = 1000
                 };
                 var result = await userManager.CreateAsync(user, "Komputer%20");
                 if (result.Succeeded)
@@ -32,26 +37,34 @@ namespace SportQuestTrackerAPI.Data
             {
                 var user = new IdentityUser
                 {
-                    UserName = "Patrycja",
-                    Email = "pati@gmail.com"
+                    UserName = "pati@gmail.com",
+                    Email = "pati@gmail.com",
+                    //FirstName = "Patrycja",
+                    //Surname = "Peczyńska",
+                    //Points = 1000,
+                    //Coins = 1000
                 };
                 var result = await userManager.CreateAsync(user, "Komputer%20");
                 if (result.Succeeded)
                 {
-                    await userManager.AddToRoleAsync(user, "Client");
+                    await userManager.AddToRoleAsync(user, "Customer");
                 }
             }
-            if (await userManager.FindByEmailAsync("wojtek@gmail.com") == null)
+            if (await userManager.FindByEmailAsync("baksiu@gmail.com") == null)
             {
                 var user = new IdentityUser
                 {
-                    UserName = "Wojtek",
-                    Email = "wojtek@gmail.com"
+                    UserName = "baksiu@gmail.com",
+                    Email = "baksiu@gmail.com",
+                    //FirstName = "Baksiu",
+                    //Surname = "Baksiowski",
+                    //Points = 1000,
+                    //Coins = 1000
                 };
                 var result = await userManager.CreateAsync(user, "Komputer%20");
                 if (result.Succeeded)
                 {
-                    await userManager.AddToRoleAsync(user, "User");
+                    await userManager.AddToRoleAsync(user, "Customer");
                 }
             }
         }
@@ -65,11 +78,11 @@ namespace SportQuestTrackerAPI.Data
                 };
                 await roleManager.CreateAsync(role);
             }
-            if (!await roleManager.RoleExistsAsync("Client"))
+            if (!await roleManager.RoleExistsAsync("Customer"))
             {
                 var role = new IdentityRole
                 {
-                    Name = "Client"
+                    Name = "Customer"
                 };
                 await roleManager.CreateAsync(role);
             }
