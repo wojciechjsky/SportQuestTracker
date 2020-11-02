@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SportQuestTrackerAPI.Contracts;
@@ -12,9 +13,10 @@ namespace SportQuestTrackerAPI.Controllers
 {
 
 
-    //[ProducesResponseType(StatusCodes.Status200OK)]
+   
     [Route("api/[controller]")]
-    //[ApiController]
+    [ApiController]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public class GadgetController : ControllerBase
     {
         private readonly IGadgetRepository _gadgetRepository;
@@ -29,7 +31,7 @@ namespace SportQuestTrackerAPI.Controllers
         }
 
 
-        [HttpGet("GetGadgets")]
+        [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetGadgets()
@@ -37,7 +39,7 @@ namespace SportQuestTrackerAPI.Controllers
             //var location = GetControllerActionNames();
             //try
             //{
-                //_loggerService.LogInfo($"{location}: Attempted Call");
+                _loggerService.LogInfo($"GetGadgets: Attempted Call");
                 var gadgets = await _gadgetRepository.FindAll();
                 var response = _mapper.Map<IList<GadgetDTO>>(gadgets);
                 _loggerService.LogInfo("Successfully got all gadgets");

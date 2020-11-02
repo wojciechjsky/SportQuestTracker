@@ -102,10 +102,6 @@ namespace SportQuestTrackerUI.Service
                 return null;
 
             }
-
-
-
-
         }
 
         public async Task<bool> Update(string url, T obj, int id)

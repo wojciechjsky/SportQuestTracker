@@ -1,27 +1,28 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
-using AutoMapper;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
-using SportQuestTrackerAPI.Data;
+using SportQuestTrackerAPI.Data.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
+using System.IO;
+using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using SportQuestTrackerAPI.Contracts;
-using SportQuestTrackerAPI.Data.Models;
+using SportQuestTrackerAPI.Data;
 using SportQuestTrackerAPI.Mappings;
+using SportQuestTrackerAPI.Repositories;
 using SportQuestTrackerAPI.Services;
 
 namespace SportQuestTrackerAPI
@@ -78,11 +79,13 @@ namespace SportQuestTrackerAPI
             });
 
             services.AddSingleton<ILoggerService, LoggerService>();
+            services.AddScoped<IGadgetRepository, GadgetRepository>();
+
+
             services.AddAutoMapper(typeof(Maps));
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(o =>
-                {
+                .AddJwtBearer(o => {
                     o.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuer = true,
@@ -90,26 +93,27 @@ namespace SportQuestTrackerAPI
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
                         ValidIssuer = Configuration["Jwt:Issuer"],
+                        ValidAudience = Configuration["Jwt:Issuer"],
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+
                     };
                 });
 
-            services.AddControllers();
+            services.AddControllers(); services.AddControllers().AddNewtonsoftJson(op =>
+                op.SerializerSettings.ReferenceLoopHandling =
+                    Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,
-            UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        public void Configure(IApplicationBuilder app,
+            IWebHostEnvironment env,
+            UserManager<IdentityUser> userManager,
+            RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
-                    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "MyAPI V1");
-    });
             }
             else
             {
@@ -119,6 +123,7 @@ namespace SportQuestTrackerAPI
             }
 
             app.UseSwagger();
+
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "SportQuestTracker");
@@ -140,7 +145,6 @@ namespace SportQuestTrackerAPI
 
             app.UseEndpoints(endpoints =>
             {
-                //endpoints.MapControllers();
                 endpoints.MapControllers();
             });
         }

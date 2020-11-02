@@ -43,8 +43,7 @@ namespace SportQuestTrackerUI
                 p.GetRequiredService<ApiAuthenticationStateProvider>());
             services.AddScoped<JwtSecurityTokenHandler>();
             services.AddTransient<IAuthenticationRepository, AuthenticationRepository>();
-
-
+            services.AddTransient<IGadgetRepository, GadgetRepository>();
 
         }
 

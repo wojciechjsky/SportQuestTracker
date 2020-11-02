@@ -1,0 +1,88 @@
+﻿@page "/Gadget/"
+@using System.Net
+@inject IGadgetRepository _repo
+
+@inject NavigationManager NavigationManager
+
+<NavBar isUser></NavBar>
+<body class="align-items-center">
+
+<section class="offers">
+    @if (AllGadgets == null)
+    {
+        <div class="alert alert-dismissible alert-secondary"> Loading Data.....</div>
+    }
+    else
+    {
+        @foreach (var oneGadget in AllGadgets)
+        {
+            <div>
+                <div class="productImg"><img src="" alt="product img"></div>
+                <div class="productName">@oneGadget.Name</div>
+                <div class="productDescription">@oneGadget.Price</div>
+                <div class="showMore">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste porro dolor, quas architecto molestias, aut soluta nihil quia culpa molestiae explicabo tenetur dicta eius repudiandae excepturi necessitatibus id vel voluptas.</div>
+            </div>
+        }
+    }
+
+
+
+</section>
+</body>
+
+@code
+{
+    public bool IsUser = true;
+    public IList<Models.Gadget> AllGadgets;
+
+    protected override async Task OnInitializedAsync()
+    {
+        
+        AllGadgets = await _repo.Get(Endpoints.GadgetsEndpoint);
+    }
+}
+<style>
+
+    section.offers {
+        position: absolute;
+        top: 150px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 1100px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+
+    section > div {
+        width: calc(90%/3);
+        margin: calc(10%/6);
+        text-align: center;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 20px;
+        box-shadow: 0 0 40px 0 rgb(0, 0, 0);
+    }
+
+
+    div.productName {
+        font-size: 2rem;
+        line-height: 6rem;
+    }
+
+
+    div.productDescription {
+        font-size: 1.3rem;
+        text-align: justify;
+    }
+
+
+    .showMore {
+        display: none;
+    }
+
+
+    section > div:hover .showMore {
+        display: block;
+    }
+</style>
