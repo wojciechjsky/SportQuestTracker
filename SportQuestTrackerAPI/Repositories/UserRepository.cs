@@ -13,7 +13,7 @@ namespace SportQuestTrackerAPI.Repositories
         private readonly ApplicationDbContext _db;
         //private readonly RoleManager<IdentityUser> _signInManager;
         //private readonly UserManager<IdentityUser> _userManager;
-        public UserRepository(ApplicationDbContext db, SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
+        public UserRepository(ApplicationDbContext db, SignInManager<AppUser> signInManager, UserManager<AppUser> userManager)
         {
             _db = db;
             //_signInManager = signInManager;

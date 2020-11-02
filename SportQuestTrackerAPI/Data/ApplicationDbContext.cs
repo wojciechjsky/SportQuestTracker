@@ -7,13 +7,13 @@ using SportQuestTrackerAPI.Data.Models;
 
 namespace SportQuestTrackerAPI.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<AppUser>
     {
         public DbSet<Gadget> Gadgets { get; set; }
         public DbSet<TransactionModel> Transactions { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Quest> Quests { get; set; }
-        public DbSet<Author> Authors { get; set; }
+
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -213,25 +213,9 @@ namespace SportQuestTrackerAPI.Data
 
                 );
 
-            modelBuilder.Entity<Author>()
-                .HasData(new Author
-                    {
-                        Id = 1,
-                        Firstname = "Patrycja",
-                        Lastname = "Kowalska",
-                        Bio = "Something wierd",
-
-                    },
-                    new Author
-                    {
-                        Id = 2,
-                        Firstname = "qwewqewqa",
-                        Lastname = "eqwewqa",
-                        Bio = "Soqweqweqweqwemething wierd"
-                    });
-    }
+        }
     }
 
 
-    }
+}
 

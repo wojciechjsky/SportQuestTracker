@@ -25,13 +25,13 @@ namespace SportQuestTrackerAPI.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
+        private readonly UserManager<AppUser> _userManager;
         private readonly ILoggerService _logger;
         private readonly IConfiguration _config;
 
-        public UsersController(SignInManager<IdentityUser> signInManager,
-                                UserManager<IdentityUser> userManager,
+        public UsersController(SignInManager<AppUser> signInManager,
+                                UserManager<AppUser> userManager,
                                 ILoggerService logger,
                                 IConfiguration config)
         {
@@ -51,8 +51,8 @@ namespace SportQuestTrackerAPI.Controllers
                 //var firstname = userDto.FirstName;
                 //var lastname = userDto.Surname;
                 //var phone = userDto.PhoneNumber;
-                //var user = new IdentityUser{Email=email, UserName = email, FirstName = firstname, Surname = lastname, PhoneNumber = phone};
-                var user = new IdentityUser { Email = username, UserName = username };
+                //var user = new AppUser{Email=email, UserName = email, FirstName = firstname, Surname = lastname, PhoneNumber = phone};
+                var user = new AppUser { Email = username, UserName = username };
                 var result = await _userManager.CreateAsync(user, password);
 
                 if (!result.Succeeded)
@@ -109,7 +109,7 @@ namespace SportQuestTrackerAPI.Controllers
 
         }
 
-        private async Task<string> GenerateJSONWebToken(IdentityUser user)
+        private async Task<string> GenerateJSONWebToken(AppUser user)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
