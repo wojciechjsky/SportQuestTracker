@@ -5,6 +5,10 @@
 
 # User-specific files
 
+
+Appsettings 
+*\appsettings.json
+
 Migrations
 
 *.rsuser

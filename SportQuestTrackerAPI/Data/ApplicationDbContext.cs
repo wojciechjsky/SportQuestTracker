@@ -120,7 +120,7 @@ namespace SportQuestTrackerAPI.Data
                     
                     new Gadget
                     {
-                        GadgetId = 5,
+                        GadgetId = 6,
                         Price = 22,
                         CompanyId = 3,
                         Image = "https://www.prodirectrunning.com/ProductImages/Gallery_2/173400.jpg",
@@ -130,7 +130,7 @@ namespace SportQuestTrackerAPI.Data
                     },
                     new Gadget
                     {
-                        GadgetId = 6,
+                        GadgetId = 7,
                         Price = 43,
                         CompanyId = 5,
                         Image = "https://th.bing.com/th/id/OIP.kn2UEE6mcOM2Vug_53APgwHaHa?pid=Api&rs=1",
@@ -140,7 +140,7 @@ namespace SportQuestTrackerAPI.Data
                     },
                     new Gadget
                     {
-                        GadgetId = 7,
+                        GadgetId = 8,
                         Price = 15,
                         CompanyId = 3,
                         Image = "https://i.pinimg.com/originals/86/c7/e9/86c7e947912318d5b788bebcd8715ba9.jpg",
@@ -150,7 +150,7 @@ namespace SportQuestTrackerAPI.Data
                     },
                     new Gadget
                     {
-                        GadgetId = 8,
+                        GadgetId = 9,
                         Price = 25,
                         CompanyId = 4,
                         Image = "https://www.zoltansport.pl/pol_pl_Bluza-meska-Puma-Essentials-TR-czarna-851771-01-30168_1.jpg",
@@ -160,14 +160,35 @@ namespace SportQuestTrackerAPI.Data
                     },
                     new Gadget
                     {
-                        GadgetId = 9,
+                        GadgetId = 10,
                         Price = 30,
                         CompanyId = 3,
                         Image = "https://th.bing.com/th/id/OIP.nm2uowz7lsKkEXiPkdItAwHaHa?pid=Api&rs=1",
                         Name = "Nike Jacket",
-                        Quantity = "100",
+                        Quantity = "44",
                         TypeOfProduct = 3,
+                    },
+                    new Gadget
+                    {
+                        GadgetId = 11,
+                        Price = 30,
+                        CompanyId = 5,
+                        Image = "https://static.abstore.pl/img/opensport/667c6688-8b61-49a9-bf45-62b9df47f8ef/l/koszulka-meska-4f-h4l19-tsm003.png",
+                        Name = "4F T-shirt",
+                        Quantity = "100",
+                        TypeOfProduct = 4,
+                    },
+                    new Gadget
+                    {
+                        GadgetId = 12,
+                        Price = 30,
+                        CompanyId = 4,
+                        Image = "http://ecx.images-amazon.com/images/I/31jmKhzqFLL.jpg",
+                        Name = "Puma jumper",
+                        Quantity = "10",
+                        TypeOfProduct = 5,
                     }
+
                 );
             //modelBuilder.Entity<Transaction>()
             //    .HasData(
