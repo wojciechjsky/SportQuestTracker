@@ -19,5 +19,7 @@ namespace SportQuestTrackerAPI.Data.Models
         public string Surname { get; set; }
         public int? Points { get; set; } = 0;
         public int? Coins { get; set; } = 0;
+        [Required]
+        public string Phone { get; set; }
     }
 }

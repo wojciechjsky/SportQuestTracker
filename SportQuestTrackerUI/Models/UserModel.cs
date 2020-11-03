@@ -22,15 +22,15 @@ namespace SportQuestTrackerUI.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        //[Required]
-        //[StringLength(30, ErrorMessage = "Your FirstName is limited to {2} to {1} characters", MinimumLength = 2)]
-        //public string FirstName { get; set; }
-        //[Required]
-        //[StringLength(30, ErrorMessage = "Your LastName is limited to {2} to {1} characters", MinimumLength = 2)]
-        //public string Surname { get; set; }
-        //[Required]
-        //[StringLength(9, ErrorMessage = "Your LastName is limited to {2} to {1} characters", MinimumLength = 9)]
-        //public string Phone { get; set; }
+        [Required]
+        [StringLength(30, ErrorMessage = "Your FirstName is limited to {2} to {1} characters", MinimumLength = 2)]
+        public string FirstName { get; set; }
+        [Required]
+        [StringLength(30, ErrorMessage = "Your LastName is limited to {2} to {1} characters", MinimumLength = 2)]
+        public string Surname { get; set; }
+        [Required]
+        [StringLength(9, ErrorMessage = "Your LastName is limited to {2} to {1} characters", MinimumLength = 9)]
+        public string Phone { get; set; }
     }
     public class LoginModel
     {

@@ -85,16 +85,16 @@
 
                                     <EditForm Model="_registrationModel" OnInvalidSubmit="HandleRegistration">
                                         <DataAnnotationsValidator />
-                                        @*<div class="form-group">
+                                        <div class="form-group">
                                                 <label for="FirstName">First Name</label>
-                                                <input type="text" class="form-control" id="FirstName" placeholder="FirstName" @bind="user.FirstName"/>
-                                                <ValidationMessage For="@(() => user.FirstName)" class="text-danger"/>
+                                                <input type="text" class="form-control" id="FirstName" placeholder="FirstName" @bind="_registrationModel.FirstName"/>
+                                                <ValidationMessage For="@(() => _registrationModel.FirstName)" class="text-danger"/>
                                             </div>
                                             <div class="form-group">
                                                 <label for="Name">Surname</label>
-                                                <input type="text" class="form-control" id="Name" placeholder="Surname" @bind="user.Surname"/>
-                                                <ValidationMessage For="@(() => user.Surname)" class="text-danger"/>
-                                            </div>*@
+                                                <input type="text" class="form-control" id="Name" placeholder="Surname" @bind="_registrationModel.Surname"/>
+                                                <ValidationMessage For="@(() => _registrationModel.Surname)" class="text-danger"/>
+                                            </div>
                                         <div class="form-group">
                                             <label for="Email">Email</label>
                                             <input type="text" class="form-control" id="Email" placeholder="Email" @bind="_registrationModel.EmailAddress" />
@@ -108,18 +108,18 @@
                                         <div class="form-group">
                                             <label for="ConfirmPassword">Password</label>
                                             <input autocomplete="on" type="password" class="form-control" id="ConfirmPassword" placeholder="Repeat password" @bind="_registrationModel.Password" />
-                                            <ValidationMessage For="@(() => _registrationModel.Password)" class="text-danger" />
+                                            <ValidationMessage For="@(() => _registrationModel.ConfirmPassword)" class="text-danger" />
                                         </div>
 
-                                        @*<div class="form-group">
+                                        <div class="form-group">
                                                 <label for="phone">Phone number</label>
-                                                <input type="number" class="form-control" id="phone" aria-describedby="phone" placeholder="Phone number" @bind="user.PhoneNumber"/>
-                                                <ValidationMessage For="@(() => user.PhoneNumber)" class="text-danger"/>
+                                                <input type="number" class="form-control" id="phone" aria-describedby="phone" placeholder="Phone number" @bind="_registrationModel.Phone"/>
+                                                <ValidationMessage For="@(() => _registrationModel.Phone)" class="text-danger"/>
                                             </div>
                                             <div class="form-group form-check">
                                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                                 <label class="form-check-label" for="exampleCheck1">Accept rules</label>
-                                            </div>*@
+                                            </div>
                                         <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
 
                                     </EditForm>

@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportQuestTrackerAPI", "Spo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportQuestTrackerUI", "SportQuestTrackerUI\SportQuestTrackerUI.csproj", "{A34C089A-8232-4DE5-A952-05978088ADEA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportQuestTracker-UI", "SportQuestTracker-UI\SportQuestTracker-UI.csproj", "{77548C99-91E2-48F1-9466-F9D0CE91B221}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{A34C089A-8232-4DE5-A952-05978088ADEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A34C089A-8232-4DE5-A952-05978088ADEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A34C089A-8232-4DE5-A952-05978088ADEA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{77548C99-91E2-48F1-9466-F9D0CE91B221}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{77548C99-91E2-48F1-9466-F9D0CE91B221}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{77548C99-91E2-48F1-9466-F9D0CE91B221}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{77548C99-91E2-48F1-9466-F9D0CE91B221}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

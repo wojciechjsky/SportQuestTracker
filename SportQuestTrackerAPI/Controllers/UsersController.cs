@@ -41,18 +41,25 @@ namespace SportQuestTrackerAPI.Controllers
             _config = config;
         }
         [Route("register")]
+        [AllowAnonymous]
         [HttpPost]
-        public async Task<IActionResult> Register([FromBody] UserDTO userDto)
+        public async Task<IActionResult> Register([FromBody] RegisterUserDTO userDto)
         {
             try
             {
-                var username = userDto.EmailAddress;
+                var email = userDto.EmailAddress;
                 var password = userDto.Password;
-                //var firstname = userDto.FirstName;
-                //var lastname = userDto.Surname;
-                //var phone = userDto.PhoneNumber;
-                //var user = new AppUser{Email=email, UserName = email, FirstName = firstname, Surname = lastname, PhoneNumber = phone};
-                var user = new AppUser { Email = username, UserName = username };
+                var firstname = userDto.FirstName;
+                var lastname = userDto.Surname;
+                var phone = userDto.Phone;
+                var user = new AppUser { 
+                    Email = email,
+                    UserName = email,
+                    FirstName = firstname,
+                    Surname = lastname,
+                    Phone = phone
+                };
+                //var user = new AppUser { Email = username, UserName = username };
                 var result = await _userManager.CreateAsync(user, password);
 
                 if (!result.Succeeded)
@@ -60,9 +67,9 @@ namespace SportQuestTrackerAPI.Controllers
 
                     foreach (var error in result.Errors)
                     {
-                        _logger.LogError($"{username} : {error.Code} - {error.Description}");
+                        _logger.LogError($"{email} : {error.Code} - {error.Description}");
                     }
-                    return InternalError($"{username} User Registration Attempt Failed");
+                    return InternalError($"{email} User Registration Attempt Failed");
                 }
                 await _userManager.AddToRoleAsync(user, "Customer");
                 return Created("login", new { result.Succeeded });

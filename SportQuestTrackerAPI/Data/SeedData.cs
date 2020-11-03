@@ -24,6 +24,7 @@ namespace SportQuestTrackerAPI.Data
                     Email = "admin@gmail.com",
                     FirstName = "Wojtek",
                     Surname = "Jablonski",
+                    Phone = "555666777",
                     Points = 1000,
                     Coins = 1000
                 };
@@ -41,6 +42,7 @@ namespace SportQuestTrackerAPI.Data
                     Email = "pati@gmail.com",
                     FirstName = "Patrycja",
                     Surname = "Peczyńska",
+                    Phone = "555666777",
                     Points = 1000,
                     Coins = 1000
                 };
@@ -58,6 +60,7 @@ namespace SportQuestTrackerAPI.Data
                     Email = "baksiu@gmail.com",
                     FirstName = "Baksiu",
                     Surname = "Baksiowski",
+                    Phone = "555666777",
                     Points = 1000,
                     Coins = 1000
                 };
