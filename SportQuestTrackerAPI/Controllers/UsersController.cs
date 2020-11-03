@@ -57,7 +57,8 @@ namespace SportQuestTrackerAPI.Controllers
                     UserName = email,
                     FirstName = firstname,
                     Surname = lastname,
-                    Phone = phone };
+                    Phone = phone
+                };
                 //var user = new AppUser { Email = username, UserName = username };
                 var result = await _userManager.CreateAsync(user, password);
 
