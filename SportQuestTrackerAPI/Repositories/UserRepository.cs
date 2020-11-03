@@ -33,9 +33,9 @@ namespace SportQuestTrackerAPI.Repositories
             throw new System.NotImplementedException();
         }
 
-        public async Task<bool> Create(User entity)
+        public async Task<bool> Create(AppUser entity)
         {
-            //await _db.Users.AddAsync(entity);
+            await _db.Users.AddAsync(entity);
             return await Save();
         }
 

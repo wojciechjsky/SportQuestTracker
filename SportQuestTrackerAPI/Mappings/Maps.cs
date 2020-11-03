@@ -8,7 +8,7 @@ namespace SportQuestTrackerAPI.Mappings
     {
         public Maps()
         {
-            //CreateMap<User, UserDTO>().ReverseMap();
+            CreateMap<AppUser, RegisterUserDTO>().ReverseMap();
             CreateMap<Gadget, GadgetDTO>().ReverseMap();
             CreateMap<Gadget, GadgetCrudDTO>().ReverseMap();
             CreateMap<TransactionModel, TransactionDTO>().ReverseMap();
