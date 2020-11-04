@@ -9,21 +9,21 @@
 @inject NavigationManager _navMan
 
 @{
-    NavColor = IsUser ? "bg-warning" : "bg-danger";
+   NavColor = IsUser ? "navbar navbar-dark bg-dark" : "navbar navbar-dark bg-primary";
 }
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title> SportQuestTracker</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
 </head>
 
 
 <nav id="LoginNavigation" class="navbar @NavColor fixed-top display-flex border border-bottom border-dark">
-    <a class="navbar-brand h1" style="font-family: 'Ranchers', cursive; margin-left: 20vw; font-size: 2rem;">Sport Quest Tracker</a>
+    <a class="navbar-brand h1" style="font-family: 'Indie Flower', cursive; margin-left: 2vw; font-size: 3rem; color: white;"><b>Sport Quest Tracker</b></a>
 
-    <div class="form-inline justify-content-end" style="margin-right: 10vw">
+    <div class="form-inline justify-content-end" style="margin-right: 2vw">
 
         <EditForm class="row" Model="_loginModel" OnValidSubmit="HandleLogin">
             <DataAnnotationsValidator />
@@ -58,7 +58,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div style="width: 34vw; margin-top: 5vh;">
-                            <h3 style="margin: 5vh 0 2vh 0; text-align: center; margin-top: 10vh; font-weight: bold">Registration</h3>
+                            <h3 style="font-family: 'Indie Flower', cursive; font-size: 2rem; margin: 5vh 0 5vh 0; text-align: center; margin-top: 10vh; font-weight: bold">Registration</h3>
                             <div class="container">
                                 <div class="row" style="margin-bottom: 2vh">
                                     <div class="col text-center active btn btn-outline-success">
