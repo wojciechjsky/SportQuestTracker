@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SportQuestTrackerAPI.Data.Models
+namespace SportQuestTrackerAPI.DTOs
 {
-    public class Quest
+    public class QuestDTO
     {
         [Key]
         public int Id { get; set; }
@@ -15,6 +15,5 @@ namespace SportQuestTrackerAPI.Data.Models
         public bool IsDone { get; set; }
         public string Image { get; set; }
         //public DateTime? DateOfPerformance { get; set; }
-    
     }
 }
