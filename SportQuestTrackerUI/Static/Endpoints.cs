@@ -12,6 +12,6 @@ namespace SportQuestTrackerUI.Static
         public static string GadgetsEndpoint = $"{BaseUrl}api/gadget/";
         public static string RegisterEndpoint = $"{BaseUrl}api/users/register/";
         public static string LoginEndpoint = $"{BaseUrl}api/users/login/";
-        public static string AuthorsEndpoint = $"{BaseUrl}api/authors/";
+        public static string QuestEndpoint = $"{BaseUrl}api/quest/";
     }
 }

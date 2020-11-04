@@ -44,6 +44,28 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:SportQuestTrackerAPI.Controllers.QuestController.Create(SportQuestTrackerAPI.DTOs.QuestDTO)">
+            <summary>
+            Post quest to Database
+            </summary>
+            <param name="questDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SportQuestTrackerAPI.Controllers.QuestController.Update(System.Int32,SportQuestTrackerAPI.DTOs.QuestDTO)">
+            <summary>
+            Put quest to Database
+            </summary>
+            <param name="id"></param>
+            <param name="questDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SportQuestTrackerAPI.Controllers.QuestController.Delete(System.Int32)">
+            <summary>
+            Delete quest from Database
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="M:SportQuestTrackerAPI.Controllers.UsersController.Login(SportQuestTrackerAPI.DTOs.UserDTO)">
             <summary>
             User Login Endpoint
