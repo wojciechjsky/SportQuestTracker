@@ -305,63 +305,63 @@ namespace SportQuestTrackerAPI.Data
                         CoinReward = 3,
                         IsDone = false,
                         Image = "https://cdn.pixabay.com/photo/2020/07/15/18/30/sneakers-5408667__340.png"
+                    },
+                    new Quest
+                    {
+                        Id = 6,
+                        Name = "Weightlifting 30 minutes",
+                        CoinReward = 5,
+                        IsDone = false,
+                        Image = "https://cdn.pixabay.com/photo/2020/07/15/18/30/sneakers-5408667__340.png"
+                    },
+                    new Quest
+                    {
+                        Id = 7,
+                        Name = "Running 5km",
+                        CoinReward = 6,
+                        IsDone = false,
+                        Image = "https://cdn.pixabay.com/photo/2020/07/15/18/30/sneakers-5408667__340.png"
+                    },
+                    new Quest
+                    {
+                        Id = 8,
+                        Name = "Cardio 30 minutes",
+                        CoinReward = 2,
+                        IsDone = false,
+                        Image = "https://cdn.pixabay.com/photo/2020/07/15/18/30/sneakers-5408667__340.png"
+                    },
+                    new Quest
+                    {
+                        Id = 9,
+                        Name = "Cardio 60 minutes",
+                        CoinReward = 4,
+                        IsDone = false,
+                        Image = "https://cdn.pixabay.com/photo/2020/07/15/18/30/sneakers-5408667__340.png"
+                    },
+                    new Quest
+                    {
+                        Id = 10,
+                        Name = "Cycling 10 km",
+                        CoinReward = 3,
+                        IsDone = false,
+                        Image = "https://cdn.pixabay.com/photo/2020/07/15/18/30/sneakers-5408667__340.png"
+                    },
+                    new Quest
+                    {
+                        Id = 11,
+                        Name = "Cycling 20 km",
+                        CoinReward = 5,
+                        IsDone = false,
+                        Image = "https://cdn.pixabay.com/photo/2020/07/15/18/30/sneakers-5408667__340.png"
+                    },
+                    new Quest
+                    {
+                        Id = 12,
+                        Name = "Cycling 30 km",
+                        CoinReward = 7,
+                        IsDone = false,
+                        Image = "https://cdn.pixabay.com/photo/2020/07/15/18/30/sneakers-5408667__340.png"
                     }
-                    //new Quest
-                    //{
-                    //    Id = 6,
-                    //    Name = "Weightlifting 30 minutes",
-                    //    CoinReward = 5,
-                    //    IsDone = false,
-                    //    Image = "https://cdn.pixabay.com/photo/2020/07/15/18/30/sneakers-5408667__340.png"
-                    //},
-                    //new Quest
-                    //{
-                    //    Id = 7,
-                    //    Name = "Running 5km",
-                    //    CoinReward = 6,
-                    //    IsDone = false,
-                    //    Image = "https://cdn.pixabay.com/photo/2020/07/15/18/30/sneakers-5408667__340.png"
-                    //},
-                    //new Quest
-                    //{
-                    //    Id = 8,
-                    //    Name = "Cardio 30 minutes",
-                    //    CoinReward = 2,
-                    //    IsDone = false,
-                    //    Image = "https://cdn.pixabay.com/photo/2020/07/15/18/30/sneakers-5408667__340.png"
-                    //},
-                    //new Quest
-                    //{
-                    //    Id = 9,
-                    //    Name = "Cardio 60 minutes",
-                    //    CoinReward = 4,
-                    //    IsDone = false,
-                    //    Image = "https://cdn.pixabay.com/photo/2020/07/15/18/30/sneakers-5408667__340.png"
-                    //},
-                    //new Quest
-                    //{
-                    //    Id = 10,
-                    //    Name = "Cycling 10 km",
-                    //    CoinReward = 3,
-                    //    IsDone = false,
-                    //    Image = "https://cdn.pixabay.com/photo/2020/07/15/18/30/sneakers-5408667__340.png"
-                    //},
-                    //new Quest
-                    //{
-                    //    Id = 11,
-                    //    Name = "Cycling 20 km",
-                    //    CoinReward = 5,
-                    //    IsDone = false,
-                    //    Image = "https://cdn.pixabay.com/photo/2020/07/15/18/30/sneakers-5408667__340.png"
-                    //},
-                    //new Quest
-                    //{
-                    //    Id = 12,
-                    //    Name = "Cycling 30 km",
-                    //    CoinReward = 7,
-                    //    IsDone = false,
-                    //    Image = "https://cdn.pixabay.com/photo/2020/07/15/18/30/sneakers-5408667__340.png"
-                    //}
 
                 );
 
