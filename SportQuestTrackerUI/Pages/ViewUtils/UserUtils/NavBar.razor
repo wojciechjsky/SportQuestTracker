@@ -3,57 +3,39 @@
 @using SportQuestTrackerAPI.Data.Models
 
 
+
 @{
     NavColor = IsUser ? "navbar navbar-dark bg-dark" : "navbar navbar-dark bg-primary";
     
 }
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+</head>
 
 
-<nav id="LoginNavigation" class="navbar @NavColor fixed-top display-flex border border-bottom border-dark">
-    <a class="navbar-brand h1" style="font-family: 'Ranchers', cursive; margin-left: 5vw; font-size: 2rem;">Sport Quest Tracker</a>
+<nav id="LoginNavigation" class="@NavColor fixed-top display-flex border border-bottom border-dark">
+
+    <a class="navbar-brand h1" style="font-family: 'Indie Flower', cursive; margin: 2vw 0 2vw 0; font-size: 2rem; color: white;">Sport Quest Tracker</a>
+    
+
     <AuthorizeView>
         <Authorized>
-            <p>@context.User.Identity.Name</p>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Your coins:@UserCoins</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Log out</a>
-            </li>
+           
+                <p class="text-white align-baseline">@context.User.Identity.Name</p>
+                <div class="nav-item">
+                    <a class="nav-link text-white font-weight-bolder " href="#">Your coins:@UserCoins</a>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-link text-white font-weight-bolder text" href="#">Log out</a>
+                </div>
         </Authorized>
     </AuthorizeView>
-    <div class="form-inline justify-content-end" style="margin-right: 10vw">
+    <div class="form-inline justify-content-end" style="margin-right: 5vw">
 
     </div>
 </nav>
 
 
-@*<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="#">Navbar</a>
-
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-
-            <li class="nav-item">
-                <a class="nav-link" href="#">Your coins:@UserCoins</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Log out</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Your coins:@UserCoins</a>
-            </li>
-
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
-</nav>*@
 
 @code {
 
