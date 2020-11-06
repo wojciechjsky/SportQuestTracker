@@ -7,9 +7,8 @@
 <NavBar isUser></NavBar>
 
 <div class="container-fluid">
-
-    <div class="d-lg-inline-flex border-info">
-        <table class="table table-dark m-auto w-75 p-3">
+    <div class="border-info">
+        <table class="table table-dark">
             <thead>
             <tr>
                 <th scope="col">Activity</th>
@@ -64,7 +63,7 @@
     </div>
 
 
-    <form class="w-35 p-3 d-lg-inline-flex">
+    <form class="w-35 p-3">
         <div class="form-group">
             <label for="UserText"><strong>Calculate your last activity</strong></label>
             <input type="text" class="form-control" id="UserText" placeholder="Write a title for your exercise">
@@ -84,8 +83,11 @@
             </select>
         </div>
         <label for="ActiviyMinutes">Choose how long your activity lasted in minutes</label>
-        <input type="range" class="custom-range" min="0" max="480" step="5" id="ActiviyMinutes">
-
+        <span>
+            <p>1 minute</p>
+            <input type="range" class="custom-range" min="0" max="480" step="5" id="ActiviyMinutes">
+            <p>480 minutes</p>
+        </span>
         <button type="button" class="btn btn-outline-dark">Calculate</button>
     </form>
 
@@ -93,19 +95,21 @@
 
 <style>
     form {
-        border: 5px;
+        border: 2px;
         float: left;
         width: 45vh;
-        display: inline-block;
-    }
+        margin: 30vw 0 5vw 0;
+        }
 
     table {
+        margin-left: 2vw;
         float: left;
-        width: 45vh;
-        display: inline-block;
+        width: 55vh;
     }
     .container-fluid {
-        margin-top: 10vh;
+        margin-top: 15vh;
+
+        display: inline-flex;
         
     }
 </style>

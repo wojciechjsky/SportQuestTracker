@@ -12,26 +12,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
 </head>
 
+<nav id="LoginNavigation" class="navbar @NavColor fixed-top display-flex border border-bottom border-dark">
+    <a class="navbar-brand h1" style="font-family: 'Indie Flower', cursive; margin-left: 2vw; font-size: 3rem; color: white;"><b>Sport Quest Tracker</b></a>
+    @*<nav id="LoginNavigation" class="@NavColor fixed-top display-flex border border-bottom border-dark">
 
-<nav id="LoginNavigation" class="@NavColor fixed-top display-flex border border-bottom border-dark">
+        <a class="navbar-brand h1" style="font-family: 'Indie Flower', cursive; margin: 2vw 0 2vw 0; font-size: 2rem; color: white;">Sport Quest Tracker</a>*@
 
-    <a class="navbar-brand h1" style="font-family: 'Indie Flower', cursive; margin: 2vw 0 2vw 0; font-size: 2rem; color: white;">Sport Quest Tracker</a>
+    <div class="form-inline justify-content-end" style="margin-right: 2vw">
+        <AuthorizeView>
+            <Authorized>
 
+                <div class="text-white align-baseline">@context.User.Identity.Name</div>
 
-    <AuthorizeView>
-        <Authorized>
-
-            <p class="text-white align-baseline">@context.User.Identity.Name</p>
-            @*<p class="text-white align-baseline">@AppUser(context.User)</p>*@
-            <div class="nav-item">
-                <a class="nav-link text-white font-weight-bolder " href="#">Your coins:@UserCoins</a>
-            </div>
-            <div class="nav-item">
-                <a class="nav-link text-white font-weight-bolder text" href="#">Log out</a>
-            </div>
-        </Authorized>
-    </AuthorizeView>
-    <div class="form-inline justify-content-end" style="margin-right: 5vw">
+                <div class="nav-item">
+                    <a class="nav-link text-white font-weight-bolder " href="#">Your coins:@UserCoins</a>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-link text-white font-weight-bolder text" href="#">Log out</a>
+                </div>
+            </Authorized>
+        </AuthorizeView>
 
     </div>
 </nav>
@@ -52,3 +52,10 @@
     //    var user = 
     //}
 }
+
+@*<style>
+
+    .btn btn-primary btn-block {
+        margin: 10px;
+    }
+</style>*@
