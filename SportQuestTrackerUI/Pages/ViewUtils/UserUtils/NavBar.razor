@@ -1,6 +1,8 @@
 ﻿@using SportQuestTrackerUI.Models
 @using SportQuestTrackerUI.Contracts
 @using SportQuestTrackerAPI.Data.Models
+@using Microsoft.AspNetCore.Identity
+@using System.Text.RegularExpressions
 
 
 
@@ -21,11 +23,20 @@
     <div class="form-inline justify-content-end" style="margin-right: 2vw">
         <AuthorizeView>
             <Authorized>
-
-                <div class="text-white align-baseline">@context.User.Identity.Name</div>
+                @{
+                    Regex rgx = new Regex("[^a-zA-Z0-9 -]");
+                    string[] userInfo = context.User.Identity.Name.Split(',');
+                    string fullName = userInfo[1] + " " + userInfo[2];
+                    string coins = userInfo[3];
+                    coins = rgx.Replace(coins, "");
+                    string points = userInfo[4];
+                    points = rgx.Replace(points, "");
+                    fullName = rgx.Replace(fullName, "");
+                }
+                <div class="text-white align-baseline">@fullName</div>
 
                 <div class="nav-item">
-                    <a class="nav-link text-white font-weight-bolder " href="#">Your coins:@UserCoins</a>
+                    <a class="nav-link text-white font-weight-bolder " href="#">You have: @coins / @points [coins/points]</a>
                 </div>
                 <div class="nav-item">
                     <a class="nav-link text-white font-weight-bolder text" href="#">Log out</a>
@@ -46,7 +57,7 @@
     private int UserCoins { get; set; } = 100;
     private string Details { get; set; }
 
-
+  
     //protected override async Task OnInitializedAsync()
     //{
     //    var user = 
