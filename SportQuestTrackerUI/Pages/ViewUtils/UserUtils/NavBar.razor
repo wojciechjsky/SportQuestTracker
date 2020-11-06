@@ -6,7 +6,7 @@
 
 @{
     NavColor = IsUser ? "navbar navbar-dark bg-dark" : "navbar navbar-dark bg-primary";
-    
+
 }
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
@@ -16,18 +16,19 @@
 <nav id="LoginNavigation" class="@NavColor fixed-top display-flex border border-bottom border-dark">
 
     <a class="navbar-brand h1" style="font-family: 'Indie Flower', cursive; margin: 2vw 0 2vw 0; font-size: 2rem; color: white;">Sport Quest Tracker</a>
-    
+
 
     <AuthorizeView>
         <Authorized>
-           
-                <p class="text-white align-baseline">@context.User.Identity.Name</p>
-                <div class="nav-item">
-                    <a class="nav-link text-white font-weight-bolder " href="#">Your coins:@UserCoins</a>
-                </div>
-                <div class="nav-item">
-                    <a class="nav-link text-white font-weight-bolder text" href="#">Log out</a>
-                </div>
+
+            <p class="text-white align-baseline">@context.User.Identity.Name</p>
+            @*<p class="text-white align-baseline">@AppUser(context.User)</p>*@
+            <div class="nav-item">
+                <a class="nav-link text-white font-weight-bolder " href="#">Your coins:@UserCoins</a>
+            </div>
+            <div class="nav-item">
+                <a class="nav-link text-white font-weight-bolder text" href="#">Log out</a>
+            </div>
         </Authorized>
     </AuthorizeView>
     <div class="form-inline justify-content-end" style="margin-right: 5vw">
@@ -43,5 +44,11 @@
     public bool IsUser { get; set; } = true;
     public string NavColor { get; set; }
     private int UserCoins { get; set; } = 100;
+    private string Details { get; set; }
 
+
+    //protected override async Task OnInitializedAsync()
+    //{
+    //    var user = 
+    //}
 }

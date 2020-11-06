@@ -1,36 +1,33 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SportQuestTrackerAPI.Contracts;
 using SportQuestTrackerAPI.Data;
-using SportQuestTrackerAPI.Data.Models;
+using SportQuestTrackerAPI.Data.Models; //using SportAppUserTrackerAPI.Contracts;
+//using SportAppUserTrackerAPI.Data;
+//using SportAppUserTrackerAPI.Data.Models;
 
 namespace SportQuestTrackerAPI.Repositories
 {
-    public class UserRepository//: IUserRepository
+    public class UserRepository: IUserRepository
     {
         private readonly ApplicationDbContext _db;
-        //private readonly RoleManager<IdentityUser> _signInManager;
-        //private readonly UserManager<IdentityUser> _userManager;
-        public UserRepository(ApplicationDbContext db, SignInManager<AppUser> signInManager, UserManager<AppUser> userManager)
+
+        public UserRepository(ApplicationDbContext db)
         {
             _db = db;
-            //_signInManager = signInManager;
-            //_userManager = userManager;
         }
 
-
-        public async Task<IList<User>> FindAll()
+        public async Task<IList<AppUser>> FindAll()
         {
-            var users = await _db.Users.ToListAsync();
-            throw new System.NotImplementedException();
+            var AppUsers = await _db.Users.ToListAsync();
+            return AppUsers;
         }
 
-        public async Task<User> FindById(int id)
+        public async Task<AppUser> FindById(int id)
         {
-            var user = await _db.Users.FindAsync(id);
-            throw new System.NotImplementedException();
+            var AppUser = await _db.Users.FindAsync(id);
+            return AppUser;
         }
 
         public async Task<bool> Create(AppUser entity)
@@ -39,23 +36,26 @@ namespace SportQuestTrackerAPI.Repositories
             return await Save();
         }
 
-        public async Task<bool> Update(User entity)
+        public async Task<bool> Update(AppUser entity)
         {
-            //_db.Users.Update(entity);
+            _db.Users.Update(entity);
             return await Save();
         }
 
-        public async Task<bool> Delete(User entity)
+        public async Task<bool> Delete(AppUser entity)
         {
-            //_db.Users.Remove(entity);
+            _db.Users.Remove(entity);
             return await Save();
         }
 
-        //public async Task<bool> IsExists(int id)
-        //{
-        //    //return await _db.Users.AnyAsync(u => u.Id == id);
-        //    //throw new System.NotImplementedException();
-        //}
+        public Task<bool> IsExists(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+        public async Task<bool> IsExists(string email)
+        {
+            return await _db.Users.AnyAsync(q => q.Email == email);
+        }
 
         public async Task<bool> Save()
         {

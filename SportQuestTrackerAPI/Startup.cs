@@ -75,6 +75,7 @@ namespace SportQuestTrackerAPI
             services.AddSingleton<ILoggerService, LoggerService>();
             services.AddScoped<IGadgetRepository, GadgetRepository>();
             services.AddScoped<IQuestRepository, QuestRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddAutoMapper(typeof(Maps));
 

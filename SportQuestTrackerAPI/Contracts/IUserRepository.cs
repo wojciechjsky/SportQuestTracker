@@ -2,7 +2,7 @@
 
 namespace SportQuestTrackerAPI.Contracts
 {
-    public interface IUserRepository : IRepositoryBase<User>
+    public interface IUserRepository : IRepositoryBase<AppUser>
     {
     }
 }
