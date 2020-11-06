@@ -271,7 +271,7 @@ namespace SportQuestTrackerAPI.Data
                         Name = "Walk 5km",
                         CoinReward = 4,
                         IsDone = false,
-                        Image = "https://cdn.pixabay.com/photo/2016/03/09/09/39/shoes-1245920_960_720.jpg"
+                        Image = "https://th.bing.com/th/id/OIP.ecE7TQfikwmCQ4SQN6s2HwHaFj?pid=Api&rs=1"
 
                     },
                     new Quest
@@ -280,7 +280,7 @@ namespace SportQuestTrackerAPI.Data
                         Name = "Running 2km",
                         CoinReward = 2,
                         IsDone = false,
-                        Image = "https://cdn.pixabay.com/photo/2015/04/20/13/44/sports-731506_960_720.jpg"
+                        Image = "https://th.bing.com/th/id/OIP.ecE7TQfikwmCQ4SQN6s2HwHaFj?pid=Api&rs=1"
                     },
                     new Quest
                     {
@@ -288,7 +288,7 @@ namespace SportQuestTrackerAPI.Data
                         Name = "Walk 10km",
                         CoinReward = 8,
                         IsDone = false,
-                        Image = "https://cdn.pixabay.com/photo/2016/01/19/17/45/hiker-1149877_960_720.jpg"
+                        Image = "https://th.bing.com/th/id/OIP.ecE7TQfikwmCQ4SQN6s2HwHaFj?pid=Api&rs=1"
                     },
                     new Quest
                     {
@@ -296,7 +296,7 @@ namespace SportQuestTrackerAPI.Data
                         Name = "Swimming 1 km",
                         CoinReward = 6,
                         IsDone = false,
-                        Image = "https://cdn.pixabay.com/photo/2015/07/28/13/18/swim-864383_960_720.jpg"
+                        Image = "https://th.bing.com/th/id/OIP.ecE7TQfikwmCQ4SQN6s2HwHaFj?pid=Api&rs=1"
                     },
                     new Quest
                     {
@@ -304,7 +304,7 @@ namespace SportQuestTrackerAPI.Data
                         Name = "Running 3km",
                         CoinReward = 3,
                         IsDone = false,
-                        Image = "https://cdn.pixabay.com/photo/2017/05/25/15/08/jogging-2343558_960_720.jpg"
+                        Image = "https://th.bing.com/th/id/OIP.ecE7TQfikwmCQ4SQN6s2HwHaFj?pid=Api&rs=1"
                     },
                     new Quest
                     {
@@ -312,7 +312,7 @@ namespace SportQuestTrackerAPI.Data
                         Name = "Weightlifting 30 minutes",
                         CoinReward = 5,
                         IsDone = false,
-                        Image = "https://cdn.pixabay.com/photo/2018/01/23/22/39/weightlifting-3102641_960_720.jpg"
+                        Image = "https://th.bing.com/th/id/OIP.ecE7TQfikwmCQ4SQN6s2HwHaFj?pid=Api&rs=1"
                     },
                     new Quest
                     {
@@ -320,7 +320,7 @@ namespace SportQuestTrackerAPI.Data
                         Name = "Running 5km",
                         CoinReward = 6,
                         IsDone = false,
-                        Image = "https://cdn.pixabay.com/photo/2014/10/17/12/07/track-492216_960_720.jpg"
+                        Image = "https://th.bing.com/th/id/OIP.ecE7TQfikwmCQ4SQN6s2HwHaFj?pid=Api&rs=1"
                     },
                     new Quest
                     {
@@ -328,7 +328,7 @@ namespace SportQuestTrackerAPI.Data
                         Name = "Cardio 30 minutes",
                         CoinReward = 2,
                         IsDone = false,
-                        Image = "https://cdn.pixabay.com/photo/2016/03/27/19/20/sport-1283791_960_720.jpg"
+                        Image = "https://th.bing.com/th/id/OIP.ecE7TQfikwmCQ4SQN6s2HwHaFj?pid=Api&rs=1"
                     },
                     new Quest
                     {
@@ -336,7 +336,7 @@ namespace SportQuestTrackerAPI.Data
                         Name = "Cardio 60 minutes",
                         CoinReward = 4,
                         IsDone = false,
-                        Image = "https://cdn.pixabay.com/photo/2020/10/23/18/40/kettlebell-5679666_960_720.jpg"
+                        Image = "https://th.bing.com/th/id/OIP.ecE7TQfikwmCQ4SQN6s2HwHaFj?pid=Api&rs=1"
                     },
                     new Quest
                     {
@@ -344,7 +344,7 @@ namespace SportQuestTrackerAPI.Data
                         Name = "Cycling 10 km",
                         CoinReward = 3,
                         IsDone = false,
-                        Image = "https://cdn.pixabay.com/photo/2015/04/20/13/42/person-731492_960_720.jpg"
+                        Image = "https://th.bing.com/th/id/OIP.ecE7TQfikwmCQ4SQN6s2HwHaFj?pid=Api&rs=1"
                     },
                     new Quest
                     {
@@ -352,7 +352,7 @@ namespace SportQuestTrackerAPI.Data
                         Name = "Cycling 20 km",
                         CoinReward = 5,
                         IsDone = false,
-                        Image = "https://cdn.pixabay.com/photo/2015/03/21/14/34/silhouette-683751_960_720.jpg"
+                        Image = "https://th.bing.com/th/id/OIP.ecE7TQfikwmCQ4SQN6s2HwHaFj?pid=Api&rs=1"
                     },
                     new Quest
                     {
@@ -360,7 +360,7 @@ namespace SportQuestTrackerAPI.Data
                         Name = "Cycling 30 km",
                         CoinReward = 7,
                         IsDone = false,
-                        Image = "https://cdn.pixabay.com/photo/2016/03/26/22/47/blur-1281675_960_720.jpg"
+                        Image = "https://th.bing.com/th/id/OIP.ecE7TQfikwmCQ4SQN6s2HwHaFj?pid=Api&rs=1"
                     }
 
                 );
