@@ -13,6 +13,7 @@ namespace SportQuestTrackerAPI.Data
         public DbSet<TransactionModel> Transactions { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Quest> Quests { get; set; }
+        public DbSet<TransactionModel> Transaction { get; set; }
 
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
@@ -364,6 +365,60 @@ namespace SportQuestTrackerAPI.Data
                     }
 
                 );
+            modelBuilder.Entity<TransactionModel>()
+                .HasData(
+
+                    new TransactionModel
+                    {
+                        TransactionId = 1,
+                        Date = new DateTime(2020, 10, 20),
+                        GadgetId = 1,
+                        UserId = 1,
+                    },
+                    new TransactionModel
+                    {
+                        TransactionId = 2,
+                        Date = new DateTime(2020, 10, 21),
+                        GadgetId = 2,
+                        UserId = 2,
+                    },
+                    new TransactionModel
+                    {
+                        TransactionId = 3,
+                        Date = new DateTime(2020, 10, 22),
+                        GadgetId = 3,
+                        UserId = 1,
+                    },
+                    new TransactionModel
+                    {
+                        TransactionId = 4,
+                        Date = new DateTime(2020, 10, 20),
+                        GadgetId = 7,
+                        UserId = 3,
+                    },
+                    new TransactionModel
+                    {
+                        TransactionId = 5,
+                        Date = new DateTime(2020, 10, 20),
+                        GadgetId = 9,
+                        UserId = 2,
+                    },
+                    new TransactionModel
+                    {
+                        TransactionId = 6,
+                        Date = new DateTime(2020, 10, 20),
+                        GadgetId = 11,
+                        UserId = 2,
+                    },
+                    new TransactionModel
+                    {
+                        TransactionId = 7,
+                        Date = new DateTime(2020, 10, 27),
+                        GadgetId = 3,
+                        UserId = 3,
+                    }
+
+                    );
 
         }
     }
