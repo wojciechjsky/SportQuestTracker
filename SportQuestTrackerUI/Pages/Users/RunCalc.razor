@@ -5,9 +5,9 @@
 
 
 <NavBar isUser></NavBar>
-@*container d-flex flex-row bd-highlight mb-3*@
-<div class="align-items-center">
-    <div class="col mr-auto p-2 bd-highlight">
+
+<div class="container">
+    <div class="calories">
         <table class="table table-dark">
             <thead>
                 <tr>
@@ -63,14 +63,13 @@
     </div>
 
 
-    <form class="col mr-auto p-2 bd-highlight">
-        <div class="calculator">
-            <div class="form-group">
-                <label for="UserText"><strong>Calculate your last activity</strong></label>
+    <form class="calculator">
+        <div class="form-group">
+            <label for="UserText"><strong><h3>Calculate your last activity</h3></strong></label><br/>
                 <input type="text" class="form-control" id="UserText" placeholder="Write a title for your exercise">
             </div>
             <div class="form-group">
-                <label for="ActivityType">Select activity</label>
+                <label for="ActivityType">Select activity</label><br/>
                 <select class="form-control" id="ActivityType" placeholder="activity">
                     <option>Cardio exercises</option>
                     <option>Cycling 18 kph</option>
@@ -82,7 +81,7 @@
                     <option>Running 11 kph</option>
                     <option>Running 12 kph</option>
                 </select>
-            </div>
+            </div><br/>
             <label for="ActiviyMinutes">Choose how long your activity lasted in minutes</label><br />
             <span class="zip">
                 <p id="text1" style="display:inline-block">1 min</p>
@@ -90,38 +89,30 @@
                 <p id="text2" style="display:inline-block">480 min</p>
             </span><br />
             <button type="button" class="btn btn-outline-dark">Calculate</button>
-        </div>
     </form>
 
 </div>
 
 <style>
-    .align-items-center{
-        display: flex;
-        transform: translateX(90%);
 
+    .container {
+        margin: 15vh 10vw 15vh 10vw;
+        display: inline-flex;
     }
-    .p-2 bd-highlight {
 
-        padding: 10px;
-        display: block;
-
-    }
-    .col mr-auto p-2 bd-highlight {
+    .calories {
+        
         border-color: black;
-            margin-right: 15vw !important;
-        margin-left: 15vw !important;
+        margin-right: 10vh;
 
     }
-    .container-fluid {
-        margin-top: 15vh;
-    }
 
-    .col {
-        margin-top: 15vh;
-        padding: 2vh;
+    .calculator {
+        padding: 2%;
+        border-style:groove;
+        box-shadow:sandybrown;
+        
     }
-
     .custom-range {
         width: 60%;
     }
@@ -130,9 +121,6 @@
         display: inline;
     }
 
-    .col mr-auto p-2 bd-highlight {
-        margin-left: 5vw;
-    }
 </style>
 
 @code {
